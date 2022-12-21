@@ -1,19 +1,16 @@
 import React, { useContext } from "react";
 import axios from "axios";
-import { AuthContext } from "../../components/context/context";
-import "../login/Login.css";
+import { AuthContext } from "../../context/context";
+import "../../components/forms/FormAuth.css";
+import FormAuth from "../../components/forms/FormAuth";
 
 const Authorization = () => {
-  const [code, setCode] = React.useState<string>("");
   const [isValidCode, setIsValidCode] = React.useState<boolean>(true);
-  const changeHandlerCode = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCode(e.target.value);
-  };
+  const [authCode, setAuthCode] = React.useState<string[]>(
+    new Array(6).fill("")
+  );
+  let code = authCode.join("");
 
-  const clickHandlerCode = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    submitAuthCode();
-  };
   const authContext = useContext(AuthContext);
   let Token: string | null;
   if (authContext) {
@@ -38,20 +35,11 @@ const Authorization = () => {
   }
 
   return (
-    <form className="login_form">
-      <input
-        style={{ borderColor: `${!isValidCode ? "red" : "black"}` }}
-        className="login_input"
-        type="text"
-        placeholder="Enter code"
-        value={code}
-        onChange={changeHandlerCode}
-      ></input>
-      {!isValidCode ? <p>Incorrect code</p> : ""}
-      <button className="login_button" onClick={clickHandlerCode}>
-        Submit
-      </button>
-    </form>
+    <FormAuth
+      submitAuthCode={submitAuthCode}
+      authCode={authCode}
+      setAuthCode={setAuthCode}
+    ></FormAuth>
   );
 };
 

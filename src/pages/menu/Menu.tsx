@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../components/context/context";
+import { AuthContext } from "../../context/context";
 import "./menu.css";
 
 const Menu = () => {
@@ -8,6 +8,7 @@ const Menu = () => {
     e.preventDefault();
     if (authContext) {
       authContext.setIsUserAuth(false);
+      authContext.setIsUserLogin(false)
     }
   };
   return (
