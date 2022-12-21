@@ -5,6 +5,11 @@ import { Button, TextField } from "@mui/material";
 import * as yup from "yup";
 import IFormInput from "../../interfaces/IFormInput";
 import IPropsForFormLogin from "../../interfaces/IPropsForFormLogin";
+import styles from '../../pages/login/Login.module.css'
+
+
+
+
 
 const FormLogin = ({ submitForm, isValidLogin }: IPropsForFormLogin) => {
   const schema = yup
@@ -27,7 +32,7 @@ const FormLogin = ({ submitForm, isValidLogin }: IPropsForFormLogin) => {
   });
   console.log(isValidLogin);
   return (
-    <form className="login_form" onSubmit={handleSubmit(submitForm)}>
+    <form className={styles.login_form} onSubmit={handleSubmit(submitForm)}>
       <Controller
         name="email"
         control={control}

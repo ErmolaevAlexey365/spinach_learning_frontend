@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import IFormAuth from "../../interfaces/IPropsForFormAuth";
+import styles from '../forms/FormAuth.module.css'
+
 
 const FormAuth = ({ submitAuthCode, authCode, setAuthCode }: IFormAuth) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -27,16 +29,16 @@ const FormAuth = ({ submitAuthCode, authCode, setAuthCode }: IFormAuth) => {
     submitAuthCode();
   };
   return (
-    <form className="auth_form">
+    <form className={styles.auth_form}>
       <p style={{ textAlign: "center", fontSize: "20px" }}>
         Enter your auth code
       </p>
-      <div className="grid_for_code">
+      <div className={styles.grid_for_code}>
         {authCode.map((v, index) => {
           return (
             <React.Fragment>
               <input
-                className="grid_input"
+                className={styles.grid_input}
                 value={authCode[index]}
                 maxLength={1}
                 ref={index === focus ? inputRef : null}
@@ -47,7 +49,7 @@ const FormAuth = ({ submitAuthCode, authCode, setAuthCode }: IFormAuth) => {
         })}
       </div>
 
-      <button className="login_button" onClick={clickHandlerCode}>
+      <button className={styles.login_button} onClick={clickHandlerCode}>
         Submit
       </button>
     </form>

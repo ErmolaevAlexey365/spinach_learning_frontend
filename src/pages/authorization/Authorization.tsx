@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/context";
-import "../../components/forms/FormAuth.css";
+import "../../components/forms/FormAuth.module.css";
 import FormAuth from "../../components/forms/FormAuth";
 
 const Authorization = () => {
