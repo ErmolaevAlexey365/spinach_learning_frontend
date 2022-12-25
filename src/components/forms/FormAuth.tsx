@@ -1,9 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, ClipboardEvent } from "react";
 import IFormAuth from "../../interfaces/IPropsForFormAuth";
-import styles from '../forms/FormAuth.module.css'
+import styles from "../forms/FormAuth.module.css";
 
-
-const FormAuth = ({ submitAuthCode, authCode, setAuthCode }: IFormAuth) => {
+const FormAuth = ({
+  submitAuthCode,
+  authCode,
+  setAuthCode,
+  isValidCode,
+}: IFormAuth) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [focus, setFocus] = React.useState<number>(0);
@@ -11,6 +15,15 @@ const FormAuth = ({ submitAuthCode, authCode, setAuthCode }: IFormAuth) => {
   useEffect(() => {
     inputRef.current?.focus();
   }, [focus]);
+
+  const copyAuthCode = (
+    event: ClipboardEvent<HTMLInputElement>
+  ) => {
+    let a = event.clipboardData?.getData("text").split("");
+
+    const arr = [...a, ...authCode].slice(0, 6);
+    setAuthCode(arr);
+  };
 
   const changeHandlerCode = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -24,10 +37,10 @@ const FormAuth = ({ submitAuthCode, authCode, setAuthCode }: IFormAuth) => {
     else setFocus(index + 1);
   };
 
-  const clickHandlerCode = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  if (authCode[5] != "") {
     submitAuthCode();
-  };
+  }
+
   return (
     <form className={styles.auth_form}>
       <p style={{ textAlign: "center", fontSize: "20px" }}>
@@ -38,20 +51,24 @@ const FormAuth = ({ submitAuthCode, authCode, setAuthCode }: IFormAuth) => {
           return (
             <React.Fragment>
               <input
+                key={index}
                 className={styles.grid_input}
                 value={authCode[index]}
                 maxLength={1}
                 ref={index === focus ? inputRef : null}
                 onChange={(e) => changeHandlerCode(e, index)}
+                onPaste={ copyAuthCode}
               />
             </React.Fragment>
           );
         })}
       </div>
 
-      <button className={styles.login_button} onClick={clickHandlerCode}>
-        Submit
-      </button>
+      {!isValidCode ? (
+        <p style={{ textAlign: "center" }}>Incorrect code</p>
+      ) : (
+        ""
+      )}
     </form>
   );
 };

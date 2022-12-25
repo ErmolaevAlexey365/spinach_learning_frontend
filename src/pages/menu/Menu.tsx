@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../context/context";
-import "./menu.css";
+import  styles from '../menu/Menu.module.css'
+
 
 const Menu = () => {
   const authContext = useContext(AuthContext);
@@ -13,7 +14,7 @@ const Menu = () => {
   };
   return (
     <div>
-      <button className="log_out_button" onClick={clickHandlerLogOut}>
+      <button className={styles.log_out_button} onClick={clickHandlerLogOut}>
         {" "}
         Log out{" "}
       </button>

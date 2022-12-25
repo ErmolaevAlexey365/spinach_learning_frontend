@@ -2,26 +2,12 @@ import React from "react";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useForm, Controller } from "react-hook-form";
 import { Button, TextField } from "@mui/material";
-import * as yup from "yup";
 import IFormInput from "../../interfaces/IFormInput";
 import IPropsForFormLogin from "../../interfaces/IPropsForFormLogin";
-import styles from '../../pages/login/Login.module.css'
-
-
-
-
+import styles from "../../pages/login/Login.module.css";
+import { schema } from "../schemas/SchemaFormLogin";
 
 const FormLogin = ({ submitForm, isValidLogin }: IPropsForFormLogin) => {
-  const schema = yup
-    .object({
-      email: yup
-        .string()
-        .required("This is a required field")
-        .matches(/.+@.+\..+/i, "Enter correct email! "),
-      password: yup.string().required("This is a required field"),
-    })
-    .required();
-
   const {
     control,
     handleSubmit,
@@ -69,7 +55,7 @@ const FormLogin = ({ submitForm, isValidLogin }: IPropsForFormLogin) => {
           />
         )}
       />
-      {isValidLogin ? <p> User with that email don't exist!</p> : ""}
+      {isValidLogin ? <p> User don't exist!</p> : ""}
       <Button
         variant="contained"
         size="small"
