@@ -4,7 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import { Button, TextField } from "@mui/material";
 import IFormInput from "../../interfaces/IFormInput";
 import IPropsForFormLogin from "../../interfaces/IPropsForFormLogin";
-import styles from "../../pages/login/Login.module.css";
+import styles from "../../styles/formLogin/login.module.css";
 import { schema } from "../schemas/SchemaFormLogin";
 
 const FormLogin = ({ submitForm, isValidLogin }: IPropsForFormLogin) => {
@@ -16,7 +16,7 @@ const FormLogin = ({ submitForm, isValidLogin }: IPropsForFormLogin) => {
     resolver: yupResolver(schema),
     mode: "onSubmit",
   });
-  console.log(isValidLogin);
+
   return (
     <form className={styles.login_form} onSubmit={handleSubmit(submitForm)}>
       <Controller

@@ -20,9 +20,9 @@ const Login = () => {
         if (authContext) {
           authContext.setIsUserLogin(true);
         }
-        if (authContext) {
-          authContext.setToken(response.data.token);
-        }
+
+        localStorage.setItem("Token", JSON.stringify(response.data.token));
+
         setIsValidLogin(false);
       })
 

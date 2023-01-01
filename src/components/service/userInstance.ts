@@ -1,10 +1,12 @@
 import axios from "axios";
+let Token = JSON.parse(localStorage.getItem("Token") || "[{}] ");
 
 const userInstance = axios.create({
   baseURL: "http://localhost:5000/api/user",
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "",
+    Authorization: "Bearer " + Token,
   },
 });
 
@@ -16,13 +18,24 @@ export const userService = {
       return error.response;
     }
   },
-  async auth(headers: any, code: string) {
+  async auth(code: string) {
     try {
-      let headersObject = {
-        headers,
-      };
+      return userInstance.get(`/login/${code}`);
+    } catch (error: any) {
+      return error.response;
+    }
+  },
 
-      return userInstance.get(`/login/${code}`, headersObject);
+  async edit(body: any) {
+    try {
+      return userInstance.patch("/edit", body);
+    } catch (error: any) {
+      return error.response;
+    }
+  },
+  async getUserData() {
+    try {
+      return userInstance.get("");
     } catch (error: any) {
       return error.response;
     }

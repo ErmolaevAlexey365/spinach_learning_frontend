@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, ClipboardEvent } from "react";
 import IFormAuth from "../../interfaces/IPropsForFormAuth";
-import styles from "../forms/FormAuth.module.css";
+import styles from "../../styles/formAuth/formAuth.module.css";
 
 const FormAuth = ({
   submitAuthCode,
@@ -16,9 +16,7 @@ const FormAuth = ({
     inputRef.current?.focus();
   }, [focus]);
 
-  const copyAuthCode = (
-    event: ClipboardEvent<HTMLInputElement>
-  ) => {
+  const copyAuthCode = (event: ClipboardEvent<HTMLInputElement>) => {
     let a = event.clipboardData?.getData("text").split("");
 
     const arr = [...a, ...authCode].slice(0, 6);
@@ -37,7 +35,13 @@ const FormAuth = ({
     else setFocus(index + 1);
   };
 
-  if (authCode[5] != "") {
+  let counterFullInput = 0;
+  for (let i = 0; i <= 5; i++) {
+    if (authCode[i] !== "") {
+      counterFullInput++;
+    }
+  }
+  if (counterFullInput == 6) {
     submitAuthCode();
   }
 
@@ -57,7 +61,7 @@ const FormAuth = ({
                 maxLength={1}
                 ref={index === focus ? inputRef : null}
                 onChange={(e) => changeHandlerCode(e, index)}
-                onPaste={ copyAuthCode}
+                onPaste={copyAuthCode}
               />
             </React.Fragment>
           );

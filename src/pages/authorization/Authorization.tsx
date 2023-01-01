@@ -11,16 +11,17 @@ const Authorization = () => {
   let code = authCode.join("");
 
   const authContext = useContext(AuthContext);
-  let Token: string | null;
-  if (authContext) {
-    Token = authContext.token;
-  }
 
   async function submitAuthCode() {
     await userService
-      .auth({ Authorization: "Bearer " + Token }, code)
+      .auth(code)
 
       .then((response: any) => {
+        localStorage.setItem(
+          "Token",
+          JSON.stringify(response.data.accessToken)
+        );
+
         if (authContext) {
           authContext.setIsUserAuth(true);
         }
