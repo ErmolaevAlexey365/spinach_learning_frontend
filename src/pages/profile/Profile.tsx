@@ -53,6 +53,11 @@ const MainPage = () => {
     e.preventDefault();
     changeData();
   };
+  const clickHandlerForCansel = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setIsDisabled(!isDisabled);
+    getUsersData();
+  };
 
   return (
     <>
@@ -72,6 +77,7 @@ const MainPage = () => {
             userData={userData}
             setUserData={setUserData}
             clickHandlerForSubmit={clickHandlerForSubmit}
+            clickHandlerForCansel={clickHandlerForCansel}
           ></FormUserData>
           <SidebarMenu
             setIsMenuOpen={setIsMenuOpen}

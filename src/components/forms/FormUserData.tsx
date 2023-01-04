@@ -9,6 +9,7 @@ import { IFormPropsUserData } from "../../interfaces/IFormPropsUserData";
 //только одно поле, тогда второе считается пустым и запрос не отправляется, поэтому сделала все таки без useForm
 
 const FormUserData = ({
+  clickHandlerForCansel,
   clickHandlerForSubmit,
   userData,
   setUserData,
@@ -86,9 +87,7 @@ const FormUserData = ({
           <Button
             variant="contained"
             size="small"
-            onClick={() => {
-              setIsDisabled(!isDisabled);
-            }}
+            onClick={clickHandlerForCansel}
           >
             Cansel
           </Button>
