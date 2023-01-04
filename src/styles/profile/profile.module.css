@@ -1,0 +1,49 @@
+.user_data_form {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: 100px 70% 0 10%;
+  border-style: solid;
+  border-color: #6495ed;
+  padding: 40px;
+  border-radius: 10%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background: #e5f4ff;
+}
+.user_data_form input {
+  background: white;
+}
+
+.avatar_and_editButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.avatar_and_editButton button {
+  width: 15%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.buttons_canselSave {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.buttons_canselSave Button {
+  margin-top: 30px;
+  background: #6495ed;
+}
+
+.menu_button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/*# sourceMappingURL=profile.module.css.map */
