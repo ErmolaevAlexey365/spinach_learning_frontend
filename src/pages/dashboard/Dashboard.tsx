@@ -1,15 +1,19 @@
 import React, {useState} from 'react';
-import styles from "../../styles/profile/profile.module.css";
-import MenuIcon from "@mui/icons-material/Menu";
+import styles from "../../styles/dashboard/dashboard.module.css";
 import SidebarMenu from "../../components/sidebar/SidebarMenu";
+import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
+import ScratcherModal from "../../components/modals/ScratcherModal";
+
 
 const Dashboard = () => {
-    const [isMenuOpen,setIsMenuOpen] = useState<boolean>(false)
+const [isModalOpen,setIsModalOpen]=useState<boolean>(false);
     return (
         <div>
-            dashboard page
-            <button className={styles.menu_button} onClick={()=>setIsMenuOpen(!isMenuOpen)}><MenuIcon/></button>
-            <SidebarMenu setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}></SidebarMenu>
+
+
+            <SidebarMenu />
+<AddCircleOutlinedIcon  sx={{fontSize:'90px'}} className={styles.plus_button} onClick={()=>setIsModalOpen(!isModalOpen)}/>
+            <ScratcherModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}  />
         </div>
     );
 };

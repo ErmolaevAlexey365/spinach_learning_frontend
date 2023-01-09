@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../context/context";
 import FormLogin from "../../components/forms/FormLogin";
-import IFormInput from "../../interfaces/IFormInput";
+
 import { userService } from "../../components/service/userInstance";
+import { IFormInput } from "../../interfaces/interfaces";
 
 const Login = () => {
   const [isValidLogin, setIsValidLogin] = React.useState<boolean>(false);

@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { userService } from "../../components/service/userInstance";
 import FormUserData from "../../components/forms/FormUserData";
 import SidebarMenu from "../../components/sidebar/SidebarMenu";
-import MenuIcon from "@mui/icons-material/Menu";
-import styles from "../../styles/profile/profile.module.css";
 
 const MainPage = () => {
   const [userData, setUserData] = useState<any>([{}]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
 
   async function getUsersData() {
     setIsLoading(true);
@@ -65,12 +63,9 @@ const MainPage = () => {
         <p>Loading...</p>
       ) : (
         <>
-          <button
-            className={styles.menu_button}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <MenuIcon />
-          </button>
+
+
+
           <FormUserData
             isDisabled={isDisabled}
             setIsDisabled={setIsDisabled}
@@ -80,9 +75,7 @@ const MainPage = () => {
             clickHandlerForCansel={clickHandlerForCansel}
           ></FormUserData>
           <SidebarMenu
-            setIsMenuOpen={setIsMenuOpen}
-            isMenuOpen={isMenuOpen}
-          ></SidebarMenu>{" "}
+          ></SidebarMenu>
         </>
       )}
     </>

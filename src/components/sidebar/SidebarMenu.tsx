@@ -1,5 +1,5 @@
 import List from "@mui/material/List";
-import React, { useContext } from "react";
+import React, {useContext, useState} from "react";
 import {
   Button,
   ListItemButton,
@@ -12,11 +12,12 @@ import GridViewIcon from "@mui/icons-material/GridView";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import CollectionsBookmarkOutlinedIcon from "@mui/icons-material/CollectionsBookmarkOutlined";
 import CloseIcon from "@mui/icons-material/Close";
-import { ISidebarProps } from "../../interfaces/ISidebarProps";
 import { AuthContext } from "../../context/context";
 import { NavLink } from "react-router-dom";
+import MenuButton from "../buttons/menuButton/MenuButton";
 
-const SidebarMenu = ({ setIsMenuOpen, isMenuOpen }: ISidebarProps) => {
+const SidebarMenu = () => {
+    const [isMenuOpen,setIsMenuOpen] = useState<boolean>(false)
   const authContext = useContext(AuthContext);
   const clickHandlerLogOut = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -26,6 +27,8 @@ const SidebarMenu = ({ setIsMenuOpen, isMenuOpen }: ISidebarProps) => {
   };
 
   return (
+      <>
+      <MenuButton setIsMenuOpen={setIsMenuOpen } isMenuOpen={isMenuOpen}></MenuButton>
     <div className={isMenuOpen ? styles.sidebar_open : styles.sidebar_close}>
       <button
         className={styles.cross_button}
@@ -97,6 +100,7 @@ const SidebarMenu = ({ setIsMenuOpen, isMenuOpen }: ISidebarProps) => {
         Log out
       </Button>
     </div>
+      </>
   );
 };
 

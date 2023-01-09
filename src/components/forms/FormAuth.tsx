@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, ClipboardEvent } from "react";
-import IFormAuth from "../../interfaces/IPropsForFormAuth";
+
 import styles from "../../styles/formAuth/formAuth.module.css";
+import { IFormAuth } from "../../interfaces/interfaces";
 
 const FormAuth = ({
   submitAuthCode,

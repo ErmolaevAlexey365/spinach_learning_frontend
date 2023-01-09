@@ -1,0 +1,103 @@
+.plus_button {
+  color: #6495ed;
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+  cursor: pointer;
+}
+
+.modal_open, .modal_close {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: block;
+}
+
+.modal_close {
+  display: none;
+}
+
+.form_div {
+  width: 50%;
+  height: 500px;
+  background: #e5f4ff;
+  margin: 100px 22%;
+  box-shadow: 0 14px 28px 5px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  padding: 20px 40px 40px 40px;
+  overflow-y: scroll;
+}
+.form_div .switch {
+  align-self: end;
+}
+.form_div h4 {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.cross_button {
+  background: none;
+  position: absolute;
+  top: 7px;
+  right: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.scratcherForm_options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 140px;
+}
+.scratcherForm_options input,
+.scratcherForm_options div > div > div {
+  background: white;
+}
+.scratcherForm_options h1 {
+  align-self: center;
+}
+.scratcherForm_options h2 {
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.scratcherForm_input {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 0.9fr;
+  column-gap: 25px;
+}
+.scratcherForm_input div > div {
+  background: white;
+}
+
+.fixed_modal_footer {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: fixed;
+  bottom: 62px;
+  background: #e5f4ff;
+  padding: 20px;
+  left: 23.8%;
+  right: 24.5%;
+  z-index: 111;
+}
+.fixed_modal_footer div > div {
+  background: white;
+}
+.fixed_modal_footer .footer_buttons {
+  margin-top: 10px;
+  align-self: flex-end;
+}
+.fixed_modal_footer .footer_buttons button {
+  margin: 0 7px;
+  background: #6495ed;
+}
+
+/*# sourceMappingURL=dashboard.module.css.map */

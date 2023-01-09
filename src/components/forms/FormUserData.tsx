@@ -3,7 +3,8 @@ import styles from "../../styles/profile/profile.module.css";
 import { Avatar, Button, TextField } from "@mui/material";
 import photo from "../../assets/img/CatFive.jpg";
 import CreateIcon from "@mui/icons-material/Create";
-import { IFormPropsUserData } from "../../interfaces/IFormPropsUserData";
+import {IFormPropsUserData} from "../../interfaces/interfaces";
+
 
 //Я пробовала переписать валидацию с помощью yup resolver, но столкнулась с тем, что пользователь может отредактировать
 //только одно поле, тогда второе считается пустым и запрос не отправляется, поэтому сделала все таки без useForm
