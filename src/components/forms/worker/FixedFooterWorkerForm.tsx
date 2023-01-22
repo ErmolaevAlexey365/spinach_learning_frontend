@@ -3,7 +3,7 @@ import styles from "../../../styles/dashboard/dashboard.module.css";
 import {Button, TextField} from "@mui/material";
 import {IScratchFormProps} from "../../../interfaces/interfaces";
 
-const FixedFooterScratcherForm = ({clickHandlerForCloseModal}:IScratchFormProps) => {
+const FixedFooterWorkerForm = ({clickHandlerForCloseModal}:IScratchFormProps) => {
     return (
 
             <div className={styles.fixed_modal_footer}>
@@ -17,4 +17,4 @@ const FixedFooterScratcherForm = ({clickHandlerForCloseModal}:IScratchFormProps)
     );
 };
 
-export default FixedFooterScratcherForm;
+export default FixedFooterWorkerForm;

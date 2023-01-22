@@ -23,10 +23,7 @@ export interface IPropsForFormLogin{
     isValidLogin:boolean;
 }
 
- export interface IMenuButton{
-    setIsMenuOpen:(isMenuOpen:boolean)=>void;
-    isMenuOpen:boolean;
-}
+
 
 export interface IOpenModalButton{
     isModalOpen:boolean;
@@ -35,5 +32,18 @@ export interface IOpenModalButton{
 export interface IScratchFormProps{
     clickHandlerForCloseModal:(e: React.MouseEvent<HTMLButtonElement>)=>void;
 
+
+}
+export interface IAccountsFormProps{
+    submitAccountsForm:(data: IFormInput)=>void;
+}
+
+
+export interface IUserAccountProps{
+id:number;
+    name:string
+    avatar:string;
+    description:string;
+    getAccounts:()=>void;
 
 }

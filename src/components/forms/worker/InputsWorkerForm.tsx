@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "../../../styles/dashboard/dashboard.module.css";
 import {FormControlLabel, FormGroup, Switch, TextField} from "@mui/material";
 
-const InputsScratcherForm = () => {
+const InputsWorkerForm = () => {
     return (
         <>
             <div className={styles.scratcherForm_input}>
@@ -19,7 +19,7 @@ const InputsScratcherForm = () => {
                 />
             </div>
             <FormGroup>
-                <FormControlLabel
+                <FormControlLabel style={{marginTop:0}}
                     control={<Switch />}
                     label="Enable scoring"
                     className={styles.switch}
@@ -29,4 +29,4 @@ const InputsScratcherForm = () => {
     );
 };
 
-export default InputsScratcherForm;
+export default InputsWorkerForm;

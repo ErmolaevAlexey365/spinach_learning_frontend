@@ -2,10 +2,10 @@ import React from 'react';
 import {IOpenModalButton} from "../../interfaces/interfaces";
 import styles from '../../styles/dashboard/dashboard.module.css';
 import CloseIcon from "@mui/icons-material/Close";
-import ScratcherForm from "../forms/scratcher/ScratcherForm";
+import WorkerForm from "../forms/worker/WorkerForm";
 
 
-const ScratcherModal = ({  isModalOpen,setIsModalOpen }:IOpenModalButton) => {
+const WorkerModal = ({  isModalOpen,setIsModalOpen }:IOpenModalButton) => {
 
   const clickHandlerForCloseModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -25,7 +25,7 @@ const ScratcherModal = ({  isModalOpen,setIsModalOpen }:IOpenModalButton) => {
 
         >
             <button className={styles.cross_button} onClick={clickHandlerForCloseModal}> <CloseIcon /></button>
-            <ScratcherForm clickHandlerForCloseModal={clickHandlerForCloseModal}/>
+            <WorkerForm clickHandlerForCloseModal={clickHandlerForCloseModal}/>
 
         </div>
 
@@ -34,4 +34,4 @@ const ScratcherModal = ({  isModalOpen,setIsModalOpen }:IOpenModalButton) => {
   );
 };
 
-export default ScratcherModal;
+export default WorkerModal;

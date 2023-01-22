@@ -32,6 +32,7 @@
 }
 .form_div .switch {
   align-self: end;
+  margin-top: 15px;
 }
 .form_div h4 {
   text-align: center;
@@ -84,8 +85,8 @@
   bottom: 62px;
   background: #e5f4ff;
   padding: 20px;
-  left: 23.8%;
-  right: 24.5%;
+  left: 23.3%;
+  right: 25%;
   z-index: 111;
 }
 .fixed_modal_footer div > div {
@@ -96,7 +97,7 @@
   align-self: flex-end;
 }
 .fixed_modal_footer .footer_buttons button {
-  margin: 0 7px;
+  margin: 0 5px;
   background: #6495ed;
 }
 

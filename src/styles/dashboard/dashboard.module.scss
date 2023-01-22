@@ -28,13 +28,17 @@
   position: relative;
   padding: 20px 40px 40px 40px;
   overflow-y: scroll;
+
   .switch {
     align-self: end;
+    margin-top: 15px;
+
   }
   h4 {
     text-align: center;
     padding-bottom: 20px;
   }
+
 }
 .cross_button {
   background: none;
@@ -55,6 +59,7 @@
     background: white;
   }
 
+
   h1 {
     align-self: center;
   }
@@ -73,6 +78,7 @@
   div > div {
     background: white;
   }
+
 }
 
 .fixed_modal_footer {
@@ -84,8 +90,8 @@
   bottom: 62px;
   background: #e5f4ff;
   padding: 20px;
-  left: 23.8%;
-  right: 24.5%;
+  left: 23.3%;
+  right: 25%;
   z-index: 111;
   div > div {
     background: white;
@@ -96,7 +102,7 @@
     align-self: flex-end;
 
     button {
-      margin: 0 7px;
+      margin: 0 5px;
       background: #6495ed;
     }
   }

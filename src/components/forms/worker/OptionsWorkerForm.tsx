@@ -2,7 +2,7 @@ import React from 'react';
 import {Checkbox, FormControlLabel, FormGroup, Switch, TextField, Typography} from "@mui/material";
 import styles from "../../../styles/dashboard/dashboard.module.css";
 
-const OptionsScratcherForm = () => {
+const OptionsWorkerForm = () => {
     return (
         <div className={styles.scratcherForm_options}>
             <Typography variant="h5" component="h1">
@@ -129,4 +129,4 @@ const OptionsScratcherForm = () => {
     );
 };
 
-export default OptionsScratcherForm;
+export default OptionsWorkerForm;

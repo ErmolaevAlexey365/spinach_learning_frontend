@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import { Navigate, Route, Routes } from "react-router";
 
 import Login from "../pages/login/Login";
@@ -12,6 +12,7 @@ import Dictionaries from "../pages/dictionaries/Dictionaries";
 
 const Router = () => {
   const [isUserLogin, setIsUserLogin] = React.useState<boolean>(false);
+    const [isMenuOpen,setIsMenuOpen] = useState<boolean>(false)
   const [isUserAuth, setIsUserAuth] = React.useState<boolean>(
     JSON.parse(localStorage.getItem("Auth") || "false ")
   );
@@ -28,6 +29,8 @@ const Router = () => {
 
         isUserAuth,
         setIsUserAuth,
+          isMenuOpen,
+          setIsMenuOpen,
       }}
     >
       <BrowserRouter>
