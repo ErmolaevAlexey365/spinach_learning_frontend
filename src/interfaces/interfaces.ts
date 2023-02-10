@@ -47,3 +47,32 @@ id:number;
     getAccounts:()=>void;
 
 }
+
+
+
+
+ export interface IWorkerData{
+     timer:number;
+     account:string;
+     title:string;
+     description:string;
+     enableScoring:boolean[] | string[];
+     amount: string[] | boolean[];
+     category2_uid: string[] | boolean[];
+     client_hires: string[] | boolean[];
+     connect_price: string[] | boolean[];
+     contractor_tier: string[] | boolean[];
+     duration_v3: string[] | boolean[];
+     freelancers_needed: string[] | boolean[];
+     hourly_rate: string[] | boolean[];
+     location: string[] | string;
+     payment_verified: string[] | boolean[];
+     previous_clients: string[] | boolean[];
+     proposals: string[] | boolean[];
+     q: string[] | string;
+     t: string[] | boolean[];
+     timezones: string[] | string;
+     user_location_match: string[] | number[];
+     workload: string[] | boolean[];
+     sorting:string;
+ }

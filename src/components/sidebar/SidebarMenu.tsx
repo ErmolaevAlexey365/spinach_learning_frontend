@@ -21,7 +21,8 @@ const SidebarMenu = () => {
   const authContext = useContext(AuthContext);
   const clickHandlerLogOut = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    localStorage.removeItem("Token");
+    // localStorage.removeItem("Token");
+    authContext.setToken('')
     authContext.setIsUserAuth(false);
     authContext.setIsUserLogin(false);
   };

@@ -21,8 +21,12 @@ const Login = () => {
         if (authContext) {
           authContext.setIsUserLogin(true);
         }
+        authContext.setToken(response.data.token)
 
-        localStorage.setItem("Token", JSON.stringify(response.data.token));
+
+
+
+
 
         setIsValidLogin(false);
       })
@@ -33,6 +37,7 @@ const Login = () => {
         }
       });
   }
+
 
   return (
     <FormLogin submitForm={submitForm} isValidLogin={isValidLogin}></FormLogin>

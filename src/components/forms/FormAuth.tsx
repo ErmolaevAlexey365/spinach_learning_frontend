@@ -17,6 +17,32 @@ const FormAuth = ({
     inputRef.current?.focus();
   }, [focus]);
 
+  useEffect(() => {
+    let count = 0;
+    authCode.map((e) => {
+      if (e) {
+        count++;
+      }
+    });
+    if (count === 6) {
+      submitAuthCode();
+    } else {
+      return;
+    }
+  }, [authCode]);
+
+  const keyPressHandler = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    if (e.code === "Backspace" && (!authCode[index + 1] || !authCode[index])) {
+      setFocus(index - 1);
+    }
+    if (e.code === "Backspace" && authCode[index]) {
+      setFocus(index);
+    }
+  };
+
   const copyAuthCode = (event: ClipboardEvent<HTMLInputElement>) => {
     let a = event.clipboardData?.getData("text").split("");
 
@@ -30,21 +56,15 @@ const FormAuth = ({
   ): void => {
     const array = [...authCode];
     array[index] = e.target.value;
-    setFocus(index + 1);
-    setAuthCode(array);
-    if (!array[index]) setFocus(index - 1);
-    else setFocus(index + 1);
-  };
 
-  let counterFullInput = 0;
-  for (let i = 0; i <= 5; i++) {
-    if (authCode[i] !== "") {
-      counterFullInput++;
+    setAuthCode(array);
+
+    if (!array[index]) {
+      return;
+    } else {
+      setFocus(index + 1);
     }
-  }
-  if (counterFullInput == 6) {
-    submitAuthCode();
-  }
+  };
 
   return (
     <form className={styles.auth_form}>
@@ -57,6 +77,7 @@ const FormAuth = ({
             <React.Fragment>
               <input
                 key={index}
+                onKeyDown={(e) => keyPressHandler(e, index)}
                 className={styles.grid_input}
                 value={authCode[index]}
                 maxLength={1}

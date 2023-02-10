@@ -4,7 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import { Button, TextField } from "@mui/material";
 
 import styles from "../../styles/formLogin/login.module.css";
-import { schema } from "../schemas/SchemaFormLogin";
+import { schema } from "../schemas/Schema";
 import { IPropsForFormLogin,IFormInput } from "../../interfaces/interfaces";
 
 

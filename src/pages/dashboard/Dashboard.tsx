@@ -8,7 +8,7 @@ import WorkerModal from "../../components/modals/WorkerModal";
 const Dashboard = () => {
 const [isModalOpen,setIsModalOpen]=useState<boolean>(false);
     return (
-        <div>
+        <div >
 
 
             <SidebarMenu />

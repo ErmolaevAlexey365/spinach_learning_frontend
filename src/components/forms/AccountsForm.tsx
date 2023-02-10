@@ -3,7 +3,7 @@ import {Button, TextField} from "@mui/material";
 import {useForm,Controller} from "react-hook-form";
 import {IAccountsFormProps, IFormInput} from "../../interfaces/interfaces";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
-import {schema} from "../schemas/SchemaFormLogin";
+import {schema} from "../schemas/Schema";
 import styles from '../../styles/accounts/accounts.module.css'
 
 const AccountsForm = ({submitAccountsForm}:IAccountsFormProps) => {

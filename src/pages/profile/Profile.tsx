@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { userService } from "../../components/service/userInstance";
 import FormUserData from "../../components/forms/FormUserData";
 import SidebarMenu from "../../components/sidebar/SidebarMenu";
+import { AuthContext } from "../../context/context";
 
 const MainPage = () => {
   const [userData, setUserData] = useState<any>([{}]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
+  const authContext = useContext(AuthContext);
 
   async function getUsersData() {
-    setIsLoading(true);
     await userService
-      .getUserData()
+      .getUserData(authContext.token)
       .then((response: any) => {
         setUserData({
           ...userData,
@@ -21,11 +22,14 @@ const MainPage = () => {
           firstname: response.data.firstname,
           lastname: response.data.lastname,
         });
+        setIsLoading(false);
       })
       .catch(function (error: any) {
-        console.log(error.response);
+        if (error.response.data.description === "Cannot verify token") {
+          authContext.setIsUserLogin(false);
+          authContext.setIsUserAuth(false);
+        }
       });
-    setIsLoading(false);
   }
 
   useEffect(() => {
@@ -38,11 +42,14 @@ const MainPage = () => {
       return;
     }
     await userService
-      .edit({
-        firstname: userData.firstname,
-        lastname: userData.lastname,
-        avatar: "123",
-      })
+      .edit(
+        {
+          firstname: userData.firstname,
+          lastname: userData.lastname,
+          avatar: "123",
+        },
+        authContext.token
+      )
       .then((response: any) => {
         setIsDisabled(!isDisabled);
       });
@@ -63,9 +70,6 @@ const MainPage = () => {
         <p>Loading...</p>
       ) : (
         <>
-
-
-
           <FormUserData
             isDisabled={isDisabled}
             setIsDisabled={setIsDisabled}
@@ -74,8 +78,7 @@ const MainPage = () => {
             clickHandlerForSubmit={clickHandlerForSubmit}
             clickHandlerForCansel={clickHandlerForCansel}
           ></FormUserData>
-          <SidebarMenu
-          ></SidebarMenu>
+          <SidebarMenu></SidebarMenu>
         </>
       )}
     </>

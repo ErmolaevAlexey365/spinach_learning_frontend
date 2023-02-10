@@ -14,13 +14,10 @@ const Authorization = () => {
 
   async function submitAuthCode() {
     await userService
-      .auth(code)
+      .auth(code, authContext.token)
 
       .then((response: any) => {
-        localStorage.setItem(
-          "Token",
-          JSON.stringify(response.data.accessToken)
-        );
+        authContext.setToken(response.data.accessToken);
 
         if (authContext) {
           authContext.setIsUserAuth(true);

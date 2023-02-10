@@ -10,16 +10,33 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import Accounts from "../pages/accounts/Accounts";
 import Dictionaries from "../pages/dictionaries/Dictionaries";
 
+
 const Router = () => {
   const [isUserLogin, setIsUserLogin] = React.useState<boolean>(false);
     const [isMenuOpen,setIsMenuOpen] = useState<boolean>(false)
+
+
   const [isUserAuth, setIsUserAuth] = React.useState<boolean>(
+
     JSON.parse(localStorage.getItem("Auth") || "false ")
   );
 
   useEffect(() => {
     localStorage.setItem("Auth", JSON.stringify(isUserAuth));
   }, [isUserAuth]);
+
+
+    const [token,setToken]=useState<string>( JSON.parse(localStorage.getItem("tokenContext") || '[{}]'));
+
+    useEffect(() => {
+        localStorage.setItem("tokenContext", JSON.stringify(token));
+    }, [token]);
+
+
+
+
+
+
 
   return (
     <AuthContext.Provider
@@ -29,14 +46,17 @@ const Router = () => {
 
         isUserAuth,
         setIsUserAuth,
-          isMenuOpen,
-          setIsMenuOpen,
+        isMenuOpen,
+        setIsMenuOpen,
+
+        token,
+        setToken,
       }}
     >
       <BrowserRouter>
         {isUserAuth ? (
           <Routes>
-            <Route path="/*" element={<Navigate to="/profile" replace />} />
+            <Route path="/*" element={<Navigate to={"/profile"} replace />} />
             <Route path="/profile" element={<MainPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/accounts" element={<Accounts />} />

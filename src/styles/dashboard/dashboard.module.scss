@@ -1,3 +1,5 @@
+
+
 .plus_button {
   color: #6495ed;
   position: fixed;
@@ -13,6 +15,8 @@
   right: 0;
   background: rgba(0, 0, 0, 0.3);
   display: block;
+
+
 }
 .modal_close {
   @extend .modal_open;
@@ -29,6 +33,9 @@
   padding: 20px 40px 40px 40px;
   overflow-y: scroll;
 
+
+
+
   .switch {
     align-self: end;
     margin-top: 15px;
@@ -37,6 +44,10 @@
   h4 {
     text-align: center;
     padding-bottom: 20px;
+  }
+  h2 {
+    font-weight: bold;
+    margin-top: 30px;
   }
 
 }
@@ -53,7 +64,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 140px;
+  padding-bottom: 20px;
   input,
   div > div > div {
     background: white;
@@ -63,10 +74,7 @@
   h1 {
     align-self: center;
   }
-  h2 {
-    font-weight: bold;
-    margin-top: 30px;
-  }
+
 }
 
 .scratcherForm_input {
@@ -75,6 +83,8 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 0.9fr;
   column-gap: 25px;
+  row-gap: 20px;
+  align-items: stretch;
   div > div {
     background: white;
   }
@@ -82,20 +92,23 @@
 }
 
 .fixed_modal_footer {
-  margin-top: 30px;
+
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  position: fixed;
-  bottom: 62px;
+
+
   background: #e5f4ff;
-  padding: 20px;
-  left: 23.3%;
-  right: 25%;
-  z-index: 111;
-  div > div {
+
+
+  .selectInput {
     background: white;
+
+
+
+
   }
+
 
   .footer_buttons {
     margin-top: 10px;
@@ -106,4 +119,24 @@
       background: #6495ed;
     }
   }
+}
+.hourly{
+  display: flex;
+  justify-content: flex-start;
+  .hourlyInput{
+    width: 19%;
+    margin-right: 7px;
+    -moz-appearance: textfield;
+
+
+
+  }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input::-webkit-inner-spin-button {
+  display: none;
 }

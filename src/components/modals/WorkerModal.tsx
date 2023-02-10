@@ -2,13 +2,15 @@ import React from 'react';
 import {IOpenModalButton} from "../../interfaces/interfaces";
 import styles from '../../styles/dashboard/dashboard.module.css';
 import CloseIcon from "@mui/icons-material/Close";
-import WorkerForm from "../forms/worker/WorkerForm";
+
+import WorkerFormComponents from "../forms/worker/WorkerForm";
 
 
 const WorkerModal = ({  isModalOpen,setIsModalOpen }:IOpenModalButton) => {
 
-  const clickHandlerForCloseModal = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const clickHandlerForCloseModal = (e: React.MouseEvent<HTMLButtonElement | HTMLDivElement>) => {
     e.preventDefault()
+
 
       setIsModalOpen(!isModalOpen)
 
@@ -17,15 +19,16 @@ const WorkerModal = ({  isModalOpen,setIsModalOpen }:IOpenModalButton) => {
   return (
     <>
       <div
-        className={isModalOpen ? styles.modal_open : styles.modal_close}
+        className={isModalOpen ? styles.modal_open : styles.modal_close} onClick={(e)=>clickHandlerForCloseModal(e)}
 
       >
         <div
-          className={styles.form_div}
+          className={styles.form_div} onClick={(e)=>e.stopPropagation()}
+
 
         >
             <button className={styles.cross_button} onClick={clickHandlerForCloseModal}> <CloseIcon /></button>
-            <WorkerForm clickHandlerForCloseModal={clickHandlerForCloseModal}/>
+            <WorkerFormComponents clickHandlerForCloseModal={clickHandlerForCloseModal}/>
 
         </div>
 
