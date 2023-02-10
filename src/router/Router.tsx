@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router";
 
 import Login from "../pages/login/Login";
@@ -10,14 +10,11 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import Accounts from "../pages/accounts/Accounts";
 import Dictionaries from "../pages/dictionaries/Dictionaries";
 
-
 const Router = () => {
   const [isUserLogin, setIsUserLogin] = React.useState<boolean>(false);
-    const [isMenuOpen,setIsMenuOpen] = useState<boolean>(false)
-
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const [isUserAuth, setIsUserAuth] = React.useState<boolean>(
-
     JSON.parse(localStorage.getItem("Auth") || "false ")
   );
 
@@ -25,18 +22,13 @@ const Router = () => {
     localStorage.setItem("Auth", JSON.stringify(isUserAuth));
   }, [isUserAuth]);
 
+  const [token, setToken] = useState<string>(
+    JSON.parse(localStorage.getItem("tokenContext") || "[{}]")
+  );
 
-    const [token,setToken]=useState<string>( JSON.parse(localStorage.getItem("tokenContext") || '[{}]'));
-
-    useEffect(() => {
-        localStorage.setItem("tokenContext", JSON.stringify(token));
-    }, [token]);
-
-
-
-
-
-
+  useEffect(() => {
+    localStorage.setItem("tokenContext", JSON.stringify(token));
+  }, [token]);
 
   return (
     <AuthContext.Provider
@@ -57,6 +49,7 @@ const Router = () => {
         {isUserAuth ? (
           <Routes>
             <Route path="/*" element={<Navigate to={"/profile"} replace />} />
+            <Route path="/" element={<MainPage />} />
             <Route path="/profile" element={<MainPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/accounts" element={<Accounts />} />
