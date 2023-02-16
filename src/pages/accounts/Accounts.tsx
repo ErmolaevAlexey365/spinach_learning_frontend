@@ -3,7 +3,7 @@ import SidebarMenu from "../../components/sidebar/SidebarMenu";
 import AccountsForm from "../../components/forms/AccountsForm";
 import { IFormInput, IUserAccountProps } from "../../interfaces/interfaces";
 import { userService } from "../../components/service/userInstance";
-import UserAccount from "../../components/accounts/UserAccount";
+import UserAccount from "../../components/lists/UserAccount";
 
 import Loader from "../../components/loader/Loader";
 import {AuthContext} from "../../context/context";

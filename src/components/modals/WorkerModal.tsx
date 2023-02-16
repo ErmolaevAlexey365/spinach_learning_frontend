@@ -7,7 +7,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import WorkerForm from "../forms/worker/WorkerForm";
 
 
-const WorkerModal = ({  isModalOpen,setIsModalOpen }:IOpenModalButton) => {
+
+const WorkerModal = ({  isModalOpen,setIsModalOpen,submitForm }:IOpenModalButton) => {
 
   const clickHandlerForCloseModal = (e: React.MouseEvent<HTMLButtonElement | HTMLDivElement>) => {
     e.preventDefault()
@@ -29,7 +30,7 @@ const WorkerModal = ({  isModalOpen,setIsModalOpen }:IOpenModalButton) => {
 
         >
             <button className={styles.cross_button} onClick={clickHandlerForCloseModal}> <CloseIcon /></button>
-            <WorkerForm clickHandlerForCloseModal={clickHandlerForCloseModal} isModalOpen={isModalOpen} />
+            <WorkerForm clickHandlerForCloseModal={clickHandlerForCloseModal} isModalOpen={isModalOpen} submitForm={submitForm} />
 
         </div>
 

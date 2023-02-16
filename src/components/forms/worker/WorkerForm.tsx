@@ -26,7 +26,7 @@ import { sortDataInputsAndWorkerCheckbox } from "../../../utils/dataSorting";
 import { userService } from "../../service/userInstance";
 import { AuthContext } from "../../../context/context";
 
-const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen }: IScratchFormProps) => {
+const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScratchFormProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [isLocationData, setIsLocationData] = useState<any[]>([]);
   const [isHourly, setIsHourly] = useState<boolean>(false);
@@ -40,11 +40,15 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen }: IScratchFormProps
   const [isFixedPriceChecked, setIsFixedPriceChecked] =
     useState<boolean>(false);
   const [upworkAccounts, setUpworkAccounts] = useState<string[]>([]);
+  const [isCheckboxesChecked, setIsCheckboxesChecked] = useState<boolean>(false);
   const authContext = useContext(AuthContext);
   const {
     control,
     setValue,
     handleSubmit,
+      reset,
+      resetField,
+    register,
 
     formState: { errors },
   } = useForm<IWorkerData>({
@@ -97,19 +101,38 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen }: IScratchFormProps
       });
   }
 
+
+
   useEffect(() => {
+    // isCheckboxChecked()
     if(isModalOpen) {
       getAccounts();
     }
+    if(!isModalOpen){
+      reset()
+      resetField('contractor_tier.0')
+    }
   }, [isModalOpen]);
 
+
+
   const falseOrValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.checked) {
+    if (!e.target.checked ) {
       return (e.target.value = "false");
     } else {
       return e.target.value;
     }
   };
+
+ // function isCheckboxChecked(){
+ //   if(!isModalOpen){
+ //     setIsCheckboxesChecked(false)
+ //   }
+ //   else {
+ //     setIsCheckboxesChecked(!isCheckboxesChecked);
+ //   }
+ // }
+
 
   function onOrOff(e: React.ChangeEvent<HTMLInputElement>) {
     setValue("location", " ");
@@ -198,28 +221,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen }: IScratchFormProps
     return result;
   }
 
-  async function submitForm(data: any) {
-    let arrayData = sortDataInputsAndWorkerCheckbox(data);
-    await userService
-      .createParser(
-        {
-          filter: arrayData[1],
-          serviceUserAccountId: 1,
-          title: arrayData[0].title,
-          description: arrayData[0].description,
-          companyUserId: 1,
-          timer: arrayData[0].timer,
-          dictionaryId: 1,
-        },
-        authContext.token
-      )
-      .then((response: any) => {
-        console.log(response);
-      })
-      .catch(function (error: any) {
-        console.log(error.response);
-      });
-  }
+
 
 
 
@@ -228,7 +230,9 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen }: IScratchFormProps
       <Typography variant="h5" component="h4">
         Add worker
       </Typography>
-      <form onSubmit={handleSubmit(submitForm)}>
+      <form onSubmit={handleSubmit((data:any)=>{
+        submitForm(data)
+      })}>
         <div className={styles.scratcherForm_input}>
           <Controller
             name="title"
@@ -250,14 +254,18 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen }: IScratchFormProps
               <Controller
                 name="timer"
                 control={control}
+                defaultValue=''
                 render={({ field }) => (
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
+
                     label="Set timer"
+                    defaultValue=''
                     error={!!errors.timer}
                     {...field}
                   >
+
                     <MenuItem value={2}>2h</MenuItem>
                     <MenuItem value={5}>5h</MenuItem>
                     <MenuItem value={10}>10h</MenuItem>
@@ -269,7 +277,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen }: IScratchFormProps
               <FormHelperText
                 style={{ background: "#e5f4ff", margin: "0", color: "#d32f2f" }}
               >
-                {errors.timer?.message}
+                {/*{errors.timer?.message}*/}
               </FormHelperText>
             </FormControl>
           </Box>
@@ -312,7 +320,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen }: IScratchFormProps
               <FormHelperText
                 style={{ background: "#e5f4ff", margin: "0", color: "#d32f2f" }}
               >
-                {errors.timer?.message}
+                {/*{errors.timer?.message}*/}
               </FormHelperText>
             </FormControl>
           </Box>
@@ -372,20 +380,26 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen }: IScratchFormProps
 
           <FormGroup>
             <FormControlLabel
+                name="contractor_tier.0"
+                label="Entry level"
               control={
-                <Controller
-                  name="contractor_tier.0"
-                  control={control}
-                  render={({ field: { onChange, value } }) => (
-                    <Checkbox
-                      value={"1"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
+                <Checkbox
+                    {...register("contractor_tier.0")}
+                    value={"1"}
+                    defaultChecked={false}
+
+
+
+                    // checked={isCheckboxesChecked}
+
+
                 />
-              }
-              label="Entry level"
-            />
+                  }
+
+                />
+
+
+
             <FormControlLabel
               label="Intermediate"
               control={
@@ -1283,7 +1297,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen }: IScratchFormProps
             <Button variant="contained" onClick={clickHandlerForCloseModal}>
               Close
             </Button>
-            <Button variant="contained" onSubmit={submitForm} type="submit">
+            <Button variant="contained"  onSubmit={submitForm}  type="submit">
               Add
             </Button>
           </div>

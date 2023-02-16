@@ -28,10 +28,15 @@ export interface IPropsForFormLogin{
 export interface IOpenModalButton{
     isModalOpen:boolean;
     setIsModalOpen:(isModalOpen:boolean)=>void;
+    submitForm: (data:any)=>void;
+
 }
 export interface IScratchFormProps{
     clickHandlerForCloseModal:(e: React.MouseEvent<HTMLButtonElement>)=>void;
     isModalOpen:boolean;
+    submitForm: (data:any)=>void;
+
+
 
 
 }
@@ -53,7 +58,7 @@ id:number;
 
 
  export interface IWorkerData{
-     timer:number;
+     timer:any;
      account:string;
      title:string;
      description:string;
@@ -76,4 +81,12 @@ id:number;
      user_location_match: string[] | number[];
      workload: string[] | boolean[];
      sorting:string;
+ }
+
+ export interface IWorkerData{
+    title:string;
+    id:number;
+ }
+ export interface IWorkersProps{
+     title:string;
  }
