@@ -18,15 +18,10 @@ const Login = () => {
       })
 
       .then((response: any) => {
-        if (authContext) {
+
           authContext.setIsUserLogin(true);
-        }
-        authContext.setToken(response.data.token)
 
-
-
-
-
+        authContext.setToken(response.data.token);
 
         setIsValidLogin(false);
       })
@@ -37,7 +32,6 @@ const Login = () => {
         }
       });
   }
-
 
   return (
     <FormLogin submitForm={submitForm} isValidLogin={isValidLogin}></FormLogin>

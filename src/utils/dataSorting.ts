@@ -28,12 +28,12 @@ export const sortDataInputsAndWorkerCheckbox=(data:any)=>{
             delete data[key]
 
         }
-
-
-
-
-
     }
+
+    // [
+    //     ...data,key=1
+    // ]
 
     return [objectInputs,convertFilterObjToQueryUrl(data)];
 }
+

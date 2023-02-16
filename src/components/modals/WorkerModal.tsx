@@ -3,7 +3,8 @@ import {IOpenModalButton} from "../../interfaces/interfaces";
 import styles from '../../styles/dashboard/dashboard.module.css';
 import CloseIcon from "@mui/icons-material/Close";
 
-import WorkerFormComponents from "../forms/worker/WorkerForm";
+
+import WorkerForm from "../forms/worker/WorkerForm";
 
 
 const WorkerModal = ({  isModalOpen,setIsModalOpen }:IOpenModalButton) => {
@@ -28,7 +29,7 @@ const WorkerModal = ({  isModalOpen,setIsModalOpen }:IOpenModalButton) => {
 
         >
             <button className={styles.cross_button} onClick={clickHandlerForCloseModal}> <CloseIcon /></button>
-            <WorkerFormComponents clickHandlerForCloseModal={clickHandlerForCloseModal}/>
+            <WorkerForm clickHandlerForCloseModal={clickHandlerForCloseModal} isModalOpen={isModalOpen} />
 
         </div>
 

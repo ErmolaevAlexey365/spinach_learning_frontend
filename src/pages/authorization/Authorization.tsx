@@ -30,6 +30,8 @@ const Authorization = () => {
       });
   }
 
+
+
   return (
     <FormAuth
       submitAuthCode={submitAuthCode}

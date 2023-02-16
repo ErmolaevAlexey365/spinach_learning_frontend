@@ -5,7 +5,7 @@ import Login from "../pages/login/Login";
 import Authorization from "../pages/authorization/Authorization";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContext } from "../context/context";
-import MainPage from "../pages/profile/Profile";
+import Profile from "../pages/profile/Profile";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Accounts from "../pages/accounts/Accounts";
 import Dictionaries from "../pages/dictionaries/Dictionaries";
@@ -49,8 +49,8 @@ const Router = () => {
         {isUserAuth ? (
           <Routes>
             <Route path="/*" element={<Navigate to={"/profile"} replace />} />
-            <Route path="/" element={<MainPage />} />
-            <Route path="/profile" element={<MainPage />} />
+            <Route path="/" element={<Profile />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/accounts" element={<Accounts />} />
             <Route path="/dictionaries" element={<Dictionaries />} />

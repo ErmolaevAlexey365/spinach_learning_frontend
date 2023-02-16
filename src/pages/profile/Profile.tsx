@@ -4,7 +4,7 @@ import FormUserData from "../../components/forms/FormUserData";
 import SidebarMenu from "../../components/sidebar/SidebarMenu";
 import { AuthContext } from "../../context/context";
 
-const MainPage = () => {
+const Profile = () => {
   const [userData, setUserData] = useState<any>([{}]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
@@ -85,4 +85,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default Profile;

@@ -26,7 +26,7 @@ import { sortDataInputsAndWorkerCheckbox } from "../../../utils/dataSorting";
 import { userService } from "../../service/userInstance";
 import { AuthContext } from "../../../context/context";
 
-const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
+const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen }: IScratchFormProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [isLocationData, setIsLocationData] = useState<any[]>([]);
   const [isHourly, setIsHourly] = useState<boolean>(false);
@@ -98,8 +98,10 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
   }
 
   useEffect(() => {
-    getAccounts();
-  }, []);
+    if(isModalOpen) {
+      getAccounts();
+    }
+  }, [isModalOpen]);
 
   const falseOrValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.checked) {

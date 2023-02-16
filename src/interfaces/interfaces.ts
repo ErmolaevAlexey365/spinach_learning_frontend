@@ -31,6 +31,7 @@ export interface IOpenModalButton{
 }
 export interface IScratchFormProps{
     clickHandlerForCloseModal:(e: React.MouseEvent<HTMLButtonElement>)=>void;
+    isModalOpen:boolean;
 
 
 }
