@@ -1,6 +1,6 @@
-.sidebar_open, .sidebar_close {
+.sidebar {
   background: #e5f4ff;
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
@@ -9,15 +9,11 @@
   grid-template-rows: 0.1fr 2.7fr 0.2fr;
   column-gap: 10px;
   justify-items: start;
-  transition: 0.8s ease;
+  box-shadow: 0 14px 28px 5px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-.sidebar_open a, .sidebar_close a {
+.sidebar a {
   text-decoration: none;
   color: black;
-}
-
-.sidebar_close {
-  right: -1000px;
 }
 
 .log_out_button {
@@ -40,6 +36,21 @@
 
 div.activeLink {
   background: #c1e5ff;
+}
+
+.sidebarDiv_open, .sidebarDiv_close {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 320px;
+  background: white;
+  transition: 0.8s ease;
+  z-index: 1;
+}
+
+.sidebarDiv_close {
+  right: -1000px;
 }
 
 /*# sourceMappingURL=sidebarMenu.module.css.map */

@@ -12,29 +12,31 @@ import GridViewIcon from "@mui/icons-material/GridView";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import CollectionsBookmarkOutlinedIcon from "@mui/icons-material/CollectionsBookmarkOutlined";
 import CloseIcon from "@mui/icons-material/Close";
-import { AuthContext } from "../../context/context";
+import { Context } from "../../context/context";
 import { NavLink } from "react-router-dom";
 import MenuButton from "../buttons/menuButton/MenuButton";
 
 const SidebarMenu = () => {
 
-  const authContext = useContext(AuthContext);
+  const context = useContext(Context);
   const clickHandlerLogOut = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    // localStorage.removeItem("Token");
-    authContext.setToken('')
-    authContext.setIsUserAuth(false);
-    authContext.setIsUserLogin(false);
+    context.setToken('')
+    context.setIsUserAuth(false);
+    context.setIsUserLogin(false);
   };
+
 
 
   return (
       <>
-      <MenuButton ></MenuButton>
-    <div className={authContext.isMenuOpen ? styles.sidebar_open : styles.sidebar_close}>
+        <MenuButton ></MenuButton>
+      <div className={context.isMenuOpen ? styles.sidebarDiv_open : styles.sidebarDiv_close}>
+
+    <div className={styles.sidebar} >
       <button
         className={styles.cross_button}
-        onClick={() => authContext.setIsMenuOpen(!authContext.isMenuOpen)}
+        onClick={() => context.setIsMenuOpen(!context.isMenuOpen)}
       >
         <CloseIcon />
       </button>
@@ -102,6 +104,7 @@ const SidebarMenu = () => {
         Log out
       </Button>
     </div>
+      </div>
       </>
   );
 };

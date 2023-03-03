@@ -17,9 +17,7 @@ const AccountsForm = ({submitAccountsForm}:IAccountsFormProps) => {
         mode: "onSubmit",
     });
 
-
-
-  return (
+    return (
     <div>
       <form onSubmit={handleSubmit(submitAccountsForm)} className={styles.accountsForm}>
           <Controller

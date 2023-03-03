@@ -1,18 +1,18 @@
 import React, {useContext} from "react";
 import styles from "../../../styles/profile/profile.module.css";
 import MenuIcon from "@mui/icons-material/Menu";
-
-import {AuthContext} from "../../../context/context";
+import {Context} from "../../../context/context";
 
 const MenuButton = () => {
-  const authContext = useContext(AuthContext);
+  const context = useContext(Context);
   return (
-    <button
-      className={styles.menu_button}
-      onClick={() => authContext.setIsMenuOpen(!authContext.isMenuOpen)}
-    >
-      <MenuIcon />
-    </button>
+      <div className={styles.menu_button_div}><button
+          className={styles.menu_button}
+          onClick={() => context.setIsMenuOpen(!context.isMenuOpen)}
+      >
+        <MenuIcon />
+      </button></div>
+
   );
 };
 

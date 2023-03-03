@@ -16,25 +16,20 @@ $hoverButton: darken($backgroundColor, 7%);
 
   input {
     background: white;
-
   }
-
 }
 .avatar_and_editButton {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  button{
+  button {
     width: 15%;
     padding: 0;
     border: none;
     background: none;
     cursor: pointer;
-
   }
 }
-
-
 
 .buttons_canselSave {
   display: flex;
@@ -48,10 +43,18 @@ $hoverButton: darken($backgroundColor, 7%);
 
 .menu_button {
   position: absolute;
-  top: 10px;
+  top: 5px;
   right: 10px;
   cursor: pointer;
   background: none;
   border: none;
+  z-index: 1;
 }
 
+.menu_button_div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}

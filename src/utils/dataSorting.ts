@@ -30,9 +30,6 @@ export const sortDataInputsAndWorkerCheckbox=(data:any)=>{
         }
     }
 
-    // [
-    //     ...data,key=1
-    // ]
 
     return [objectInputs,convertFilterObjToQueryUrl(data)];
 }

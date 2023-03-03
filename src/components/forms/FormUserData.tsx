@@ -6,8 +6,6 @@ import CreateIcon from "@mui/icons-material/Create";
 import {IFormPropsUserData} from "../../interfaces/interfaces";
 
 
-
-
 const FormUserData = ({
   clickHandlerForCansel,
   clickHandlerForSubmit,

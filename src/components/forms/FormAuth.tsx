@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, ClipboardEvent } from "react";
-
 import styles from "../../styles/formAuth/formAuth.module.css";
 import { IFormAuth } from "../../interfaces/interfaces";
 
@@ -10,7 +9,6 @@ const FormAuth = ({
   isValidCode,
 }: IFormAuth) => {
   const inputRef = useRef<HTMLInputElement>(null);
-
   const [focus, setFocus] = React.useState<number>(0);
 
   useEffect(() => {
@@ -56,9 +54,7 @@ const FormAuth = ({
   ): void => {
     const array = [...authCode];
     array[index] = e.target.value;
-
     setAuthCode(array);
-
     if (!array[index]) {
       return;
     } else {

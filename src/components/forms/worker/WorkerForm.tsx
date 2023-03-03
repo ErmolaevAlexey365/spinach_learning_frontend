@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Autocomplete,
   Box,
@@ -16,40 +16,31 @@ import {
   Typography,
 } from "@mui/material";
 import styles from "../../../styles/dashboard/dashboard.module.css";
-import location from "../../../assets/timezonaInput/locations.json";
-import timezone from "../../../assets/timezonaInput/timezones.json";
+import location from "../../../assets/json/locations.json";
+import timezone from "../../../assets/json/timezones.json";
 import { useForm, Controller } from "react-hook-form";
 import { IScratchFormProps, IWorkerData } from "../../../interfaces/interfaces";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { schemaWorker } from "../../schemas/Schema";
-import { sortDataInputsAndWorkerCheckbox } from "../../../utils/dataSorting";
-import { userService } from "../../service/userInstance";
-import { AuthContext } from "../../../context/context";
 
-const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScratchFormProps) => {
+
+
+
+const WorkerForm = ({ clickHandlerForCloseModal,submitForm,upworkAccounts }: IScratchFormProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [isLocationData, setIsLocationData] = useState<any[]>([]);
   const [isHourly, setIsHourly] = useState<boolean>(false);
   const [isFixedPrice, setIsFixedPrice] = useState<boolean>(false);
   const [hourlyNumberMin, setHourlyNumberMin] = useState<any>("");
   const [hourlyNumberMax, setHourlyNumberMax] = useState<any>("");
-
   const [FixedPriceNumberMin, setFixedPriceNumberMin] = useState<any>("");
   const [FixedPriceNumberMax, setFixedPriceNumberMax] = useState<any>("");
+  const [isFixedPriceChecked, setIsFixedPriceChecked] = useState<boolean>(false);
 
-  const [isFixedPriceChecked, setIsFixedPriceChecked] =
-    useState<boolean>(false);
-  const [upworkAccounts, setUpworkAccounts] = useState<string[]>([]);
-  const [isCheckboxesChecked, setIsCheckboxesChecked] = useState<boolean>(false);
-  const authContext = useContext(AuthContext);
   const {
     control,
     setValue,
     handleSubmit,
-      reset,
-      resetField,
-    register,
-
     formState: { errors },
   } = useForm<IWorkerData>({
     defaultValues: {
@@ -90,61 +81,24 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
     resolver: yupResolver(schemaWorker),
   });
 
-  async function getAccounts() {
-    await userService
-      .getAccountsData(authContext.token)
-      .then((response: any) => {
-        setUpworkAccounts([response.data[0].name]);
-      })
-      .catch(function (error: any) {
-        console.log(error);
-      });
-  }
-
-
-
-  useEffect(() => {
-    // isCheckboxChecked()
-    if(isModalOpen) {
-      getAccounts();
-    }
-    if(!isModalOpen){
-      reset()
-      resetField('contractor_tier.0')
-    }
-  }, [isModalOpen]);
-
-
-
   const falseOrValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.checked ) {
+    if (!e.target.checked) {
       return (e.target.value = "false");
     } else {
       return e.target.value;
     }
   };
 
- // function isCheckboxChecked(){
- //   if(!isModalOpen){
- //     setIsCheckboxesChecked(false)
- //   }
- //   else {
- //     setIsCheckboxesChecked(!isCheckboxesChecked);
- //   }
- // }
-
-
   function onOrOff(e: React.ChangeEvent<HTMLInputElement>) {
     setValue("location", " ");
     setIsChecked(!isChecked);
-
     if (!e.target.checked) {
       return (e.target.value = "2");
     } else {
       setIsLocationData([]);
       return e.target.value;
     }
-  }
+  };
 
   useEffect(() => {
     if (!isHourly) {
@@ -156,27 +110,24 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
     setIsFixedPriceChecked(false);
   }, [isHourly, isFixedPrice]);
 
+
   function inputHourlyMin(e: React.ChangeEvent<HTMLInputElement>) {
     let str: string | any;
-
     setHourlyNumberMin(e.target.value);
-
     if (!e.target.value) {
       str = false;
     } else {
       str = e.target.value + "-" + hourlyNumberMax;
     }
-
     return str;
-  }
+  };
+
   function inputHourlyMax(e: React.ChangeEvent<HTMLInputElement>) {
     let str: string | any;
     setHourlyNumberMax(e.target.value);
-
     str = hourlyNumberMin + "-" + e.target.value;
-
     return str;
-  }
+  };
 
   const inputFixedPriceMin = (e: React.ChangeEvent<HTMLInputElement>) => {
     let str: string | any;
@@ -190,9 +141,9 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
     } else {
       str = e.target.value + "-" + FixedPriceNumberMax;
     }
-
     return str;
   };
+
   const inputFixedPriceMax = (e: React.ChangeEvent<HTMLInputElement>) => {
     let str: string | any;
     setFixedPriceNumberMax(e.target.value);
@@ -205,7 +156,6 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
     } else {
       str = FixedPriceNumberMin + "-" + e.target.value;
     }
-
     return str;
   };
 
@@ -217,14 +167,8 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
     data.map((e: any) => {
       result.push(e.value);
     });
-
     return result;
   }
-
-
-
-
-
   return (
     <>
       <Typography variant="h5" component="h4">
@@ -232,6 +176,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
       </Typography>
       <form onSubmit={handleSubmit((data:any)=>{
         submitForm(data)
+
       })}>
         <div className={styles.scratcherForm_input}>
           <Controller
@@ -254,30 +199,26 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
               <Controller
                 name="timer"
                 control={control}
-                defaultValue=''
                 render={({ field }) => (
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-
                     label="Set timer"
-                    defaultValue=''
                     error={!!errors.timer}
                     {...field}
                   >
-
-                    <MenuItem value={2}>2h</MenuItem>
-                    <MenuItem value={5}>5h</MenuItem>
-                    <MenuItem value={10}>10h</MenuItem>
-                    <MenuItem value={15}>15h</MenuItem>
-                    <MenuItem value={30}>30h</MenuItem>
+                    <MenuItem value={2}>2min</MenuItem>
+                    <MenuItem value={5}>5min</MenuItem>
+                    <MenuItem value={10}>10min</MenuItem>
+                    <MenuItem value={15}>15min</MenuItem>
+                    <MenuItem value={30}>30min</MenuItem>
                   </Select>
                 )}
               />
               <FormHelperText
                 style={{ background: "#e5f4ff", margin: "0", color: "#d32f2f" }}
               >
-                {/*{errors.timer?.message}*/}
+                {errors.timer?.message}
               </FormHelperText>
             </FormControl>
           </Box>
@@ -312,7 +253,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                     {...field}
                   >
                     {upworkAccounts.map((option: any) => (
-                      <MenuItem value={option}>{option}</MenuItem>
+                      <MenuItem value={option.id}>{option.name}</MenuItem>
                     ))}
                   </Select>
                 )}
@@ -320,7 +261,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
               <FormHelperText
                 style={{ background: "#e5f4ff", margin: "0", color: "#d32f2f" }}
               >
-                {/*{errors.timer?.message}*/}
+                {errors.timer?.message}
               </FormHelperText>
             </FormControl>
           </Box>
@@ -362,7 +303,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="user_location_match.0"
                   control={control}
-                  render={({ field: { onChange, value } }) => (
+                  render={({ field: { onChange } }) => (
                     <Switch
                       value={"1"}
                       checked={isChecked}
@@ -380,33 +321,27 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
 
           <FormGroup>
             <FormControlLabel
-                name="contractor_tier.0"
-                label="Entry level"
               control={
-                <Checkbox
-                    {...register("contractor_tier.0")}
-                    value={"1"}
-                    defaultChecked={false}
-
-
-
-                    // checked={isCheckboxesChecked}
-
-
+                <Controller
+                  name="contractor_tier.0"
+                  control={control}
+                  render={({ field: { onChange } }) => (
+                    <Checkbox
+                      value={"1"}
+                      onChange={(e) => onChange(falseOrValue(e))}
+                    />
+                  )}
                 />
-                  }
-
-                />
-
-
-
+              }
+              label="Entry level"
+            />
             <FormControlLabel
               label="Intermediate"
               control={
                 <Controller
                   name="contractor_tier.1"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"2"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -422,7 +357,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="contractor_tier.2"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"3"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -442,7 +377,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="previous_clients.0"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"all"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -458,7 +393,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="payment_verified.0"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"1"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -479,7 +414,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="client_hires.0"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"0"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -494,7 +429,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="client_hires.1"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"1-9"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -509,7 +444,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="client_hires.2"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"10-"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -530,7 +465,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="workload.0"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"as_needed"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -545,7 +480,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="workload.1"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"full_time"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -565,7 +500,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="freelancers_needed.0"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"0-1"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -580,7 +515,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="freelancers_needed.1"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"2-5"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -595,7 +530,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="freelancers_needed.2"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"6-"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -610,7 +545,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="freelancers_needed.3"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"0-"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -625,7 +560,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="freelancers_needed.4"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"0-1"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -640,7 +575,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="freelancers_needed.5"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"2-"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -661,7 +596,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="proposals.0"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"0-4"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -676,7 +611,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="proposals.1"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: { onChange } }) => (
                     <Checkbox
                       value={"5-9"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -691,7 +626,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="proposals.2"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"10-14"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -706,7 +641,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="proposals.3"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"15-19"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -721,7 +656,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="proposals.4"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"20-49"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -741,7 +676,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="connect_price.0"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"0-2"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -756,7 +691,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="connect_price.1"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"4"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -771,7 +706,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="connect_price.2"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"6"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -793,7 +728,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                   <Controller
                     name="t.0"
                     control={control}
-                    render={({ field: { value, onChange } }) => (
+                    render={({ field: {  onChange } }) => (
                       <Checkbox
                         onClick={() => setIsHourly(!isHourly)}
                         value={"0"}
@@ -810,7 +745,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                   <Controller
                     name="hourly_rate.0"
                     control={control}
-                    render={({ field: { value, onChange } }) => (
+                    render={({ field: {  onChange } }) => (
                       <TextField
                         type="number"
                         className={styles.hourlyInput}
@@ -823,7 +758,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                   <Controller
                     name="hourly_rate.0"
                     control={control}
-                    render={({ field: { value, onChange } }) => (
+                    render={({ field: {  onChange } }) => (
                       <TextField
                         type="number"
                         className={styles.hourlyInput}
@@ -844,7 +779,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="t.1"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       onClick={() => setIsFixedPrice(!isFixedPrice)}
                       value={"1"}
@@ -864,7 +799,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                     <Controller
                       name="amount.0"
                       control={control}
-                      render={({ field: { value, onChange } }) => (
+                      render={({ field: {  onChange } }) => (
                         <Checkbox
                           value={"0-99"}
                           onChange={(e) => onChange(falseOrValue(e))}
@@ -879,7 +814,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                     <Controller
                       name="amount.1"
                       control={control}
-                      render={({ field: { value, onChange } }) => (
+                      render={({ field: {  onChange } }) => (
                         <Checkbox
                           value={"100-499"}
                           onChange={(e) => onChange(falseOrValue(e))}
@@ -894,7 +829,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                     <Controller
                       name="amount.2"
                       control={control}
-                      render={({ field: { value, onChange } }) => (
+                      render={({ field: {  onChange } }) => (
                         <Checkbox
                           value={"500-999"}
                           onChange={(e) => onChange(falseOrValue(e))}
@@ -909,7 +844,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                     <Controller
                       name="amount.3"
                       control={control}
-                      render={({ field: { value, onChange } }) => (
+                      render={({ field: {  onChange } }) => (
                         <Checkbox
                           value={"1000-4999"}
                           onChange={(e) => onChange(falseOrValue(e))}
@@ -924,7 +859,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                     <Controller
                       name="amount.4"
                       control={control}
-                      render={({ field: { value, onChange } }) => (
+                      render={({ field: {  onChange } }) => (
                         <Checkbox
                           value={"5000-"}
                           onChange={(e) => onChange(falseOrValue(e))}
@@ -943,7 +878,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                   <Controller
                     name="amount.5"
                     control={control}
-                    render={({ field: { value, onChange } }) => (
+                    render={({ field: {  onChange } }) => (
                       <TextField
                         type="number"
                         className={styles.hourlyInput}
@@ -956,7 +891,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                   <Controller
                     name="amount.5"
                     control={control}
-                    render={({ field: { value, onChange } }) => (
+                    render={({ field: {  onChange } }) => (
                       <TextField
                         type="number"
                         className={styles.hourlyInput}
@@ -981,7 +916,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="duration_v3.0"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"weeks"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -996,7 +931,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="duration_v3.1"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"months"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -1011,7 +946,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="duration_v3.2"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"semester"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -1026,7 +961,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="duration_v3.3"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"ongoing"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -1046,7 +981,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="category2_uid.0"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"531770282584862721"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -1061,7 +996,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="category2_uid.1"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"531770282580668416"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -1076,7 +1011,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="category2_uid.2"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"531770282580668417"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -1091,7 +1026,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="category2_uid.3"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"531770282580668420"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -1106,7 +1041,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="category2_uid.4"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"531770282580668421"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -1121,7 +1056,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="category2_uid.5"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"531770282584862722"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -1136,7 +1071,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="category2_uid.6"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"531770282580668419"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -1151,7 +1086,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="category2_uid.7"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"531770282584862723"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -1166,7 +1101,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="category2_uid.8"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"531770282580668422"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -1181,7 +1116,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="category2_uid.9"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"531770282584862720"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -1196,7 +1131,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="category2_uid.10"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"531770282580668418"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -1211,7 +1146,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
                 <Controller
                   name="category2_uid.11"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: {  onChange } }) => (
                     <Checkbox
                       value={"531770282580668423"}
                       onChange={(e) => onChange(falseOrValue(e))}
@@ -1227,7 +1162,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
           <Controller
             name="location"
             control={control}
-            render={({ field: { value, onChange } }) => (
+            render={({ field: {  onChange } }) => (
               <Autocomplete
                 onChange={(e, data) => onChange(locationData(data))}
                 value={isLocationData}
@@ -1246,7 +1181,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
           <Controller
             name="timezones"
             control={control}
-            render={({ field: { value, onChange } }) => (
+            render={({ field: { onChange } }) => (
               <Autocomplete
                 onChange={(e, data) => onChange(data.map((e: any) => e.value))}
                 disablePortal
@@ -1297,7 +1232,7 @@ const WorkerForm = ({ clickHandlerForCloseModal,isModalOpen,submitForm }: IScrat
             <Button variant="contained" onClick={clickHandlerForCloseModal}>
               Close
             </Button>
-            <Button variant="contained"  onSubmit={submitForm}  type="submit">
+            <Button variant="contained" onSubmit={submitForm} type="submit">
               Add
             </Button>
           </div>

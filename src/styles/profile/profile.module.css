@@ -39,11 +39,20 @@
 
 .menu_button {
   position: absolute;
-  top: 10px;
+  top: 5px;
   right: 10px;
   cursor: pointer;
   background: none;
   border: none;
+  z-index: 1;
+}
+
+.menu_button_div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
 
 /*# sourceMappingURL=profile.module.css.map */

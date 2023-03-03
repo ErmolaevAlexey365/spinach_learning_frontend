@@ -12,9 +12,8 @@ export const schema = yup
 
 export const schemaWorker = yup
   .object({
-    // timer: yup.number().required("This is a required field"),
-
-   account: yup.string().required("This is a required field"),
+      timer: yup.number().required("This is a required field"),
+      account: yup.number().required("This is a required field"),
       title:yup.string().required("This is a required field"),
       sorting : yup.string().required("This is a required field"),
   })

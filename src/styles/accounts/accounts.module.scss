@@ -1,7 +1,6 @@
-.accountsForm{
+.accountsForm {
   width: 50%;
   height: 120px;
-
   display: flex;
   column-gap: 10px;
   padding: 10px;
@@ -9,28 +8,23 @@
   border-style: solid;
   align-items: center;
   justify-content: space-between;
-  margin: 20px ;
-  border-color:#6495ed;
-
-
-
-
+  margin: 20px;
+  border-color: #6495ed;
 }
-.userAccount{
- @extend .accountsForm;
-background: white ;
- border: none;
+.userAccount {
+  @extend .accountsForm;
+  background: white;
+  border: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
-  p{
+  p {
     font-size: 20px;
   }
-  div{
-   margin: 0;
+  div {
+    margin: 0;
   }
-  button{
+  button {
     color: white;
     align-self: flex-end;
-
   }
 }

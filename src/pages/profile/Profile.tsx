@@ -2,18 +2,18 @@ import React, { useContext, useEffect, useState } from "react";
 import { userService } from "../../components/service/userInstance";
 import FormUserData from "../../components/forms/FormUserData";
 import SidebarMenu from "../../components/sidebar/SidebarMenu";
-import { AuthContext } from "../../context/context";
+import { Context } from "../../context/context";
 
 const Profile = () => {
   const [userData, setUserData] = useState<any>([{}]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
-  const authContext = useContext(AuthContext);
+  const context = useContext(Context);
 
   async function getUsersData() {
     await userService
-      .getUserData(authContext.token)
+      .getUserData(context.token)
       .then((response: any) => {
         setUserData({
           ...userData,
@@ -26,8 +26,8 @@ const Profile = () => {
       })
       .catch(function (error: any) {
         if (error.response.data.description === "Cannot verify token") {
-          authContext.setIsUserLogin(false);
-          authContext.setIsUserAuth(false);
+          context.setIsUserLogin(false);
+          context.setIsUserAuth(false);
         }
       });
   }
@@ -48,12 +48,19 @@ const Profile = () => {
           lastname: userData.lastname,
           avatar: "123",
         },
-        authContext.token
+        context.token
       )
       .then((response: any) => {
         setIsDisabled(!isDisabled);
+      })
+      .catch(function (error: any) {
+        if (error.response.data.description === "Cannot verify token") {
+          context.setIsUserLogin(false);
+          context.setIsUserAuth(false);
+        }
       });
   }
+
   const clickHandlerForSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     changeData();

@@ -92,4 +92,70 @@ export const userService = {
       return error.response;
     }
   },
-};
+  async startParser(body: any, token: string) {
+    try {
+      return userInstance.post("/parser/start", body, {
+        headers: { Authorization: "Bearer " + token },
+      });
+    } catch (error: any) {
+      return error.response;
+    }
+  },
+  async getAllParsers( token: string) {
+    try {
+      return userInstance.get("/parser/all", {
+        headers: { Authorization: "Bearer " + token },
+      });
+    } catch (error: any) {
+      return error.response;
+    }
+  },
+
+  async deleteParser(
+  parserId: number,
+  serviceUserAccountId: number ,
+  companyUserId: number,
+      token: string
+  ) {
+    try {
+      return userInstance.delete("/parser/delete", {
+        data: {
+          parserId,
+          serviceUserAccountId,
+          companyUserId,
+        },
+        headers: { Authorization: "Bearer " + token },
+      });
+    } catch (error: any) {
+      return error.response;
+    }
+  },
+  async accountUserLogin(body: any, token: string) {
+    try {
+      return userInstance.post("/service-user-account/login", body, {
+        headers: { Authorization: "Bearer " + token },
+      });
+    } catch (error: any) {
+      return error.response;
+    }
+  },
+  async stopParser(body: any, token: string) {
+    try {
+      return userInstance.post("/parser/stop", body, {
+        headers: { Authorization: "Bearer " + token },
+      });
+    } catch (error: any) {
+      return error.response;
+    }
+},
+  async getParsersById(companyUserId:number,parserId:number, token: string) {
+    try {
+      return userInstance.get(`/parser?companyUserId=${companyUserId}&parserId=${parserId}`, {
+        headers: { Authorization: "Bearer " + token },
+      });
+    } catch (error: any) {
+      return error.response;
+    }
+  },
+}
+

@@ -1,4 +1,18 @@
-
+.workerBodyInfo::-webkit-scrollbar {
+  width: 10px;
+  background-color: lighten(#6495ed, 20%);
+}
+.workerBodyInfo::-webkit-scrollbar-thumb {
+  background: #6495ed;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input::-webkit-inner-spin-button {
+  display: none;
+}
 
 .plus_button {
   color: #6495ed;
@@ -15,31 +29,23 @@
   right: 0;
   background: rgba(0, 0, 0, 0.3);
   display: block;
-
-
+  z-index: 2;
 }
-.modal_close {
-  @extend .modal_open;
-  display: none;
-}
+
 .form_div {
   width: 50%;
   height: 500px;
   background: #e5f4ff;
-  margin: 100px 22%;
+  margin: 95px 22%;
   box-shadow: 0 14px 28px 5px rgba(0, 0, 0, 0.25),
     0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
   padding: 20px 40px 40px 40px;
   overflow-y: scroll;
 
-
-
-
   .switch {
     align-self: end;
     margin-top: 15px;
-
   }
   h4 {
     text-align: center;
@@ -49,7 +55,6 @@
     font-weight: bold;
     margin-top: 30px;
   }
-
 }
 .cross_button {
   background: none;
@@ -70,16 +75,13 @@
     background: white;
   }
 
-
   h1 {
     align-self: center;
   }
-
 }
 
 .scratcherForm_input {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 0.9fr;
   column-gap: 25px;
@@ -88,27 +90,17 @@
   div > div {
     background: white;
   }
-
 }
 
 .fixed_modal_footer {
-
   display: flex;
   flex-direction: column;
   align-items: stretch;
-
-
   background: #e5f4ff;
-
 
   .selectInput {
     background: white;
-
-
-
-
   }
-
 
   .footer_buttons {
     margin-top: 10px;
@@ -120,41 +112,158 @@
     }
   }
 }
-.hourly{
+.hourly {
   display: flex;
   justify-content: flex-start;
-  .hourlyInput{
+  .hourlyInput {
     width: 19%;
     margin-right: 7px;
     -moz-appearance: textfield;
-
-
-
   }
 }
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input::-webkit-inner-spin-button {
-  display: none;
+
+.workerHead {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  justify-items: end;
+  padding: 7px 0;
+  align-items: center;
+  background: #6495ed;
+  font-size: 20px;
+  width: 300px;
+  p {
+    overflow-wrap: break-word;
+    word-break: break-all;
+    margin: 0 10px;
+    justify-self: start;
+  }
+
+  button {
+    background: #6495ed;
+    padding: 5px 0 0 0;
+    border: none;
+  }
+
+  .stopStartButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+  }
 }
 
-.WorkersHead{
-  position: relative;
-  background: #e5f4ff ;
-  width: 20%;
-  height: 680px;
-  margin-left: 20px;
+.worker {
   box-shadow: 0 14px 28px 5px rgba(0, 0, 0, 0.25),
-  0 10px 10px rgba(0, 0, 0, 0.22);
+    0 10px 10px rgba(0, 0, 0, 0.22);
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  background: lighten(#6495ed, 25%);
+  height: 650px;
+
+  .workerBodyInfo {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  div:last-child > p {
+    margin: 5px 10px 0 10px;
+    font-size: 18px;
+    overflow-wrap: break-word;
+    word-break: break-all;
+  }
 }
-.Workers{
-position: absolute;
-  top: 30px ;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: red;
+
+.workers {
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  top: 35px;
+  border-right: 45px solid white;
+}
+
+.jobs {
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  margin: 0 10px;
+
+  p,
+  h3 {
+    margin: 0 0 10px 0;
+  }
+  .jobsUrlAndScoring {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+
+    :first-child {
+      background-color: lighten(#6495ed, 15%);
+      cursor: pointer;
+      width: 60%;
+    }
+
+    p {
+      margin: 0;
+      align-self: center;
+    }
+  }
+}
+.jobsDescription_open {
+  max-height: 93px;
+  height: auto;
+  overflow: hidden;
+}
+.skills {
+  @extend .skills_close;
+  max-height: 93px;
+  height: auto;
+  overflow: hidden;
+}
+.skills_close {
+  margin: 10px 0 7px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 7px;
+  row-gap: 7px;
+}
+.chipButton {
+  background: darken(#6495ed, 25%);
+  color: white;
+  width: 30%;
+  span {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+}
+
+.password_form {
+  @extend .form_div;
+  overflow: hidden;
+  width: 30%;
+  height: auto;
+  margin: 200px 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  row-gap: 20px;
+
+  h3 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+  .password_form_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 20px;
+  }
 }

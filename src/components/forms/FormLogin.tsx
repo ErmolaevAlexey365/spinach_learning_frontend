@@ -2,13 +2,12 @@ import React from "react";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useForm, Controller } from "react-hook-form";
 import { Button, TextField } from "@mui/material";
-
 import styles from "../../styles/formLogin/login.module.css";
 import { schema } from "../schemas/Schema";
 import { IPropsForFormLogin,IFormInput } from "../../interfaces/interfaces";
 
 
-const FormLogin = ({ submitForm, isValidLogin }: IPropsForFormLogin) => {
+const FormLogin = ({ submitForm, isValidLogin,setIsValidLogin }: IPropsForFormLogin) => {
   const {
     control,
     handleSubmit,
@@ -33,6 +32,7 @@ const FormLogin = ({ submitForm, isValidLogin }: IPropsForFormLogin) => {
             size="small"
             error={!!errors.email}
             helperText={errors?.email?.message}
+            onClick={()=>setIsValidLogin(false)}
             {...field}
           />
         )}
@@ -52,6 +52,7 @@ const FormLogin = ({ submitForm, isValidLogin }: IPropsForFormLogin) => {
             margin="normal"
             error={!!errors.password}
             helperText={errors?.password?.message}
+            onClick={()=>setIsValidLogin(false)}
             {...field}
           />
         )}
@@ -63,7 +64,6 @@ const FormLogin = ({ submitForm, isValidLogin }: IPropsForFormLogin) => {
         type="submit"
         sx={{
           width: 150,
-          marginTop: 2,
           background: "#6495ed",
         }}
       >

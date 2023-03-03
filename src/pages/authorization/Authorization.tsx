@@ -1,27 +1,23 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../context/context";
+import { Context } from "../../context/context";
 import FormAuth from "../../components/forms/FormAuth";
 import { userService } from "../../components/service/userInstance";
 
 const Authorization = () => {
   const [isValidCode, setIsValidCode] = React.useState<boolean>(true);
-  const [authCode, setAuthCode] = React.useState<string[]>(
-    new Array(6).fill("")
-  );
+  const [authCode, setAuthCode] = React.useState<string[]>( new Array(6).fill(""));
   let code = authCode.join("");
 
-  const authContext = useContext(AuthContext);
+  const context = useContext(Context);
 
   async function submitAuthCode() {
     await userService
-      .auth(code, authContext.token)
+      .auth(code, context.token)
 
       .then((response: any) => {
-        authContext.setToken(response.data.accessToken);
+        context.setToken(response.data.accessToken);
 
-        if (authContext) {
-          authContext.setIsUserAuth(true);
-        }
+        context.setIsUserAuth(true);
       })
       .catch(function (error: any) {
         if (error.response) {
@@ -29,8 +25,6 @@ const Authorization = () => {
         }
       });
   }
-
-
 
   return (
     <FormAuth
