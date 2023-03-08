@@ -1,0 +1,2625 @@
+{
+	"location": {
+		"name": "location",
+		"label": "Client location",
+		"loggingSublocation": "facets_location",
+		"options": [
+			{
+				"uid": "albania",
+				"label": "Albania",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "Albania",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "algeria",
+				"label": "Algeria",
+				"subRegionUid": "northern-africa",
+				"regionUid": "africa",
+				"value": "Algeria",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "american-samoa",
+				"label": "American Samoa",
+				"subRegionUid": "polynesia",
+				"regionUid": "oceania",
+				"value": "American Samoa",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "andorra",
+				"label": "Andorra",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "Andorra",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "angola",
+				"label": "Angola",
+				"subRegionUid": "middle-africa",
+				"regionUid": "africa",
+				"value": "Angola",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "anguilla",
+				"label": "Anguilla",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Anguilla",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "antigua-and-barbuda",
+				"label": "Antigua and Barbuda",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Antigua and Barbuda",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "argentina",
+				"label": "Argentina",
+				"subRegionUid": "south-america",
+				"regionUid": "americas",
+				"value": "Argentina",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "armenia",
+				"label": "Armenia",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "Armenia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "aruba",
+				"label": "Aruba",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Aruba",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "australia",
+				"label": "Australia",
+				"subRegionUid": "australia-and-new-zealand",
+				"regionUid": "oceania",
+				"value": "Australia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "austria",
+				"label": "Austria",
+				"subRegionUid": "western-europe",
+				"regionUid": "europe",
+				"value": "Austria",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "azerbaijan",
+				"label": "Azerbaijan",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "Azerbaijan",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "bahamas",
+				"label": "Bahamas",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Bahamas",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "bahrain",
+				"label": "Bahrain",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "Bahrain",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "bangladesh",
+				"label": "Bangladesh",
+				"subRegionUid": "southern-asia",
+				"regionUid": "asia",
+				"value": "Bangladesh",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "barbados",
+				"label": "Barbados",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Barbados",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "belarus",
+				"label": "Belarus",
+				"subRegionUid": "eastern-europe",
+				"regionUid": "europe",
+				"value": "Belarus",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "belgium",
+				"label": "Belgium",
+				"subRegionUid": "western-europe",
+				"regionUid": "europe",
+				"value": "Belgium",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "belize",
+				"label": "Belize",
+				"subRegionUid": "central-america",
+				"regionUid": "americas",
+				"value": "Belize",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "benin",
+				"label": "Benin",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Benin",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "bermuda",
+				"label": "Bermuda",
+				"subRegionUid": "northern-america",
+				"regionUid": "americas",
+				"value": "Bermuda",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "bhutan",
+				"label": "Bhutan",
+				"subRegionUid": "southern-asia",
+				"regionUid": "asia",
+				"value": "Bhutan",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "bolivia",
+				"label": "Bolivia",
+				"subRegionUid": "south-america",
+				"regionUid": "americas",
+				"value": "Bolivia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "bonaire-sint-eustatius-and-saba",
+				"label": "Bonaire, Sint Eustatius and Saba",
+				"subRegionUid": null,
+				"regionUid": "americas",
+				"value": "Bonaire, Sint Eustatius and Saba",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "bosnia-and-herzegovina",
+				"label": "Bosnia and Herzegovina",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "Bosnia and Herzegovina",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "botswana",
+				"label": "Botswana",
+				"subRegionUid": "southern-africa",
+				"regionUid": "africa",
+				"value": "Botswana",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "bouvet-island",
+				"label": "Bouvet Island",
+				"subRegionUid": null,
+				"regionUid": "antarctica",
+				"value": "Bouvet Island",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "brazil",
+				"label": "Brazil",
+				"subRegionUid": "south-america",
+				"regionUid": "americas",
+				"value": "Brazil",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "british-indian-ocean-territory",
+				"label": "British Indian Ocean Territory",
+				"subRegionUid": "southern-asia",
+				"regionUid": "asia",
+				"value": "British Indian Ocean Territory",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "british-virgin-islands",
+				"label": "British Virgin Islands",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "British Virgin Islands",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "brunei-darussalam",
+				"label": "Brunei Darussalam",
+				"subRegionUid": "south-eastern-asia",
+				"regionUid": "asia",
+				"value": "Brunei Darussalam",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "bulgaria",
+				"label": "Bulgaria",
+				"subRegionUid": "eastern-europe",
+				"regionUid": "europe",
+				"value": "Bulgaria",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "burkina-faso",
+				"label": "Burkina Faso",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Burkina Faso",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "burundi",
+				"label": "Burundi",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Burundi",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "cambodia",
+				"label": "Cambodia",
+				"subRegionUid": "south-eastern-asia",
+				"regionUid": "asia",
+				"value": "Cambodia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "cameroon",
+				"label": "Cameroon",
+				"subRegionUid": "middle-africa",
+				"regionUid": "africa",
+				"value": "Cameroon",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "canada",
+				"label": "Canada",
+				"subRegionUid": "northern-america",
+				"regionUid": "americas",
+				"value": "Canada",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "cape-verde",
+				"label": "Cape Verde",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Cape Verde",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "cayman-islands",
+				"label": "Cayman Islands",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Cayman Islands",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "central-african-republic",
+				"label": "Central African Republic",
+				"subRegionUid": "middle-africa",
+				"regionUid": "africa",
+				"value": "Central African Republic",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "chad",
+				"label": "Chad",
+				"subRegionUid": "middle-africa",
+				"regionUid": "africa",
+				"value": "Chad",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "chile",
+				"label": "Chile",
+				"subRegionUid": "south-america",
+				"regionUid": "americas",
+				"value": "Chile",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "china",
+				"label": "China",
+				"subRegionUid": "eastern-asia",
+				"regionUid": "asia",
+				"value": "China",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "christmas-island",
+				"label": "Christmas Island",
+				"subRegionUid": null,
+				"regionUid": "oceania",
+				"value": "Christmas Island",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "cocos-keeling-islands",
+				"label": "Cocos (Keeling) Islands",
+				"subRegionUid": null,
+				"regionUid": "oceania",
+				"value": "Cocos (Keeling) Islands",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "colombia",
+				"label": "Colombia",
+				"subRegionUid": "south-america",
+				"regionUid": "americas",
+				"value": "Colombia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "comoros",
+				"label": "Comoros",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Comoros",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "congo",
+				"label": "Congo",
+				"subRegionUid": "middle-africa",
+				"regionUid": "africa",
+				"value": "Congo",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "congo-the-democratic-republic-of-the",
+				"label": "Congo, the Democratic Republic of the",
+				"subRegionUid": "middle-africa",
+				"regionUid": "africa",
+				"value": "Congo, the Democratic Republic of the",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "cook-islands",
+				"label": "Cook Islands",
+				"subRegionUid": "polynesia",
+				"regionUid": "oceania",
+				"value": "Cook Islands",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "costa-rica",
+				"label": "Costa Rica",
+				"subRegionUid": "central-america",
+				"regionUid": "americas",
+				"value": "Costa Rica",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "cote-d-ivoire",
+				"label": "Cote d'Ivoire",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Cote d'Ivoire",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "croatia",
+				"label": "Croatia",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "Croatia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "curacao",
+				"label": "Curacao",
+				"subRegionUid": null,
+				"regionUid": "americas",
+				"value": "Curacao",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "cyprus",
+				"label": "Cyprus",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "Cyprus",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "czech-republic",
+				"label": "Czech Republic",
+				"subRegionUid": "eastern-europe",
+				"regionUid": "europe",
+				"value": "Czech Republic",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "denmark",
+				"label": "Denmark",
+				"subRegionUid": "northern-europe",
+				"regionUid": "europe",
+				"value": "Denmark",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "djibouti",
+				"label": "Djibouti",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Djibouti",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "dominica",
+				"label": "Dominica",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Dominica",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "dominican-republic",
+				"label": "Dominican Republic",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Dominican Republic",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "ecuador",
+				"label": "Ecuador",
+				"subRegionUid": "south-america",
+				"regionUid": "americas",
+				"value": "Ecuador",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "egypt",
+				"label": "Egypt",
+				"subRegionUid": "northern-africa",
+				"regionUid": "africa",
+				"value": "Egypt",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "el-salvador",
+				"label": "El Salvador",
+				"subRegionUid": "central-america",
+				"regionUid": "americas",
+				"value": "El Salvador",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "equatorial-guinea",
+				"label": "Equatorial Guinea",
+				"subRegionUid": "middle-africa",
+				"regionUid": "africa",
+				"value": "Equatorial Guinea",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "eritrea",
+				"label": "Eritrea",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Eritrea",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "estonia",
+				"label": "Estonia",
+				"subRegionUid": "northern-europe",
+				"regionUid": "europe",
+				"value": "Estonia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "ethiopia",
+				"label": "Ethiopia",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Ethiopia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "falkland-islands",
+				"label": "Falkland Islands",
+				"subRegionUid": "south-america",
+				"regionUid": "americas",
+				"value": "Falkland Islands",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "faroe-islands",
+				"label": "Faroe Islands",
+				"subRegionUid": "northern-europe",
+				"regionUid": "europe",
+				"value": "Faroe Islands",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "fiji",
+				"label": "Fiji",
+				"subRegionUid": "melanesia",
+				"regionUid": "oceania",
+				"value": "Fiji",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "finland",
+				"label": "Finland",
+				"subRegionUid": "northern-europe",
+				"regionUid": "europe",
+				"value": "Finland",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "france",
+				"label": "France",
+				"subRegionUid": "western-europe",
+				"regionUid": "europe",
+				"value": "France",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "french-guiana",
+				"label": "French Guiana",
+				"subRegionUid": "south-america",
+				"regionUid": "americas",
+				"value": "French Guiana",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "french-polynesia",
+				"label": "French Polynesia",
+				"subRegionUid": "polynesia",
+				"regionUid": "oceania",
+				"value": "French Polynesia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "french-southern-and-antarctic-lands",
+				"label": "French Southern and Antarctic Lands",
+				"subRegionUid": "western-europe",
+				"regionUid": "europe",
+				"value": "French Southern and Antarctic Lands",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "gabon",
+				"label": "Gabon",
+				"subRegionUid": "middle-africa",
+				"regionUid": "africa",
+				"value": "Gabon",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "gambia",
+				"label": "Gambia",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Gambia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "georgia",
+				"label": "Georgia",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "Georgia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "germany",
+				"label": "Germany",
+				"subRegionUid": "western-europe",
+				"regionUid": "europe",
+				"value": "Germany",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "ghana",
+				"label": "Ghana",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Ghana",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "gibraltar",
+				"label": "Gibraltar",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "Gibraltar",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "greece",
+				"label": "Greece",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "Greece",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "greenland",
+				"label": "Greenland",
+				"subRegionUid": "northern-america",
+				"regionUid": "americas",
+				"value": "Greenland",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "grenada",
+				"label": "Grenada",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Grenada",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "guadeloupe",
+				"label": "Guadeloupe",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Guadeloupe",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "guam",
+				"label": "Guam",
+				"subRegionUid": "micronesia",
+				"regionUid": "oceania",
+				"value": "Guam",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "guatemala",
+				"label": "Guatemala",
+				"subRegionUid": "central-america",
+				"regionUid": "americas",
+				"value": "Guatemala",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "guernsey",
+				"label": "Guernsey",
+				"subRegionUid": "northern-europe",
+				"regionUid": "europe",
+				"value": "Guernsey",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "guinea",
+				"label": "Guinea",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Guinea",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "guinea-bissau",
+				"label": "Guinea-Bissau",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Guinea-Bissau",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "guyana",
+				"label": "Guyana",
+				"subRegionUid": "south-america",
+				"regionUid": "americas",
+				"value": "Guyana",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "haiti",
+				"label": "Haiti",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Haiti",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "heard-island-and-mcdonald-islands",
+				"label": "Heard Island and McDonald Islands",
+				"subRegionUid": null,
+				"regionUid": "antarctica",
+				"value": "Heard Island and McDonald Islands",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "holy-see",
+				"label": "Holy See",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "Holy See",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "honduras",
+				"label": "Honduras",
+				"subRegionUid": "central-america",
+				"regionUid": "americas",
+				"value": "Honduras",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "hong-kong",
+				"label": "Hong Kong",
+				"subRegionUid": "eastern-asia",
+				"regionUid": "asia",
+				"value": "Hong Kong",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "hungary",
+				"label": "Hungary",
+				"subRegionUid": "eastern-europe",
+				"regionUid": "europe",
+				"value": "Hungary",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "iceland",
+				"label": "Iceland",
+				"subRegionUid": "northern-europe",
+				"regionUid": "europe",
+				"value": "Iceland",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "india",
+				"label": "India",
+				"subRegionUid": "southern-asia",
+				"regionUid": "asia",
+				"value": "India",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "indonesia",
+				"label": "Indonesia",
+				"subRegionUid": "south-eastern-asia",
+				"regionUid": "asia",
+				"value": "Indonesia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "ireland",
+				"label": "Ireland",
+				"subRegionUid": "northern-europe",
+				"regionUid": "europe",
+				"value": "Ireland",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "isle-of-man",
+				"label": "Isle of Man",
+				"subRegionUid": "northern-europe",
+				"regionUid": "europe",
+				"value": "Isle of Man",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "israel",
+				"label": "Israel",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "Israel",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "italy",
+				"label": "Italy",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "Italy",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "jamaica",
+				"label": "Jamaica",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Jamaica",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "japan",
+				"label": "Japan",
+				"subRegionUid": "eastern-asia",
+				"regionUid": "asia",
+				"value": "Japan",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "jersey",
+				"label": "Jersey",
+				"subRegionUid": null,
+				"regionUid": "europe",
+				"value": "Jersey",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "jordan",
+				"label": "Jordan",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "Jordan",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "kazakhstan",
+				"label": "Kazakhstan",
+				"subRegionUid": "central-asia",
+				"regionUid": "asia",
+				"value": "Kazakhstan",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "kenya",
+				"label": "Kenya",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Kenya",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "kiribati",
+				"label": "Kiribati",
+				"subRegionUid": "micronesia",
+				"regionUid": "oceania",
+				"value": "Kiribati",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "kuwait",
+				"label": "Kuwait",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "Kuwait",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "kyrgyzstan",
+				"label": "Kyrgyzstan",
+				"subRegionUid": "central-asia",
+				"regionUid": "asia",
+				"value": "Kyrgyzstan",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "laos",
+				"label": "Laos",
+				"subRegionUid": "south-eastern-asia",
+				"regionUid": "asia",
+				"value": "Laos",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "latvia",
+				"label": "Latvia",
+				"subRegionUid": "northern-europe",
+				"regionUid": "europe",
+				"value": "Latvia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "lebanon",
+				"label": "Lebanon",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "Lebanon",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "lesotho",
+				"label": "Lesotho",
+				"subRegionUid": "southern-africa",
+				"regionUid": "africa",
+				"value": "Lesotho",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "liechtenstein",
+				"label": "Liechtenstein",
+				"subRegionUid": "western-europe",
+				"regionUid": "europe",
+				"value": "Liechtenstein",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "lithuania",
+				"label": "Lithuania",
+				"subRegionUid": "northern-europe",
+				"regionUid": "europe",
+				"value": "Lithuania",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "luxembourg",
+				"label": "Luxembourg",
+				"subRegionUid": "western-europe",
+				"regionUid": "europe",
+				"value": "Luxembourg",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "macao",
+				"label": "Macao",
+				"subRegionUid": "eastern-asia",
+				"regionUid": "asia",
+				"value": "Macao",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "macedonia",
+				"label": "Macedonia",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "Macedonia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "madagascar",
+				"label": "Madagascar",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Madagascar",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "malawi",
+				"label": "Malawi",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Malawi",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "malaysia",
+				"label": "Malaysia",
+				"subRegionUid": "south-eastern-asia",
+				"regionUid": "asia",
+				"value": "Malaysia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "maldives",
+				"label": "Maldives",
+				"subRegionUid": "southern-asia",
+				"regionUid": "asia",
+				"value": "Maldives",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "mali",
+				"label": "Mali",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Mali",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "malta",
+				"label": "Malta",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "Malta",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "marshall-islands",
+				"label": "Marshall Islands",
+				"subRegionUid": "micronesia",
+				"regionUid": "oceania",
+				"value": "Marshall Islands",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "martinique",
+				"label": "Martinique",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Martinique",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "mauritania",
+				"label": "Mauritania",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Mauritania",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "mauritius",
+				"label": "Mauritius",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Mauritius",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "mayotte",
+				"label": "Mayotte",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Mayotte",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "mexico",
+				"label": "Mexico",
+				"subRegionUid": "central-america",
+				"regionUid": "americas",
+				"value": "Mexico",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "micronesia-federated-states-of",
+				"label": "Micronesia, Federated States of",
+				"subRegionUid": "micronesia",
+				"regionUid": "oceania",
+				"value": "Micronesia, Federated States of",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "moldova",
+				"label": "Moldova",
+				"subRegionUid": "eastern-europe",
+				"regionUid": "europe",
+				"value": "Moldova",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "monaco",
+				"label": "Monaco",
+				"subRegionUid": "western-europe",
+				"regionUid": "europe",
+				"value": "Monaco",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "mongolia",
+				"label": "Mongolia",
+				"subRegionUid": "eastern-asia",
+				"regionUid": "asia",
+				"value": "Mongolia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "montenegro",
+				"label": "Montenegro",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "Montenegro",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "montserrat",
+				"label": "Montserrat",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Montserrat",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "morocco",
+				"label": "Morocco",
+				"subRegionUid": "northern-africa",
+				"regionUid": "africa",
+				"value": "Morocco",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "mozambique",
+				"label": "Mozambique",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Mozambique",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "myanmar",
+				"label": "Myanmar",
+				"subRegionUid": "south-eastern-asia",
+				"regionUid": "asia",
+				"value": "Myanmar",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "namibia",
+				"label": "Namibia",
+				"subRegionUid": "southern-africa",
+				"regionUid": "africa",
+				"value": "Namibia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "nauru",
+				"label": "Nauru",
+				"subRegionUid": "micronesia",
+				"regionUid": "oceania",
+				"value": "Nauru",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "nepal",
+				"label": "Nepal",
+				"subRegionUid": "southern-asia",
+				"regionUid": "asia",
+				"value": "Nepal",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "netherlands",
+				"label": "Netherlands",
+				"subRegionUid": "western-europe",
+				"regionUid": "europe",
+				"value": "Netherlands",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "netherlands-antilles",
+				"label": "Netherlands Antilles",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Netherlands Antilles",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "new-caledonia",
+				"label": "New Caledonia",
+				"subRegionUid": "melanesia",
+				"regionUid": "oceania",
+				"value": "New Caledonia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "new-zealand",
+				"label": "New Zealand",
+				"subRegionUid": "australia-and-new-zealand",
+				"regionUid": "oceania",
+				"value": "New Zealand",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "nicaragua",
+				"label": "Nicaragua",
+				"subRegionUid": "central-america",
+				"regionUid": "americas",
+				"value": "Nicaragua",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "niger",
+				"label": "Niger",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Niger",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "nigeria",
+				"label": "Nigeria",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Nigeria",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "niue",
+				"label": "Niue",
+				"subRegionUid": "polynesia",
+				"regionUid": "oceania",
+				"value": "Niue",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "norfolk-island",
+				"label": "Norfolk Island",
+				"subRegionUid": "australia-and-new-zealand",
+				"regionUid": "oceania",
+				"value": "Norfolk Island",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "northern-mariana-islands",
+				"label": "Northern Mariana Islands",
+				"subRegionUid": "micronesia",
+				"regionUid": "oceania",
+				"value": "Northern Mariana Islands",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "norway",
+				"label": "Norway",
+				"subRegionUid": "northern-europe",
+				"regionUid": "europe",
+				"value": "Norway",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "oman",
+				"label": "Oman",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "Oman",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "pakistan",
+				"label": "Pakistan",
+				"subRegionUid": "southern-asia",
+				"regionUid": "asia",
+				"value": "Pakistan",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "palau",
+				"label": "Palau",
+				"subRegionUid": "micronesia",
+				"regionUid": "oceania",
+				"value": "Palau",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "palestinian-territories",
+				"label": "Palestinian Territories",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "Palestinian Territories",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "panama",
+				"label": "Panama",
+				"subRegionUid": "central-america",
+				"regionUid": "americas",
+				"value": "Panama",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "papua-new-guinea",
+				"label": "Papua New Guinea",
+				"subRegionUid": "melanesia",
+				"regionUid": "oceania",
+				"value": "Papua New Guinea",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "paraguay",
+				"label": "Paraguay",
+				"subRegionUid": "south-america",
+				"regionUid": "americas",
+				"value": "Paraguay",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "peru",
+				"label": "Peru",
+				"subRegionUid": "south-america",
+				"regionUid": "americas",
+				"value": "Peru",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "philippines",
+				"label": "Philippines",
+				"subRegionUid": "south-eastern-asia",
+				"regionUid": "asia",
+				"value": "Philippines",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "pitcairn",
+				"label": "Pitcairn",
+				"subRegionUid": "polynesia",
+				"regionUid": "oceania",
+				"value": "Pitcairn",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "poland",
+				"label": "Poland",
+				"subRegionUid": "eastern-europe",
+				"regionUid": "europe",
+				"value": "Poland",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "portugal",
+				"label": "Portugal",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "Portugal",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "puerto-rico",
+				"label": "Puerto Rico",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Puerto Rico",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "qatar",
+				"label": "Qatar",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "Qatar",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "reunion",
+				"label": "Reunion",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Reunion",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "romania",
+				"label": "Romania",
+				"subRegionUid": "eastern-europe",
+				"regionUid": "europe",
+				"value": "Romania",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "russia",
+				"label": "Russia",
+				"subRegionUid": "eastern-europe",
+				"regionUid": "europe",
+				"value": "Russia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "rwanda",
+				"label": "Rwanda",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Rwanda",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "saint-barthelemy",
+				"label": "Saint Barthelemy",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Saint Barthelemy",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "saint-helena",
+				"label": "Saint Helena",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Saint Helena",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "saint-kitts-and-nevis",
+				"label": "Saint Kitts and Nevis",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Saint Kitts and Nevis",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "saint-lucia",
+				"label": "Saint Lucia",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Saint Lucia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "saint-martin-french-part-",
+				"label": "Saint Martin (French part)",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Saint Martin (French part)",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "saint-pierre-and-miquelon",
+				"label": "Saint Pierre and Miquelon",
+				"subRegionUid": "northern-america",
+				"regionUid": "americas",
+				"value": "Saint Pierre and Miquelon",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "saint-vincent-and-the-grenadines",
+				"label": "Saint Vincent and the Grenadines",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Saint Vincent and the Grenadines",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "samoa",
+				"label": "Samoa",
+				"subRegionUid": "polynesia",
+				"regionUid": "oceania",
+				"value": "Samoa",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "san-marino",
+				"label": "San Marino",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "San Marino",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "sao-tome-and-principe",
+				"label": "Sao Tome and Principe",
+				"subRegionUid": "middle-africa",
+				"regionUid": "africa",
+				"value": "Sao Tome and Principe",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "saudi-arabia",
+				"label": "Saudi Arabia",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "Saudi Arabia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "senegal",
+				"label": "Senegal",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Senegal",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "serbia",
+				"label": "Serbia",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "Serbia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "seychelles",
+				"label": "Seychelles",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Seychelles",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "sierra-leone",
+				"label": "Sierra Leone",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Sierra Leone",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "singapore",
+				"label": "Singapore",
+				"subRegionUid": "south-eastern-asia",
+				"regionUid": "asia",
+				"value": "Singapore",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "sint-maarten-dutch-part-",
+				"label": "Sint Maarten (Dutch part)",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Sint Maarten (Dutch part)",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "slovakia",
+				"label": "Slovakia",
+				"subRegionUid": "eastern-europe",
+				"regionUid": "europe",
+				"value": "Slovakia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "slovenia",
+				"label": "Slovenia",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "Slovenia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "solomon-islands",
+				"label": "Solomon Islands",
+				"subRegionUid": "melanesia",
+				"regionUid": "oceania",
+				"value": "Solomon Islands",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "somalia",
+				"label": "Somalia",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Somalia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "south-africa",
+				"label": "South Africa",
+				"subRegionUid": "southern-africa",
+				"regionUid": "africa",
+				"value": "South Africa",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "south-korea",
+				"label": "South Korea",
+				"subRegionUid": "eastern-asia",
+				"regionUid": "asia",
+				"value": "South Korea",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "spain",
+				"label": "Spain",
+				"subRegionUid": "southern-europe",
+				"regionUid": "europe",
+				"value": "Spain",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "sri-lanka",
+				"label": "Sri Lanka",
+				"subRegionUid": "southern-asia",
+				"regionUid": "asia",
+				"value": "Sri Lanka",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "suriname",
+				"label": "Suriname",
+				"subRegionUid": "south-america",
+				"regionUid": "americas",
+				"value": "Suriname",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "svalbard-and-jan-mayen",
+				"label": "Svalbard and Jan Mayen",
+				"subRegionUid": "northern-europe",
+				"regionUid": "europe",
+				"value": "Svalbard and Jan Mayen",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "swaziland",
+				"label": "Swaziland",
+				"subRegionUid": "southern-africa",
+				"regionUid": "africa",
+				"value": "Swaziland",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "sweden",
+				"label": "Sweden",
+				"subRegionUid": "northern-europe",
+				"regionUid": "europe",
+				"value": "Sweden",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "switzerland",
+				"label": "Switzerland",
+				"subRegionUid": "western-europe",
+				"regionUid": "europe",
+				"value": "Switzerland",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "taiwan",
+				"label": "Taiwan",
+				"subRegionUid": "eastern-asia",
+				"regionUid": "asia",
+				"value": "Taiwan",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "tajikistan",
+				"label": "Tajikistan",
+				"subRegionUid": "central-asia",
+				"regionUid": "asia",
+				"value": "Tajikistan",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "tanzania",
+				"label": "Tanzania",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Tanzania",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "thailand",
+				"label": "Thailand",
+				"subRegionUid": "south-eastern-asia",
+				"regionUid": "asia",
+				"value": "Thailand",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "timor-leste",
+				"label": "Timor-Leste",
+				"subRegionUid": "south-eastern-asia",
+				"regionUid": "asia",
+				"value": "Timor-Leste",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "togo",
+				"label": "Togo",
+				"subRegionUid": "western-africa",
+				"regionUid": "africa",
+				"value": "Togo",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "tokelau",
+				"label": "Tokelau",
+				"subRegionUid": "polynesia",
+				"regionUid": "oceania",
+				"value": "Tokelau",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "tonga",
+				"label": "Tonga",
+				"subRegionUid": "polynesia",
+				"regionUid": "oceania",
+				"value": "Tonga",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "trinidad-and-tobago",
+				"label": "Trinidad and Tobago",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Trinidad and Tobago",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "tunisia",
+				"label": "Tunisia",
+				"subRegionUid": "northern-africa",
+				"regionUid": "africa",
+				"value": "Tunisia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "turkey",
+				"label": "Turkey",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "Turkey",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "turkmenistan",
+				"label": "Turkmenistan",
+				"subRegionUid": "central-asia",
+				"regionUid": "asia",
+				"value": "Turkmenistan",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "turks-and-caicos-islands",
+				"label": "Turks and Caicos Islands",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "Turks and Caicos Islands",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "tuvalu",
+				"label": "Tuvalu",
+				"subRegionUid": "polynesia",
+				"regionUid": "oceania",
+				"value": "Tuvalu",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "uganda",
+				"label": "Uganda",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Uganda",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "ukraine",
+				"label": "Ukraine",
+				"subRegionUid": "eastern-europe",
+				"regionUid": "europe",
+				"value": "Ukraine",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "united-arab-emirates",
+				"label": "United Arab Emirates",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "United Arab Emirates",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "united-kingdom",
+				"label": "United Kingdom",
+				"subRegionUid": "northern-europe",
+				"regionUid": "europe",
+				"value": "United Kingdom",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "united-states",
+				"label": "United States",
+				"subRegionUid": "northern-america",
+				"regionUid": "americas",
+				"value": "United States",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "united-states-minor-outlying-islands",
+				"label": "United States Minor Outlying Islands",
+				"subRegionUid": "northern-america",
+				"regionUid": "americas",
+				"value": "United States Minor Outlying Islands",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "united-states-virgin-islands",
+				"label": "United States Virgin Islands",
+				"subRegionUid": "caribbean",
+				"regionUid": "americas",
+				"value": "United States Virgin Islands",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "uruguay",
+				"label": "Uruguay",
+				"subRegionUid": "south-america",
+				"regionUid": "americas",
+				"value": "Uruguay",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "uzbekistan",
+				"label": "Uzbekistan",
+				"subRegionUid": "central-asia",
+				"regionUid": "asia",
+				"value": "Uzbekistan",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "vanuatu",
+				"label": "Vanuatu",
+				"subRegionUid": "melanesia",
+				"regionUid": "oceania",
+				"value": "Vanuatu",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "venezuela",
+				"label": "Venezuela",
+				"subRegionUid": "south-america",
+				"regionUid": "americas",
+				"value": "Venezuela",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "vietnam",
+				"label": "Vietnam",
+				"subRegionUid": "south-eastern-asia",
+				"regionUid": "asia",
+				"value": "Vietnam",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "wallis-and-futuna",
+				"label": "Wallis and Futuna",
+				"subRegionUid": "polynesia",
+				"regionUid": "oceania",
+				"value": "Wallis and Futuna",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "western-sahara",
+				"label": "Western Sahara",
+				"subRegionUid": "northern-africa",
+				"regionUid": "africa",
+				"value": "Western Sahara",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "yemen",
+				"label": "Yemen",
+				"subRegionUid": "western-asia",
+				"regionUid": "asia",
+				"value": "Yemen",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "zambia",
+				"label": "Zambia",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Zambia",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "zimbabwe",
+				"label": "Zimbabwe",
+				"subRegionUid": "eastern-africa",
+				"regionUid": "africa",
+				"value": "Zimbabwe",
+				"type": "country",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "australia-and-new-zealand",
+				"label": "Australia and New Zealand",
+				"regionUid": "oceania",
+				"value": "Australia and New Zealand",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "caribbean",
+				"label": "Caribbean",
+				"regionUid": "americas",
+				"value": "Caribbean",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "central-america",
+				"label": "Central America",
+				"regionUid": "americas",
+				"value": "Central America",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "central-asia",
+				"label": "Central Asia",
+				"regionUid": "asia",
+				"value": "Central Asia",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "eastern-africa",
+				"label": "Eastern Africa",
+				"regionUid": "africa",
+				"value": "Eastern Africa",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "eastern-asia",
+				"label": "Eastern Asia",
+				"regionUid": "asia",
+				"value": "Eastern Asia",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "eastern-europe",
+				"label": "Eastern Europe",
+				"regionUid": "europe",
+				"value": "Eastern Europe",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "melanesia",
+				"label": "Melanesia",
+				"regionUid": "oceania",
+				"value": "Melanesia",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "micronesia",
+				"label": "Micronesia",
+				"regionUid": "oceania",
+				"value": "Micronesia",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "middle-africa",
+				"label": "Middle Africa",
+				"regionUid": "africa",
+				"value": "Middle Africa",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "northern-africa",
+				"label": "Northern Africa",
+				"regionUid": "africa",
+				"value": "Northern Africa",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "northern-america",
+				"label": "Northern America",
+				"regionUid": "americas",
+				"value": "Northern America",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "northern-europe",
+				"label": "Northern Europe",
+				"regionUid": "europe",
+				"value": "Northern Europe",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "polynesia",
+				"label": "Polynesia",
+				"regionUid": "oceania",
+				"value": "Polynesia",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "south-america",
+				"label": "South America",
+				"regionUid": "americas",
+				"value": "South America",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "south-eastern-asia",
+				"label": "South-Eastern Asia",
+				"regionUid": "asia",
+				"value": "South-Eastern Asia",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "southern-africa",
+				"label": "Southern Africa",
+				"regionUid": "africa",
+				"value": "Southern Africa",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "southern-asia",
+				"label": "Southern Asia",
+				"regionUid": "asia",
+				"value": "Southern Asia",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "southern-europe",
+				"label": "Southern Europe",
+				"regionUid": "europe",
+				"value": "Southern Europe",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "western-africa",
+				"label": "Western Africa",
+				"regionUid": "africa",
+				"value": "Western Africa",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "western-asia",
+				"label": "Western Asia",
+				"regionUid": "asia",
+				"value": "Western Asia",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "western-europe",
+				"label": "Western Europe",
+				"regionUid": "europe",
+				"value": "Western Europe",
+				"type": "subRegion",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "africa",
+				"label": "Africa",
+				"value": "Africa",
+				"type": "region",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "americas",
+				"label": "Americas",
+				"value": "Americas",
+				"type": "region",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "antarctica",
+				"label": "Antarctica",
+				"value": "Antarctica",
+				"type": "region",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "asia",
+				"label": "Asia",
+				"value": "Asia",
+				"type": "region",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "europe",
+				"label": "Europe",
+				"value": "Europe",
+				"type": "region",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"uid": "oceania",
+				"label": "Oceania",
+				"value": "Oceania",
+				"type": "region",
+				"checked": false,
+				"count": 0
+			}
+		]
+	}
+}

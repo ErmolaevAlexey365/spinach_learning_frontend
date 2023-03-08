@@ -1,11 +1,17 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import styles from "../../styles/accounts/accounts.module.css";
-import { IUserAccountProps } from "../../interfaces/interfaces";
+import { IError } from "../../interfaces/commonInterfaces";
 import { Button } from "@mui/material";
-import {userService} from "../service/userInstance";
-import {AuthContext} from "../../context/context";
+import { userService } from "../service/userInstance";
+import { Context } from "../../context/context";
 
-
+interface IUserAccountProps {
+  id: number;
+  name: string;
+  avatar: string;
+  description: string;
+  getAccounts: () => void;
+}
 
 const UserAccount = ({
   name,
@@ -14,24 +20,28 @@ const UserAccount = ({
   id,
   getAccounts,
 }: IUserAccountProps) => {
-  function handlerRemoveUserAccount(e: React.MouseEvent<HTMLButtonElement>) {
+  const context = useContext(Context);
+
+  function handlerRemoveUserAccount() {
     removeUserAccount(id);
     getAccounts();
   }
-    const authContext = useContext(AuthContext);
 
   async function removeUserAccount(id: number) {
     await userService
-      .deleteAccountsData(id, id,authContext.token)
-      .then((response: any) => {})
-      .catch(function (error: any) {
-        console.log(error);
+      .deleteAccountsData(id, id, context.token)
+      .then(() => {})
+      .catch(function (error: IError) {
+        if (error.response.data.description === "Cannot verify token") {
+          context.setIsUserLogin(false);
+          context.setIsUserAuth(false);
+        }
       });
   }
 
   return (
-    <div className={styles.userAccount}>
-      <img src={avatar} />
+    <div className={styles.user_account}>
+      <img src={avatar} alt="avatar"/>
       <div>
         {" "}
         <h3>name:</h3>

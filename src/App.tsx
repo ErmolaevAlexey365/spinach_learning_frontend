@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router";
-
-import Login from "../pages/login/Login";
-import Authorization from "../pages/authorization/Authorization";
+import Login from "../src/pages/login/Login";
+import Authorization from "../src/pages/authorization/Authorization";
 import { BrowserRouter } from "react-router-dom";
-import { AuthContext } from "../context/context";
-import MainPage from "../pages/profile/Profile";
-import Dashboard from "../pages/dashboard/Dashboard";
-import Accounts from "../pages/accounts/Accounts";
-import Dictionaries from "../pages/dictionaries/Dictionaries";
+import { Context } from "./context/context";
+import Profile from "../src/pages/profile/Profile";
+import Dashboard from "../src/pages/dashboard/Dashboard";
+import Accounts from "../src/pages/accounts/Accounts";
+import Dictionaries from "../src/pages/dictionaries/Dictionaries";
 
-const Router = () => {
+const App = () => {
   const [isUserLogin, setIsUserLogin] = React.useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-
   const [isUserAuth, setIsUserAuth] = React.useState<boolean>(
     JSON.parse(localStorage.getItem("Auth") || "false ")
   );
@@ -31,7 +29,7 @@ const Router = () => {
   }, [token]);
 
   return (
-    <AuthContext.Provider
+    <Context.Provider
       value={{
         isUserLogin,
         setIsUserLogin,
@@ -49,8 +47,8 @@ const Router = () => {
         {isUserAuth ? (
           <Routes>
             <Route path="/*" element={<Navigate to={"/profile"} replace />} />
-            <Route path="/" element={<MainPage />} />
-            <Route path="/profile" element={<MainPage />} />
+            <Route path="/" element={<Profile />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/accounts" element={<Accounts />} />
             <Route path="/dictionaries" element={<Dictionaries />} />
@@ -67,8 +65,8 @@ const Router = () => {
           </Routes>
         )}
       </BrowserRouter>
-    </AuthContext.Provider>
+    </Context.Provider>
   );
 };
 
-export default Router;
+export default App;

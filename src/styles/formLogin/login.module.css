@@ -9,5 +9,11 @@
   padding: 30px;
   background: #e5f4ff;
 }
+.login_form p {
+  margin: 0 0 10px 0;
+}
+.login_form button {
+  margin: 10px 0;
+}
 
 /*# sourceMappingURL=login.module.css.map */

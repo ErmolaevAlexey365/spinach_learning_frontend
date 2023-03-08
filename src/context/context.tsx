@@ -1,7 +1,7 @@
 import React, { createContext } from "react";
 
 
-type AuthContextType = {
+type ContextType = {
   isUserLogin: boolean | null;
   setIsUserLogin: React.Dispatch<React.SetStateAction<boolean>>;
   isUserAuth: boolean | null;
@@ -12,4 +12,4 @@ type AuthContextType = {
   setToken: (token: string) => void;
 };
 
-export const AuthContext = createContext<AuthContextType | any>(null);
+export const Context = createContext<ContextType | any>(null);

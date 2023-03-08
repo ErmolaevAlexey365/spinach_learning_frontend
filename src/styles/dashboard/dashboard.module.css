@@ -1,4 +1,28 @@
-.plus_button {
+.workerBodyInfo::-webkit-scrollbar {
+  width: 10px;
+  background-color: #bfd3f8;
+}
+
+.workerBodyInfo::-webkit-scrollbar-thumb {
+  background: #6495ed;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input::-webkit-inner-spin-button {
+  display: none;
+}
+
+hr {
+  background: black;
+  width: 100%;
+}
+
+.openWorkerForm_button {
   color: #6495ed;
   position: fixed;
   bottom: 50px;
@@ -6,7 +30,7 @@
   cursor: pointer;
 }
 
-.modal_open, .modal_close {
+.modals_open {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -14,31 +38,28 @@
   right: 0;
   background: rgba(0, 0, 0, 0.3);
   display: block;
+  z-index: 2;
 }
 
-.modal_close {
-  display: none;
-}
-
-.form_div {
-  width: 50%;
+.workerFormModal_div, .password_form {
+  width: 30%;
   height: 500px;
   background: #e5f4ff;
-  margin: 100px 22%;
+  margin: 95px 30%;
   box-shadow: 0 14px 28px 5px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
   padding: 20px 40px 40px 40px;
   overflow-y: scroll;
 }
-.form_div .switch {
+.workerFormModal_div .switch, .password_form .switch {
   align-self: end;
   margin-top: 15px;
 }
-.form_div h4 {
+.workerFormModal_div h4, .password_form h4 {
   text-align: center;
   padding-bottom: 20px;
 }
-.form_div h2 {
+.workerFormModal_div h2, .password_form h2 {
   font-weight: bold;
   margin-top: 30px;
 }
@@ -52,21 +73,21 @@
   cursor: pointer;
 }
 
-.scratcherForm_options {
+.workerForm_options {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-bottom: 20px;
 }
-.scratcherForm_options input,
-.scratcherForm_options div > div > div {
+.workerForm_options input,
+.workerForm_options div > div > div {
   background: white;
 }
-.scratcherForm_options h1 {
+.workerForm_options h1 {
   align-self: center;
 }
 
-.scratcherForm_input {
+.workerForm_inputs_selects {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 0.9fr;
@@ -74,24 +95,24 @@
   row-gap: 20px;
   align-items: stretch;
 }
-.scratcherForm_input div > div {
+.workerForm_inputs_selects div > div {
   background: white;
 }
 
-.fixed_modal_footer {
+.workerForm_footer {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   background: #e5f4ff;
 }
-.fixed_modal_footer .selectInput {
+.workerForm_footer .sorting_select {
   background: white;
 }
-.fixed_modal_footer .footer_buttons {
+.workerForm_footer .workerForm_footer_buttons {
   margin-top: 10px;
   align-self: flex-end;
 }
-.fixed_modal_footer .footer_buttons button {
+.workerForm_footer .workerForm_footer_buttons button {
   margin: 0 5px;
   background: #6495ed;
 }
@@ -100,20 +121,149 @@
   display: flex;
   justify-content: flex-start;
 }
-.hourly .hourlyInput {
+.hourly .hourly_input {
   width: 19%;
   margin-right: 7px;
   -moz-appearance: textfield;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.worker_head {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  justify-items: end;
+  padding: 7px 0;
+  align-items: center;
+  background: #6495ed;
+  font-size: 20px;
+  width: 300px;
+}
+.worker_head p {
+  overflow-wrap: break-word;
+  word-break: break-all;
+  margin: 0 10px;
+  justify-self: start;
+}
+.worker_head button {
+  background: #6495ed;
+  padding: 5px 0 0 0;
+  border: none;
+}
+.worker_head .stopStart_button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
 }
 
-input::-webkit-inner-spin-button {
-  display: none;
+.worker {
+  box-shadow: 0 14px 28px 5px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  background: #d6e3fa;
+  height: 650px;
+}
+.worker .workerBodyInfo {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.worker div:last-child > p {
+  margin: 5px 10px 0 10px;
+  font-size: 18px;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.workers {
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  top: 35px;
+  border-right: 45px solid white;
+}
+
+.jobs {
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  margin: 0 10px;
+}
+.jobs p,
+.jobs h3 {
+  margin: 0 0 10px 0;
+}
+.jobs .jobsUrlAndScoring {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.jobs .jobsUrlAndScoring :first-child {
+  background-color: #a9c4f5;
+  cursor: pointer;
+  width: 60%;
+}
+.jobs .jobsUrlAndScoring p {
+  margin: 0;
+  align-self: center;
+}
+
+.jobsDescription {
+  max-height: 93px;
+  height: auto;
+  overflow: hidden;
+}
+
+.skills {
+  max-height: 93px;
+  height: auto;
+  overflow: hidden;
+}
+
+.skills_close, .skills {
+  margin: 10px 0 7px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 7px;
+  row-gap: 7px;
+}
+
+.chip_button {
+  background: #1651bc;
+  color: white;
+  width: 30%;
+}
+.chip_button span {
+  width: 100%;
+  padding: 0;
+  text-align: center;
+}
+
+.password_form {
+  overflow: hidden;
+  width: 30%;
+  height: auto;
+  margin: 200px 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  row-gap: 20px;
+}
+.password_form h3 {
+  margin: 0;
+}
+.password_form p {
+  margin: 0;
+}
+.password_form .password_form_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 20px;
 }
 
 /*# sourceMappingURL=dashboard.module.css.map */

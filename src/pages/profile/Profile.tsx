@@ -2,19 +2,36 @@ import React, { useContext, useEffect, useState } from "react";
 import { userService } from "../../components/service/userInstance";
 import FormUserData from "../../components/forms/FormUserData";
 import SidebarMenu from "../../components/sidebar/SidebarMenu";
-import { AuthContext } from "../../context/context";
+import { Context } from "../../context/context";
+import { IError } from "../../interfaces/commonInterfaces";
 
-const MainPage = () => {
-  const [userData, setUserData] = useState<any>([{}]);
+interface IGetUsersDataResponse {
+  data: {
+    id: number;
+    email: string;
+    firstname: string;
+    lastname: string;
+  };
+}
+
+interface IGetUsersData {
+  id?: number;
+  email?: string;
+  firstname?: string;
+  lastname?: string;
+}
+
+const Profile = () => {
+  const [userData, setUserData] = useState<IGetUsersData>({});
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
-  const authContext = useContext(AuthContext);
+  const context = useContext(Context);
 
   async function getUsersData() {
     await userService
-      .getUserData(authContext.token)
-      .then((response: any) => {
+      .getUserData(context.token)
+      .then((response: IGetUsersDataResponse) => {
         setUserData({
           ...userData,
           id: response.data.id,
@@ -24,10 +41,10 @@ const MainPage = () => {
         });
         setIsLoading(false);
       })
-      .catch(function (error: any) {
+      .catch(function (error: IError) {
         if (error.response.data.description === "Cannot verify token") {
-          authContext.setIsUserLogin(false);
-          authContext.setIsUserAuth(false);
+          context.setIsUserLogin(false);
+          context.setIsUserAuth(false);
         }
       });
   }
@@ -37,7 +54,7 @@ const MainPage = () => {
   }, []);
 
   async function changeData() {
-    if (!userData.firstname || !userData.lastname) {
+    if (!userData?.firstname || !userData?.lastname) {
       setIsDisabled(true);
       return;
     }
@@ -48,12 +65,19 @@ const MainPage = () => {
           lastname: userData.lastname,
           avatar: "123",
         },
-        authContext.token
+        context.token
       )
-      .then((response: any) => {
+      .then(() => {
         setIsDisabled(!isDisabled);
+      })
+      .catch(function (error: IError) {
+        if (error.response.data.description === "Cannot verify token") {
+          context.setIsUserLogin(false);
+          context.setIsUserAuth(false);
+        }
       });
   }
+
   const clickHandlerForSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     changeData();
@@ -85,4 +109,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default Profile;

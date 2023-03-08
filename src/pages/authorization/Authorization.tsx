@@ -1,7 +1,14 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../context/context";
+import { Context } from "../../context/context";
 import FormAuth from "../../components/forms/FormAuth";
 import { userService } from "../../components/service/userInstance";
+import { IError } from "../../interfaces/commonInterfaces";
+
+interface ISubmitAuthCodeResponse {
+  data: {
+    accessToken: string;
+  };
+}
 
 const Authorization = () => {
   const [isValidCode, setIsValidCode] = React.useState<boolean>(true);
@@ -10,20 +17,17 @@ const Authorization = () => {
   );
   let code = authCode.join("");
 
-  const authContext = useContext(AuthContext);
+  const context = useContext(Context);
 
   async function submitAuthCode() {
     await userService
-      .auth(code, authContext.token)
+      .auth(code, context.token)
 
-      .then((response: any) => {
-        authContext.setToken(response.data.accessToken);
-
-        if (authContext) {
-          authContext.setIsUserAuth(true);
-        }
+      .then((response: ISubmitAuthCodeResponse) => {
+        context.setToken(response.data.accessToken);
+        context.setIsUserAuth(true);
       })
-      .catch(function (error: any) {
+      .catch(function (error: IError) {
         if (error.response) {
           setIsValidCode(false);
         }

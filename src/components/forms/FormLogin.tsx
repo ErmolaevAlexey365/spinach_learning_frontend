@@ -2,24 +2,35 @@ import React from "react";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useForm, Controller } from "react-hook-form";
 import { Button, TextField } from "@mui/material";
-
 import styles from "../../styles/formLogin/login.module.css";
 import { schema } from "../schemas/Schema";
-import { IPropsForFormLogin,IFormInput } from "../../interfaces/interfaces";
+import { ISubmitEmailAndPassword } from "../../interfaces/commonInterfaces";
 
+interface IFormLoginProps {
+  submitLoginForm: (data: ISubmitEmailAndPassword) => void;
+  isValidLogin: boolean;
+  setIsValidLogin: (isValidLogin: boolean) => void;
+}
 
-const FormLogin = ({ submitForm, isValidLogin }: IPropsForFormLogin) => {
+const FormLogin = ({
+  submitLoginForm,
+  isValidLogin,
+  setIsValidLogin,
+}: IFormLoginProps) => {
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInput>({
+  } = useForm<ISubmitEmailAndPassword>({
     resolver: yupResolver(schema),
     mode: "onSubmit",
   });
 
   return (
-    <form className={styles.login_form} onSubmit={handleSubmit(submitForm)}>
+    <form
+      className={styles.login_form}
+      onSubmit={handleSubmit(submitLoginForm)}
+    >
       <Controller
         name="email"
         control={control}
@@ -33,6 +44,7 @@ const FormLogin = ({ submitForm, isValidLogin }: IPropsForFormLogin) => {
             size="small"
             error={!!errors.email}
             helperText={errors?.email?.message}
+            onClick={() => setIsValidLogin(false)}
             {...field}
           />
         )}
@@ -52,6 +64,7 @@ const FormLogin = ({ submitForm, isValidLogin }: IPropsForFormLogin) => {
             margin="normal"
             error={!!errors.password}
             helperText={errors?.password?.message}
+            onClick={() => setIsValidLogin(false)}
             {...field}
           />
         )}
@@ -63,7 +76,6 @@ const FormLogin = ({ submitForm, isValidLogin }: IPropsForFormLogin) => {
         type="submit"
         sx={{
           width: 150,
-          marginTop: 2,
           background: "#6495ed",
         }}
       >

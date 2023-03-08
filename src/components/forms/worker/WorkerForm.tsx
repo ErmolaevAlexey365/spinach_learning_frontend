@@ -1,105 +1,66 @@
-import React, { useEffect, useState, useContext } from "react";
-import {
-  Autocomplete,
-  Box,
-  Button,
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  FormHelperText,
-  InputLabel,
-  MenuItem,
-  Select,
-  Switch,
-  TextField,
-  Typography,
-} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Autocomplete, Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText, InputLabel, MenuItem, Select, Switch, TextField, Typography } from "@mui/material";
 import styles from "../../../styles/dashboard/dashboard.module.css";
-import location from "../../../assets/timezonaInput/locations.json";
-import timezone from "../../../assets/timezonaInput/timezones.json";
+import location from "../../../assets/json/locations.json";
+import timezone from "../../../assets/json/timezones.json";
 import { useForm, Controller } from "react-hook-form";
-import { IScratchFormProps, IWorkerData } from "../../../interfaces/interfaces";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { schemaWorker } from "../../schemas/Schema";
-import { sortDataInputsAndWorkerCheckbox } from "../../../utils/dataSorting";
-import { userService } from "../../service/userInstance";
-import { AuthContext } from "../../../context/context";
+import { dataOptions } from "../../../assets/dataForWorkerFormCheckboxes/dataForWorkerForm";
+import {
+  IDataForCheckboxes,
+  ILocations,
+  ITimezones,
+  IUpworkAccountsUsersInfo,
+  IWorkerData,
+  IWorkerFormProps
+} from "../../../interfaces/workerFormInterfaces";
 
-const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
+const WorkerForm = ({
+  clickHandlerForCloseModal,
+  submitForm,
+  upworkAccounts,
+}: IWorkerFormProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [isLocationData, setIsLocationData] = useState<any[]>([]);
   const [isHourly, setIsHourly] = useState<boolean>(false);
   const [isFixedPrice, setIsFixedPrice] = useState<boolean>(false);
-  const [hourlyNumberMin, setHourlyNumberMin] = useState<any>("");
-  const [hourlyNumberMax, setHourlyNumberMax] = useState<any>("");
+  const [hourlyNumberMin, setHourlyNumberMin] = useState<string>("");
+  const [hourlyNumberMax, setHourlyNumberMax] = useState<string>("");
+  const [FixedPriceNumberMin, setFixedPriceNumberMin] = useState<string>("");
+  const [FixedPriceNumberMax, setFixedPriceNumberMax] = useState<string>("");
+  const [isFixedPriceChecked, setIsFixedPriceChecked] = useState<boolean>(false);
 
-  const [FixedPriceNumberMin, setFixedPriceNumberMin] = useState<any>("");
-  const [FixedPriceNumberMax, setFixedPriceNumberMax] = useState<any>("");
-
-  const [isFixedPriceChecked, setIsFixedPriceChecked] =
-    useState<boolean>(false);
-  const [upworkAccounts, setUpworkAccounts] = useState<string[]>([]);
-  const authContext = useContext(AuthContext);
   const {
     control,
     setValue,
     handleSubmit,
-
     formState: { errors },
   } = useForm<IWorkerData>({
     defaultValues: {
-      enableScoring: [false],
+      enableScoring: new Array(1).fill(false),
       title: "",
       description: "",
       q: "",
-      contractor_tier: [false, false, false],
-      previous_clients: [false],
-      payment_verified: [false],
-      client_hires: [false, false, false],
-      workload: [false, false],
-      freelancers_needed: [false, false, false, false, false, false],
-      proposals: [false, false, false, false, false],
-      connect_price: [false, false, false],
-      duration_v3: [false, false, false, false],
-      category2_uid: [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-      ],
+      contractor_tier:  new Array(3).fill(false),
+      previous_clients: new Array(1).fill(false),
+      payment_verified: new Array(1).fill(false),
+      client_hires:  new Array(3).fill(false),
+      workload:  new Array(2).fill(false),
+      freelancers_needed:  new Array(6).fill(false),
+      proposals:  new Array(5).fill(false),
+      connect_price:  new Array(3).fill(false),
+      duration_v3: new Array(4).fill(false),
+      category2_uid:  new Array(12).fill(false),
       user_location_match: [2],
       location: "",
       timezones: "",
-      t: [false, false],
-      amount: [false, false, false, false, false, false],
+      t:  new Array(2).fill(false),
+      amount: new Array(6).fill(false),
     },
     mode: "onSubmit",
     resolver: yupResolver(schemaWorker),
   });
-
-  async function getAccounts() {
-    await userService
-      .getAccountsData(authContext.token)
-      .then((response: any) => {
-        setUpworkAccounts([response.data[0].name]);
-      })
-      .catch(function (error: any) {
-        console.log(error);
-      });
-  }
-
-  useEffect(() => {
-    getAccounts();
-  }, []);
 
   const falseOrValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.checked) {
@@ -112,7 +73,6 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
   function onOrOff(e: React.ChangeEvent<HTMLInputElement>) {
     setValue("location", " ");
     setIsChecked(!isChecked);
-
     if (!e.target.checked) {
       return (e.target.value = "2");
     } else {
@@ -126,30 +86,26 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
       setValue("hourly_rate.0", false);
     }
     if (!isFixedPrice) {
-      setValue("amount", [false, false, false, false, false, false]);
+      setValue("amount",  new Array(6).fill(false),);
     }
     setIsFixedPriceChecked(false);
   }, [isHourly, isFixedPrice]);
 
   function inputHourlyMin(e: React.ChangeEvent<HTMLInputElement>) {
     let str: string | any;
-
     setHourlyNumberMin(e.target.value);
-
     if (!e.target.value) {
       str = false;
     } else {
       str = e.target.value + "-" + hourlyNumberMax;
     }
-
     return str;
   }
+
   function inputHourlyMax(e: React.ChangeEvent<HTMLInputElement>) {
     let str: string | any;
     setHourlyNumberMax(e.target.value);
-
     str = hourlyNumberMin + "-" + e.target.value;
-
     return str;
   }
 
@@ -165,9 +121,9 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
     } else {
       str = e.target.value + "-" + FixedPriceNumberMax;
     }
-
     return str;
   };
+
   const inputFixedPriceMax = (e: React.ChangeEvent<HTMLInputElement>) => {
     let str: string | any;
     setFixedPriceNumberMax(e.target.value);
@@ -180,54 +136,31 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
     } else {
       str = FixedPriceNumberMin + "-" + e.target.value;
     }
-
     return str;
   };
 
-  function locationData(data: any) {
+  function locationData(data: ILocations[]) {
     setIsChecked(false);
     setIsLocationData(data);
     setValue("user_location_match.0", "2");
-    let result: any[] = [];
-    data.map((e: any) => {
+    let result: string[] = [];
+    data.map((e: ILocations) => {
       result.push(e.value);
     });
-
     return result;
   }
-
-  async function submitForm(data: any) {
-    let arrayData = sortDataInputsAndWorkerCheckbox(data);
-    await userService
-      .createParser(
-        {
-          filter: arrayData[1],
-          serviceUserAccountId: 1,
-          title: arrayData[0].title,
-          description: arrayData[0].description,
-          companyUserId: 1,
-          timer: arrayData[0].timer,
-          dictionaryId: 1,
-        },
-        authContext.token
-      )
-      .then((response: any) => {
-        console.log(response);
-      })
-      .catch(function (error: any) {
-        console.log(error.response);
-      });
-  }
-
-
 
   return (
     <>
       <Typography variant="h5" component="h4">
         Add worker
       </Typography>
-      <form onSubmit={handleSubmit(submitForm)}>
-        <div className={styles.scratcherForm_input}>
+      <form
+        onSubmit={handleSubmit((data: IWorkerData) => {
+          submitForm(data);
+        })}
+      >
+        <div className={styles.workerForm_inputs_selects}>
           <Controller
             name="title"
             control={control}
@@ -256,11 +189,11 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
                     error={!!errors.timer}
                     {...field}
                   >
-                    <MenuItem value={2}>2h</MenuItem>
-                    <MenuItem value={5}>5h</MenuItem>
-                    <MenuItem value={10}>10h</MenuItem>
-                    <MenuItem value={15}>15h</MenuItem>
-                    <MenuItem value={30}>30h</MenuItem>
+                    <MenuItem value={2}>2min</MenuItem>
+                    <MenuItem value={5}>5min</MenuItem>
+                    <MenuItem value={10}>10min</MenuItem>
+                    <MenuItem value={15}>15min</MenuItem>
+                    <MenuItem value={30}>30min</MenuItem>
                   </Select>
                 )}
               />
@@ -301,8 +234,10 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
                     error={!!errors.account}
                     {...field}
                   >
-                    {upworkAccounts.map((option: any) => (
-                      <MenuItem value={option}>{option}</MenuItem>
+                    {upworkAccounts.map((option: IUpworkAccountsUsersInfo) => (
+                      <MenuItem key={option.id} value={option.id}>
+                        {option.name}
+                      </MenuItem>
                     ))}
                   </Select>
                 )}
@@ -332,7 +267,7 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
           </FormGroup>
         </div>
 
-        <div className={styles.scratcherForm_options}>
+        <div className={styles.workerForm_options}>
           <Typography variant="h5" component="h1">
             Options
           </Typography>
@@ -352,11 +287,13 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
                 <Controller
                   name="user_location_match.0"
                   control={control}
-                  render={({ field: { onChange, value } }) => (
+                  render={({ field: { onChange } }) => (
                     <Switch
-                      value={"1"}
+                      value="1"
                       checked={isChecked}
-                      onChange={(e) => onChange(onOrOff(e))}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        onChange(onOrOff(e))
+                      }
                     />
                   )}
                 />
@@ -369,404 +306,203 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
           <Typography component="h2">Experience level:</Typography>
 
           <FormGroup>
-            <FormControlLabel
-              control={
-                <Controller
-                  name="contractor_tier.0"
-                  control={control}
-                  render={({ field: { onChange, value } }) => (
-                    <Checkbox
-                      value={"1"}
-                      onChange={(e) => onChange(falseOrValue(e))}
+            {dataOptions.experienceLevel.map((elem: IDataForCheckboxes) => {
+              return (
+                <FormControlLabel
+                    key={elem.value}
+                  label={elem.label}
+                  control={
+                    <Controller
+                      name={elem.name}
+                      control={control}
+                      render={({ field: { onChange } }) => (
+                        <Checkbox
+                          value={elem.value}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            onChange(falseOrValue(e))
+                          }
+                        />
+                      )}
                     />
-                  )}
+                  }
                 />
-              }
-              label="Entry level"
-            />
-            <FormControlLabel
-              label="Intermediate"
-              control={
-                <Controller
-                  name="contractor_tier.1"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"2"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-            />
-
-            <FormControlLabel
-              label="Expert"
-              control={
-                <Controller
-                  name="contractor_tier.2"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"3"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-            />
+              );
+            })}
           </FormGroup>
 
-          <hr style={{ background: "black", width: "100%" }} />
+          <hr/>
 
           <Typography component="h2">Client info:</Typography>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Controller
-                  name="previous_clients.0"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"all"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="My previous clients"
-            />
 
-            <FormControlLabel
-              control={
-                <Controller
-                  name="payment_verified.0"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"1"}
-                      onChange={(e) => onChange(falseOrValue(e))}
+          <FormGroup>
+            {dataOptions.clientInfo.map((elem: IDataForCheckboxes) => {
+              return (
+                <FormControlLabel
+                    key={elem.value}
+                  label={elem.label}
+                  control={
+                    <Controller
+                      name={elem.name}
+                      control={control}
+                      render={({ field: { onChange } }) => (
+                        <Checkbox
+                          value={elem.value}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            onChange(falseOrValue(e))
+                          }
+                        />
+                      )}
                     />
-                  )}
+                  }
                 />
-              }
-              label="Payment verified"
-            />
+              );
+            })}
           </FormGroup>
 
-          <hr style={{ background: "black", width: "100%" }} />
+          <hr/>
 
           <Typography component="h2">Client history:</Typography>
           <FormGroup>
-            <FormControlLabel
-              control={
-                <Controller
-                  name="client_hires.0"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"0"}
-                      onChange={(e) => onChange(falseOrValue(e))}
+            {dataOptions.clientHistory.map((elem: IDataForCheckboxes) => {
+              return (
+                <FormControlLabel
+                    key={elem.value}
+                  label={elem.label}
+                  control={
+                    <Controller
+                      name={elem.name}
+                      control={control}
+                      render={({ field: { onChange } }) => (
+                        <Checkbox
+                          value={elem.value}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            onChange(falseOrValue(e))
+                          }
+                        />
+                      )}
                     />
-                  )}
+                  }
                 />
-              }
-              label="No hires"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="client_hires.1"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"1-9"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="1 to 9 hires"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="client_hires.2"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"10-"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="10+ hires"
-            />
+              );
+            })}
           </FormGroup>
 
-          <hr style={{ background: "black", width: "100%" }} />
+          <hr/>
 
           <Typography component="h2">Hours per week:</Typography>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Controller
-                  name="workload.0"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"as_needed"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="Less than 30 hrs/week"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="workload.1"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"full_time"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="More than 30 hrs/week"
-            />
-          </FormGroup>
 
-          <hr style={{ background: "black", width: "100%" }} />
+          <FormGroup>
+            {dataOptions.hoursPerWeek.map((elem: IDataForCheckboxes) => {
+              return (
+                <FormControlLabel
+                    key={elem.value}
+                  label={elem.label}
+                  control={
+                    <Controller
+                      name={elem.name}
+                      control={control}
+                      render={({ field: { onChange } }) => (
+                        <Checkbox
+                          value={elem.value}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            onChange(falseOrValue(e))
+                          }
+                        />
+                      )}
+                    />
+                  }
+                />
+              );
+            })}
+          </FormGroup>
+          <hr/>
+
           <Typography component="h2">Freelancers needed:</Typography>
+
           <FormGroup>
-            <FormControlLabel
-              control={
-                <Controller
-                  name="freelancers_needed.0"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"0-1"}
-                      onChange={(e) => onChange(falseOrValue(e))}
+            {dataOptions.freelancerNeeded.map((elem: IDataForCheckboxes) => {
+              return (
+                <FormControlLabel
+                    key={elem.value}
+                  label={elem.label}
+                  control={
+                    <Controller
+                      name={elem.name}
+                      control={control}
+                      render={({ field: { onChange } }) => (
+                        <Checkbox
+                          value={elem.value}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            onChange(falseOrValue(e))
+                          }
+                        />
+                      )}
                     />
-                  )}
+                  }
                 />
-              }
-              label="1"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="freelancers_needed.1"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"2-5"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="2 to 5"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="freelancers_needed.2"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"6-"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="More than 5"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="freelancers_needed.3"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"0-"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="All"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="freelancers_needed.4"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"0-1"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="Single freelancer"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="freelancers_needed.5"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"2-"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="Multiple freelancer"
-            />
+              );
+            })}
           </FormGroup>
 
-          <hr style={{ background: "black", width: "100%" }} />
+          <hr/>
 
           <Typography component="h2">Number of Proposals:</Typography>
+
           <FormGroup>
-            <FormControlLabel
-              control={
-                <Controller
-                  name="proposals.0"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"0-4"}
-                      onChange={(e) => onChange(falseOrValue(e))}
+            {dataOptions.numberOfProposals.map((elem: IDataForCheckboxes) => {
+              return (
+                <FormControlLabel
+                    key={elem.value}
+                  label={elem.label}
+                  control={
+                    <Controller
+                      name={elem.name}
+                      control={control}
+                      render={({ field: { onChange } }) => (
+                        <Checkbox
+                          value={elem.value}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            onChange(falseOrValue(e))
+                          }
+                        />
+                      )}
                     />
-                  )}
+                  }
                 />
-              }
-              label="Less than 5"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="proposals.1"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"5-9"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="5 to 10"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="proposals.2"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"10-14"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="10 to 15"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="proposals.3"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"15-19"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="15 to 20"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="proposals.4"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"20-49"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="20 to 50"
-            />
+              );
+            })}
           </FormGroup>
-          <hr style={{ background: "black", width: "100%" }} />
+
+          <hr/>
 
           <Typography component="h2">Connect needed:</Typography>
+
           <FormGroup>
-            <FormControlLabel
-              control={
-                <Controller
-                  name="connect_price.0"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"0-2"}
-                      onChange={(e) => onChange(falseOrValue(e))}
+            {dataOptions.connectNeeded.map((elem: IDataForCheckboxes) => {
+              return (
+                <FormControlLabel
+                    key={elem.value}
+                  label={elem.label}
+                  control={
+                    <Controller
+                      name={elem.name}
+                      control={control}
+                      render={({ field: { onChange } }) => (
+                        <Checkbox
+                          value={elem.value}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            onChange(falseOrValue(e))
+                          }
+                        />
+                      )}
                     />
-                  )}
+                  }
                 />
-              }
-              label="2 or less Connects"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="connect_price.1"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"4"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="4 Connects"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="connect_price.2"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"6"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="6 Connects"
-            />
+              );
+            })}
           </FormGroup>
-          <hr style={{ background: "black", width: "100%" }} />
+
+          <hr/>
 
           <Typography component="h2">Job Type:</Typography>
 
@@ -777,11 +513,13 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
                   <Controller
                     name="t.0"
                     control={control}
-                    render={({ field: { value, onChange } }) => (
+                    render={({ field: { onChange } }) => (
                       <Checkbox
                         onClick={() => setIsHourly(!isHourly)}
-                        value={"0"}
-                        onChange={(e) => onChange(falseOrValue(e))}
+                        value="0"
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          onChange(falseOrValue(e))
+                        }
                       />
                     )}
                   />
@@ -790,37 +528,34 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
               />
               {isHourly ? (
                 <>
-                  {" "}
-                  <Controller
-                    name="hourly_rate.0"
-                    control={control}
-                    render={({ field: { value, onChange } }) => (
-                      <TextField
-                        type="number"
-                        className={styles.hourlyInput}
-                        size="small"
-                        placeholder="$ Min"
-                        onChange={(e: any) => onChange(inputHourlyMin(e))}
+                  {dataOptions.isHourly.map((elem: IDataForCheckboxes) => {
+                    return (
+                      <Controller
+                          key={elem.placeholder+"1"}
+                        name="hourly_rate.0"
+                        control={control}
+                        render={({ field: { onChange } }) => (
+                          <TextField
+                            type="number"
+                            className={styles.hourly_input}
+                            size="small"
+                            placeholder={elem.placeholder}
+                            onChange={
+                              elem.placeholder === "$ Min"
+                                ? (e: React.ChangeEvent<HTMLInputElement>) =>
+                                    onChange(inputHourlyMin(e))
+                                : (e: React.ChangeEvent<HTMLInputElement>) =>
+                                    onChange(inputHourlyMax(e))
+                            }
+                          />
+                        )}
                       />
-                    )}
-                  />
-                  <Controller
-                    name="hourly_rate.0"
-                    control={control}
-                    render={({ field: { value, onChange } }) => (
-                      <TextField
-                        type="number"
-                        className={styles.hourlyInput}
-                        size="small"
-                        placeholder="$ Max"
-                        onChange={(e: any) => onChange(inputHourlyMax(e))}
-                      />
-                    )}
-                  />
+                    );
+                  })}
                 </>
               ) : (
                 ""
-              )}{" "}
+              )}
             </div>
 
             <FormControlLabel
@@ -828,11 +563,13 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
                 <Controller
                   name="t.1"
                   control={control}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: { onChange } }) => (
                     <Checkbox
                       onClick={() => setIsFixedPrice(!isFixedPrice)}
-                      value={"1"}
-                      onChange={(e) => onChange(falseOrValue(e))}
+                      value="1"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        onChange(falseOrValue(e))
+                      }
                     />
                   )}
                 />
@@ -842,378 +579,133 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
 
             {isFixedPrice ? (
               <>
-                {" "}
-                <FormControlLabel
-                  control={
-                    <Controller
-                      name="amount.0"
-                      control={control}
-                      render={({ field: { value, onChange } }) => (
-                        <Checkbox
-                          value={"0-99"}
-                          onChange={(e) => onChange(falseOrValue(e))}
+                {dataOptions.isFixedPrice.map((elem:  IDataForCheckboxes) => {
+                  return (
+                    <FormControlLabel
+                        key={elem.value}
+                      label={elem.label}
+                      control={
+                        <Controller
+                          name={elem.name}
+                          control={control}
+                          render={({ field: { onChange } }) => (
+                            <Checkbox
+                              value={elem.value}
+                              onChange={(
+                                e: React.ChangeEvent<HTMLInputElement>
+                              ) => onChange(falseOrValue(e))}
+                            />
+                          )}
                         />
-                      )}
+                      }
                     />
-                  }
-                  label="Less than $100"
-                />
-                <FormControlLabel
-                  control={
-                    <Controller
-                      name="amount.1"
-                      control={control}
-                      render={({ field: { value, onChange } }) => (
-                        <Checkbox
-                          value={"100-499"}
-                          onChange={(e) => onChange(falseOrValue(e))}
-                        />
-                      )}
-                    />
-                  }
-                  label="$100 to $500"
-                />
-                <FormControlLabel
-                  control={
-                    <Controller
-                      name="amount.2"
-                      control={control}
-                      render={({ field: { value, onChange } }) => (
-                        <Checkbox
-                          value={"500-999"}
-                          onChange={(e) => onChange(falseOrValue(e))}
-                        />
-                      )}
-                    />
-                  }
-                  label="$500 - $1K"
-                />
-                <FormControlLabel
-                  control={
-                    <Controller
-                      name="amount.3"
-                      control={control}
-                      render={({ field: { value, onChange } }) => (
-                        <Checkbox
-                          value={"1000-4999"}
-                          onChange={(e) => onChange(falseOrValue(e))}
-                        />
-                      )}
-                    />
-                  }
-                  label="$1K - $5K"
-                />
-                <FormControlLabel
-                  control={
-                    <Controller
-                      name="amount.4"
-                      control={control}
-                      render={({ field: { value, onChange } }) => (
-                        <Checkbox
-                          value={"5000-"}
-                          onChange={(e) => onChange(falseOrValue(e))}
-                        />
-                      )}
-                    />
-                  }
-                  label="$5K+"
-                />
+                  );
+                })}
+
                 <div className={styles.hourly}>
                   <FormControlLabel
                     control={<Checkbox checked={isFixedPriceChecked} />}
                     label=""
                   />
-
-                  <Controller
-                    name="amount.5"
-                    control={control}
-                    render={({ field: { value, onChange } }) => (
-                      <TextField
-                        type="number"
-                        className={styles.hourlyInput}
-                        size="small"
-                        placeholder="$ Min"
-                        onChange={(e: any) => onChange(inputFixedPriceMin(e))}
-                      />
-                    )}
-                  />
-                  <Controller
-                    name="amount.5"
-                    control={control}
-                    render={({ field: { value, onChange } }) => (
-                      <TextField
-                        type="number"
-                        className={styles.hourlyInput}
-                        size="small"
-                        placeholder="$ Max"
-                        onChange={(e: any) => onChange(inputFixedPriceMax(e))}
-                      />
-                    )}
-                  />
+                  {dataOptions.isHourly.map((elem:  IDataForCheckboxes) => {
+                    return (
+                      <>
+                        <Controller
+                            key={elem.placeholder}
+                          name="amount.5"
+                          control={control}
+                          render={({ field: { onChange } }) => (
+                            <TextField
+                              type="number"
+                              className={styles.hourly_input}
+                              size="small"
+                              placeholder={elem.placeholder}
+                              onChange={
+                                elem.placeholder === "$ Min"
+                                  ? (e: React.ChangeEvent<HTMLInputElement>) =>
+                                      onChange(inputFixedPriceMin(e))
+                                  : (e: React.ChangeEvent<HTMLInputElement>) =>
+                                      onChange(inputFixedPriceMax(e))
+                              }
+                            />
+                          )}
+                        />
+                      </>
+                    );
+                  })}
                 </div>
               </>
             ) : (
               ""
             )}
           </FormGroup>
-          <hr style={{ background: "black", width: "100%" }} />
+
+          <hr/>
 
           <Typography component="h2">Project length:</Typography>
+
           <FormGroup>
-            <FormControlLabel
-              control={
-                <Controller
-                  name="duration_v3.0"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"weeks"}
-                      onChange={(e) => onChange(falseOrValue(e))}
+            {dataOptions.projectLength.map((elem:  IDataForCheckboxes) => {
+              return (
+                <FormControlLabel
+                    key={elem.value}
+                  label={elem.label}
+                  control={
+                    <Controller
+                      name={elem.name}
+                      control={control}
+                      render={({ field: { onChange } }) => (
+                        <Checkbox
+                          value={elem.value}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            onChange(falseOrValue(e))
+                          }
+                        />
+                      )}
                     />
-                  )}
+                  }
                 />
-              }
-              label="Less than 1 month"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="duration_v3.1"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"months"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="1 to 3 month"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="duration_v3.2"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"semester"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="3 to 6 month"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="duration_v3.3"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"ongoing"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="More than 6 month"
-            />
+              );
+            })}
           </FormGroup>
 
-          <hr style={{ background: "black", width: "100%" }} />
+          <hr/>
           <Typography component="h2">Category:</Typography>
+
           <FormGroup>
-            <FormControlLabel
-              control={
-                <Controller
-                  name="category2_uid.0"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"531770282584862721"}
-                      onChange={(e) => onChange(falseOrValue(e))}
+            {dataOptions.category.map((elem:  IDataForCheckboxes) => {
+              return (
+                <FormControlLabel
+                    key={elem.value}
+                  label={elem.label}
+                  control={
+                    <Controller
+                      name={elem.name}
+                      control={control}
+                      render={({ field: { onChange } }) => (
+                        <Checkbox
+                          value={elem.value}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            onChange(falseOrValue(e))
+                          }
+                        />
+                      )}
                     />
-                  )}
+                  }
                 />
-              }
-              label="Accounting & Consulting"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="category2_uid.1"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"531770282580668416"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="Admin Support"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="category2_uid.2"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"531770282580668417"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="Customer Service"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="category2_uid.3"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"531770282580668420"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="Data Science & Analytics"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="category2_uid.4"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"531770282580668421"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="Design & Creative"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="category2_uid.5"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"531770282584862722"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="Engineering & Architecture"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="category2_uid.6"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"531770282580668419"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="IT & Networking"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="category2_uid.7"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"531770282584862723"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="Legal"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="category2_uid.8"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"531770282580668422"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="Sales & Marketing"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="category2_uid.9"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"531770282584862720"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="Translation"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="category2_uid.10"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"531770282580668418"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="Web, Mobile & Software Dev"
-            />
-            <FormControlLabel
-              control={
-                <Controller
-                  name="category2_uid.11"
-                  control={control}
-                  render={({ field: { value, onChange } }) => (
-                    <Checkbox
-                      value={"531770282580668423"}
-                      onChange={(e) => onChange(falseOrValue(e))}
-                    />
-                  )}
-                />
-              }
-              label="Writing"
-            />
+              );
+            })}
           </FormGroup>
           <Typography component="h2">Location:</Typography>
 
           <Controller
             name="location"
             control={control}
-            render={({ field: { value, onChange } }) => (
+            render={({ field: { onChange } }) => (
               <Autocomplete
-                onChange={(e, data) => onChange(locationData(data))}
+                onChange={(e: React.SyntheticEvent, data: ILocations[]) =>
+                  onChange(locationData(data))
+                }
                 value={isLocationData}
                 disablePortal
                 multiple
@@ -1230,9 +722,11 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
           <Controller
             name="timezones"
             control={control}
-            render={({ field: { value, onChange } }) => (
+            render={({ field: { onChange } }) => (
               <Autocomplete
-                onChange={(e, data) => onChange(data.map((e: any) => e.value))}
+                onChange={(e: React.SyntheticEvent, data: ITimezones[]) =>
+                  onChange(data.map((elem: ITimezones) => elem.value))
+                }
                 disablePortal
                 multiple
                 size="small"
@@ -1243,7 +737,7 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
             )}
           />
         </div>
-        <div className={styles.fixed_modal_footer}>
+        <div className={styles.workerForm_footer}>
           <Typography component="h2">Sorting:</Typography>
           <Box>
             <FormControl fullWidth>
@@ -1256,15 +750,15 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     label="Sorting"
-                    className={styles.selectInput}
+                    className={styles.sorting_select}
                     error={!!errors.sorting}
                     size="medium"
                     {...field}
                   >
-                    <MenuItem value={"recency"}>Newest</MenuItem>
-                    <MenuItem value={"relevance"}>Relevance</MenuItem>
-                    <MenuItem value={"client_rating"}>Client rating</MenuItem>
-                    <MenuItem value={"client_total_change"}>
+                    <MenuItem value="recency">Newest</MenuItem>
+                    <MenuItem value="relevance">Relevance</MenuItem>
+                    <MenuItem value="client_rating">Client rating</MenuItem>
+                    <MenuItem value="client_total_change">
                       Client spend
                     </MenuItem>
                   </Select>
@@ -1277,11 +771,15 @@ const WorkerForm = ({ clickHandlerForCloseModal }: IScratchFormProps) => {
               </FormHelperText>
             </FormControl>
           </Box>
-          <div className={styles.footer_buttons}>
+          <div className={styles.workerForm_footer_buttons}>
             <Button variant="contained" onClick={clickHandlerForCloseModal}>
               Close
             </Button>
-            <Button variant="contained" onSubmit={submitForm} type="submit">
+            <Button
+              variant="contained"
+              onSubmit={() => submitForm}
+              type="submit"
+            >
               Add
             </Button>
           </div>

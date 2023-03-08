@@ -1,46 +1,50 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../context/context";
+import { Context } from "../../context/context";
 import FormLogin from "../../components/forms/FormLogin";
-
 import { userService } from "../../components/service/userInstance";
-import { IFormInput } from "../../interfaces/interfaces";
+import {
+  IError,
+  ISubmitEmailAndPassword,
+} from "../../interfaces/commonInterfaces";
+
+interface ISubmitLoginFormResponse {
+  data: {
+    token: string;
+  };
+}
 
 const Login = () => {
   const [isValidLogin, setIsValidLogin] = React.useState<boolean>(false);
 
-  const authContext = useContext(AuthContext);
+  const context = useContext(Context);
 
-  async function submitForm(data: IFormInput) {
+  async function submitLoginForm(data: ISubmitEmailAndPassword) {
     await userService
       .login({
         email: data.email,
         password: data.password,
       })
+      .then((response: ISubmitLoginFormResponse) => {
+        context.setIsUserLogin(true);
 
-      .then((response: any) => {
-        if (authContext) {
-          authContext.setIsUserLogin(true);
-        }
-        authContext.setToken(response.data.token)
-
-
-
-
-
+        context.setToken(response.data.token);
 
         setIsValidLogin(false);
       })
 
-      .catch(function (error: any) {
+      .catch(function (error: IError) {
         if (error.response.status >= 400) {
           setIsValidLogin(true);
         }
       });
   }
 
-
   return (
-    <FormLogin submitForm={submitForm} isValidLogin={isValidLogin}></FormLogin>
+    <FormLogin
+      submitLoginForm={submitLoginForm}
+      isValidLogin={isValidLogin}
+      setIsValidLogin={setIsValidLogin}
+    ></FormLogin>
   );
 };
 

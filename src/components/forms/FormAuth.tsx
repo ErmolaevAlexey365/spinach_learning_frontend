@@ -1,16 +1,20 @@
 import React, { useEffect, useRef, ClipboardEvent } from "react";
-
 import styles from "../../styles/formAuth/formAuth.module.css";
-import { IFormAuth } from "../../interfaces/interfaces";
+
+export interface IFormAuthProps {
+  submitAuthCode: () => void;
+  authCode: string[];
+  setAuthCode: (authCode: string[]) => void;
+  isValidCode: boolean;
+}
 
 const FormAuth = ({
   submitAuthCode,
   authCode,
   setAuthCode,
   isValidCode,
-}: IFormAuth) => {
+}: IFormAuthProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
-
   const [focus, setFocus] = React.useState<number>(0);
 
   useEffect(() => {
@@ -56,9 +60,7 @@ const FormAuth = ({
   ): void => {
     const array = [...authCode];
     array[index] = e.target.value;
-
     setAuthCode(array);
-
     if (!array[index]) {
       return;
     } else {
@@ -71,18 +73,22 @@ const FormAuth = ({
       <p style={{ textAlign: "center", fontSize: "20px" }}>
         Enter your auth code
       </p>
-      <div className={styles.grid_for_code}>
-        {authCode.map((v, index) => {
+      <div className={styles.gridForCode}>
+        {authCode.map((v: string, index: number) => {
           return (
             <React.Fragment>
               <input
                 key={index}
-                onKeyDown={(e) => keyPressHandler(e, index)}
+                onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
+                  keyPressHandler(e, index)
+                }
                 className={styles.grid_input}
                 value={authCode[index]}
                 maxLength={1}
                 ref={index === focus ? inputRef : null}
-                onChange={(e) => changeHandlerCode(e, index)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  changeHandlerCode(e, index)
+                }
                 onPaste={copyAuthCode}
               />
             </React.Fragment>

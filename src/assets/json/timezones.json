@@ -1,0 +1,441 @@
+ {
+	"timezones": {
+		"name": "timezone",
+		"label": "Client time zones",
+		"loggingSublocation": "facets_timezone",
+		"options": [
+			{
+				"value": "Pacific/Midway",
+				"label": "UTC-11:00 Midway Island, Samoa",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Pacific/Honolulu",
+				"label": "UTC-10:00 Hawaii",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Nome",
+				"label": "UTC-09:00 Alaska",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Los_Angeles",
+				"label": "UTC-08:00 Pacific Time (US & Canada); Los Angeles",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Tijuana",
+				"label": "UTC-08:00 Pacific Time (US & Canada); Tijuana",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Phoenix",
+				"label": "UTC-07:00 Arizona",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Denver",
+				"label": "UTC-07:00 Mountain Time (US & Canada)",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Regina",
+				"label": "UTC-06:00 Saskatchewan",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Indiana/Knox",
+				"label": "UTC-06:00 Eastern Time - Indiana - Starke County",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Managua",
+				"label": "UTC-06:00 Nicaragua",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Mexico_City",
+				"label": "UTC-06:00 Mexico City, Tegucigalpa",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Chicago",
+				"label": "UTC-06:00 Central Time (US & Canada)",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/New_York",
+				"label": "UTC-05:00 Eastern Time (US & Canada)",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Bogota",
+				"label": "UTC-05:00 Bogota, Lima",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Indiana/Indianapolis",
+				"label": "UTC-05:00 Eastern Time - Indiana - most locations",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Halifax",
+				"label": "UTC-04:00 Atlantic Time (Canada)",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/La_Paz",
+				"label": "UTC-04:00 La Paz",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Caracas",
+				"label": "UTC-04:00 Caracas",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Fortaleza",
+				"label": "UTC-03:00 NE Brazil (MA, PI, CE, RN, PB)",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Buenos_Aires",
+				"label": "UTC-03:00 E Argentina (BA, DF, SC, TF)",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/St_Johns",
+				"label": "UTC-03:30 Newfoundland",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Recife",
+				"label": "UTC-03:00 Pernambuco",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "America/Sao_Paulo",
+				"label": "UTC-03:00 S & SE Brazil (GO, DF, MG, ES, RJ, SP, PR, SC, RS)",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Atlantic/South_Georgia",
+				"label": "UTC-02:00 Mid-Atlantic",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Atlantic/Azores",
+				"label": "UTC-01:00 Azores, Cape Verde Island",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Africa/Casablanca",
+				"label": "UTC (no DST) Tangiers, Casablanca",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Europe/London",
+				"label": "UTC (Coordinated Universal Time) Dublin, Edinburgh, London",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Europe/Lisbon",
+				"label": "UTC+00:00 Lisbon",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Etc/UTC",
+				"label": "UTC (Coordinated Universal Time)",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Europe/Prague",
+				"label": "UTC+01:00 Prague, Warsaw",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Europe/Paris",
+				"label": "UTC+01:00 Paris, Madrid",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Europe/Berlin",
+				"label": "UTC+01:00 Berlin, Stockholm, Rome, Bern, Brussels",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Africa/Algiers",
+				"label": "UTC+01:00 Algeria",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Europe/Athens",
+				"label": "UTC+02:00 Athens, Helsinki, Istanbul",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "EET",
+				"label": "UTC+02:00 Eastern Europe",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Africa/Cairo",
+				"label": "UTC+02:00 Cairo",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Africa/Harare",
+				"label": "UTC+02:00 Harare, Pretoria",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Jerusalem",
+				"label": "UTC+02:00 Israel",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Europe/Minsk",
+				"label": "UTC+03:00 Minsk",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Europe/Moscow",
+				"label": "UTC+03:00 Moscow, St. Petersburg, Volgograd",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Tehran",
+				"label": "UTC+03:30 Tehran",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Baghdad",
+				"label": "UTC+03:00 Baghdad, Kuwait, Nairobi, Riyadh",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Tbilisi",
+				"label": "UTC+04:00 Abu Dhabi, Muscat, Tbilisi, Kazan",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Karachi",
+				"label": "UTC+05:00 Islamabad, Karachi",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Kabul",
+				"label": "UTC+04:30 Kabul",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Yerevan",
+				"label": "UTC+04:00 Armenia",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Katmandu",
+				"label": "UTC+05:45 Kathmandu, Nepal",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Tashkent",
+				"label": "UTC+05:00 Tashkent",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Yekaterinburg",
+				"label": "UTC+05:00 Sverdlovsk",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Almaty",
+				"label": "UTC+06:00 Almaty, Dhaka",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Calcutta",
+				"label": "UTC+05:30 Mumbai, Kolkata, Chennai, New Delhi",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Omsk",
+				"label": "UTC+06:00 Omsk, Novosibirsk",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Krasnoyarsk",
+				"label": "UTC+07:00 Krasnoyarsk",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Bangkok",
+				"label": "UTC+07:00 Bangkok, Jakarta, Hanoi",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Australia/Perth",
+				"label": "UTC+08:00 Hong Kong SAR, Perth, Singapore, Taipei",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Irkutsk",
+				"label": "UTC+08:00 Irkutsk (Lake Baikal)",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Shanghai",
+				"label": "UTC+08:00 Beijing, Chongqing, Urumqi",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Tokyo",
+				"label": "UTC+09:00 Tokyo, Osaka, Sapporo, Seoul",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Pacific/Guam",
+				"label": "UTC+10:00 Guam, Port Moresby",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Vladivostok",
+				"label": "UTC+10:00 Magadan, Vladivostok",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Australia/Hobart",
+				"label": "UTC+11:00 Hobart",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Australia/Darwin",
+				"label": "UTC+09:30 Darwin",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Australia/Sydney",
+				"label": "UTC+10:00 Sydney, Melbourne",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Australia/Brisbane",
+				"label": "UTC+10:00 Brisbane",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Australia/Adelaide",
+				"label": "UTC+09:30 Adelaide",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Yakutsk",
+				"label": "UTC+10:00 Yakutsk (Lena River)",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Pacific/Fiji",
+				"label": "UTC+12:00 Fiji Islands, Marshall Islands",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Pacific/Auckland",
+				"label": "UTC+12:00 Wellington, Auckland",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Pacific/Kwajalein",
+				"label": "UTC+12:00 Eniwetok, Kwajalein",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Kamchatka",
+				"label": "UTC+12:00 Kamchatka",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Asia/Magadan",
+				"label": "UTC+12:00 Solomon Islands, New Caledonia",
+				"checked": false,
+				"count": 0
+			},
+			{
+				"value": "Pacific/Apia",
+				"label": "UTC+13:00 Apia (Samoa)",
+				"checked": false,
+				"count": 0
+			}
+		]
+	}
+}
