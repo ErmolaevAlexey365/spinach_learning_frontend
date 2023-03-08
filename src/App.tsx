@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from "react-router";
 import Login from "../src/pages/login/Login";
 import Authorization from "../src/pages/authorization/Authorization";
 import { BrowserRouter } from "react-router-dom";
-import { Context } from "../src/context/context";
+import { Context } from "./context/context";
 import Profile from "../src/pages/profile/Profile";
 import Dashboard from "../src/pages/dashboard/Dashboard";
 import Accounts from "../src/pages/accounts/Accounts";

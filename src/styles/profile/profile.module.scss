@@ -2,7 +2,7 @@ $backgroundColor: #e5f4ff;
 $buttonAndBorderColor: #6495ed;
 $hoverButton: darken($backgroundColor, 7%);
 
-.user_data_form {
+.userData_form {
   display: flex;
   flex-direction: column;
   width: 20%;
@@ -13,12 +13,11 @@ $hoverButton: darken($backgroundColor, 7%);
   border-radius: 10%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   background: $backgroundColor;
-
   input {
     background: white;
   }
 }
-.avatar_and_editButton {
+.avatarAndEdit_buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -30,8 +29,7 @@ $hoverButton: darken($backgroundColor, 7%);
     cursor: pointer;
   }
 }
-
-.buttons_canselSave {
+.canselSave_buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -40,7 +38,6 @@ $hoverButton: darken($backgroundColor, 7%);
     background: $buttonAndBorderColor;
   }
 }
-
 .menu_button {
   position: absolute;
   top: 5px;
@@ -50,7 +47,6 @@ $hoverButton: darken($backgroundColor, 7%);
   border: none;
   z-index: 1;
 }
-
 .menu_button_div {
   position: fixed;
   top: 0;

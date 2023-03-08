@@ -1,32 +1,49 @@
 import React, { useContext, useEffect, useState } from "react";
 import SidebarMenu from "../../components/sidebar/SidebarMenu";
 import AccountsForm from "../../components/forms/AccountsForm";
-import { IFormInput, IUserAccountProps } from "../../interfaces/interfaces";
+import {
+  IError,
+  ISubmitEmailAndPassword,
+} from "../../interfaces/commonInterfaces";
 import { userService } from "../../components/service/userInstance";
 import UserAccount from "../../components/lists/UserAccount";
 
 import Loader from "../../components/loader/Loader";
 import { Context } from "../../context/context";
 
+interface IAccountUserData {
+  id: number;
+  name: string;
+  avatar: string;
+  description: string;
+  getAccounts: () => void;
+}
+interface IGetAccountsResponse {
+  data: IAccountUserData[];
+}
+
 const Accounts = () => {
-  const [accountUserData, setAccountUserData] = useState<IUserAccountProps[]>([]);
+  const [accountUserData, setAccountUserData] = useState<IAccountUserData[]>(
+    []
+  );
   const [isLoadGetAccounts, setIsLoadGetAccounts] = useState<boolean>(false);
-  const [isLoadSubmitAccounts, setIsLoadSubmitAccounts] = useState<boolean>(false);
+  const [isLoadSubmitAccounts, setIsLoadSubmitAccounts] =
+    useState<boolean>(false);
   const context = useContext(Context);
 
   async function getAccounts() {
     setIsLoadGetAccounts(true);
     await userService
       .getAccountsData(context.token)
-      .then((response: any) => {
+      .then((response: IGetAccountsResponse) => {
         setIsLoadGetAccounts(false);
         setAccountUserData(response.data);
       })
-      .catch(function (error: any) {
-          if (error.response.data.description === "Cannot verify token") {
-              context.setIsUserLogin(false);
-              context.setIsUserAuth(false);
-          }
+      .catch(function (error: IError) {
+        if (error.response.data.description === "Cannot verify token") {
+          context.setIsUserLogin(false);
+          context.setIsUserAuth(false);
+        }
       });
   }
 
@@ -34,7 +51,7 @@ const Accounts = () => {
     getAccounts();
   }, []);
 
-  async function submitAccountsForm(data: IFormInput) {
+  async function submitAccountsForm(data: ISubmitEmailAndPassword) {
     setIsLoadSubmitAccounts(true);
     await userService
       .postAccountsForm(
@@ -48,21 +65,21 @@ const Accounts = () => {
         context.token
       )
 
-      .then((response: any) => {
+      .then(() => {
         setIsLoadSubmitAccounts(false);
         getAccounts();
       })
-      .catch(function (error: any) {
+      .catch(function (error: IError) {
         if (
           error.response.data.description ===
           "Service user account already exist"
         ) {
           setIsLoadSubmitAccounts(false);
         }
-          if (error.response.data.description === "Cannot verify token") {
-              context.setIsUserLogin(false);
-              context.setIsUserAuth(false);
-          }
+        if (error.response.data.description === "Cannot verify token") {
+          context.setIsUserLogin(false);
+          context.setIsUserAuth(false);
+        }
       });
   }
 
@@ -74,12 +91,12 @@ const Accounts = () => {
       {isLoadGetAccounts || isLoadSubmitAccounts ? (
         <Loader />
       ) : (
-        accountUserData.map((e: IUserAccountProps, index: number) => {
+        accountUserData.map((e: IAccountUserData) => {
           return (
             <UserAccount
               getAccounts={getAccounts}
               id={e.id}
-              key={index}
+              key={e.id}
               name={e.name}
               avatar={e.avatar}
               description={e.description}

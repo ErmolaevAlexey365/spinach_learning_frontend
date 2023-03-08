@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "../../styles/dashboard/dashboard.module.css";
-import { IJobs, IWorkersProps } from "../../interfaces/interfaces";
+import { IError } from "../../interfaces/commonInterfaces";
 import VertMenu from "../buttons/verticalMenu/VertMenu";
 import PlayCircleFilledWhiteOutlinedIcon from "@mui/icons-material/PlayCircleFilledWhiteOutlined";
 import PauseCircleOutlineOutlinedIcon from "@mui/icons-material/PauseCircleOutlineOutlined";
@@ -8,6 +8,11 @@ import { userService } from "../service/userInstance";
 import { Context } from "../../context/context";
 import Jobs from "./Jobs";
 import Loader from "../loader/Loader";
+import {
+  IGetJobsResponse,
+  IJobs,
+  IWorkersProps,
+} from "../../interfaces/dashboardInterfaces";
 
 const Workers = ({
   title,
@@ -27,7 +32,8 @@ const Workers = ({
   const options = ["Delete"];
 
   const [job, setJob] = useState<IJobs[]>(
-    JSON.parse(localStorage.getItem(`${id}`) || "[]") || [] );
+    JSON.parse(localStorage.getItem(`${id}`) || "[]") || []
+  );
   const [startWorkerLoading, setStartWorkerLoading] = useState<boolean>(false);
 
   async function startWorker() {
@@ -41,10 +47,10 @@ const Workers = ({
         },
         context.token
       )
-      .then((response: any) => {
-         getJobs();
+      .then(() => {
+        getWorkers();
       })
-      .catch(function (error: any) {
+      .catch(function (error: IError) {
         setStartWorkerLoading(false);
         if (
           error.response.data.description ===
@@ -69,10 +75,10 @@ const Workers = ({
         },
         context.token
       )
-      .then((response: any) => {
+      .then(() => {
         getWorkers();
       })
-      .catch(function (error: any) {
+      .catch(function (error: IError) {
         if (
           error.response.data.description ===
           "Service user account must be started"
@@ -90,13 +96,15 @@ const Workers = ({
   async function getJobs() {
     await userService
       .getParsersById(1, id, context.token)
-      .then((response: any) => {
-          localStorage.setItem(`${id}`, JSON.stringify(response.data.jobs));
-          setJob(response.data.jobs);
+      .then((response: IGetJobsResponse) => {
+        localStorage.setItem(`${id}`, JSON.stringify(response.data.jobs));
+        setJob(response.data.jobs);
+        if (response.data.jobs.length != 0) {
           setStartWorkerLoading(false);
           getWorkers();
+        }
       })
-      .catch(function (error: any) {
+      .catch(function (error: IError) {
         if (error.response.data.description === "Cannot verify token") {
           context.setIsUserLogin(false);
           context.setIsUserAuth(false);
@@ -105,10 +113,18 @@ const Workers = ({
   }
 
   useEffect(() => {
-    if (status === "started") {
-      getJobs();
+    let timer = setInterval(() => {
+      if (status === "started") {
+        getJobs();
+      }
+    }, 5000);
+    if (status === "stopped") {
+      clearInterval(timer);
     }
-  }, []);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [status]);
 
   function clickForStart() {
     if (
@@ -137,10 +153,11 @@ const Workers = ({
   async function removeWorker() {
     await userService
       .deleteParser(id, accountId, 1, context.token)
-      .then((response: any) => {
+      .then(() => {
         getWorkers();
+        localStorage.removeItem(`${id}`);
       })
-      .catch(function (error: any) {
+      .catch(function (error: IError) {
         if (error.response.data.description === "Cannot verify token") {
           context.setIsUserLogin(false);
           context.setIsUserAuth(false);
@@ -151,10 +168,10 @@ const Workers = ({
   return (
     <>
       <div className={styles.worker}>
-        <div className={styles.workerHead}>
+        <div className={styles.worker_head}>
           <p>{title}</p>
           {status === "stopped" ? (
-            <div className={styles.stopStartButton}>
+            <div className={styles.stopStart_button}>
               {" "}
               <button onClick={clickForStart}>
                 <PlayCircleFilledWhiteOutlinedIcon />
@@ -186,12 +203,14 @@ const Workers = ({
             {description}
           </p>
 
-          <hr style={{ background: "black", width: "100%" }} />
+          <hr/>
 
           {!startWorkerLoading ? (
             job.map((el: IJobs) => {
               return (
                 <Jobs
+                  id={id}
+                  key={el.id}
                   title={el.title}
                   description={el.description}
                   postedOn={el.postedOn}

@@ -4,7 +4,12 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-const VertMenu = ({ options, removeWorker }: any) => {
+interface IVertMenu {
+  options: string[];
+  removeWorker: () => void;
+}
+
+const VertMenu = ({ options, removeWorker }: IVertMenu) => {
   const ITEM_HEIGHT = 48;
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -12,7 +17,7 @@ const VertMenu = ({ options, removeWorker }: any) => {
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = (option: any) => {
+  const handleClose = (option: string) => {
     setAnchorEl(null);
     if (option === "Delete") {
       removeWorker();
@@ -49,7 +54,7 @@ const VertMenu = ({ options, removeWorker }: any) => {
           },
         }}
       >
-        {options.map((option: any) => (
+        {options.map((option: string) => (
           <MenuItem key={option} onClick={() => handleClose(option)}>
             {option}
           </MenuItem>

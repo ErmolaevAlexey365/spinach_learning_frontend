@@ -1,4 +1,4 @@
-.user_data_form {
+.userData_form {
   display: flex;
   flex-direction: column;
   width: 20%;
@@ -10,16 +10,16 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   background: #e5f4ff;
 }
-.user_data_form input {
+.userData_form input {
   background: white;
 }
 
-.avatar_and_editButton {
+.avatarAndEdit_buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.avatar_and_editButton button {
+.avatarAndEdit_buttons button {
   width: 15%;
   padding: 0;
   border: none;
@@ -27,12 +27,12 @@
   cursor: pointer;
 }
 
-.buttons_canselSave {
+.canselSave_buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.buttons_canselSave Button {
+.canselSave_buttons Button {
   margin-top: 30px;
   background: #6495ed;
 }

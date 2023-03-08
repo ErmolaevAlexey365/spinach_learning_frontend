@@ -1,7 +1,7 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import styles from "../../../styles/profile/profile.module.css";
 import MenuIcon from "@mui/icons-material/Menu";
-import {Context} from "../../../context/context";
+import { Context } from "../../../context/context";
 
 const MenuButton = () => {
   const context = useContext(Context);

@@ -7,20 +7,32 @@ import Workers from "../../components/lists/Workers";
 import { sortDataInputsAndWorkerCheckbox } from "../../utils/dataSorting";
 import { userService } from "../../components/service/userInstance";
 import { Context } from "../../context/context";
-import { IWorkersData } from "../../interfaces/interfaces";
+import { IError } from "../../interfaces/commonInterfaces";
 import WorkerPasswordModal from "../../components/modals/WorkerPasswordModal";
+import {
+  IUpworkAccountsUsersInfo,
+  IWorkerData,
+} from "../../interfaces/workerFormInterfaces";
+import {
+  IGetAccountsDashboardResponse,
+  IGetWorkersResponse,
+  IWorkersData,
+} from "../../interfaces/dashboardInterfaces";
 
 const Dashboard = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [workerData, setWorkerData] = useState<IWorkersData[]>([]);
-  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState<boolean>(false);
-  const [upworkAccounts, setUpworkAccounts] = useState<string[]>([]);
+  const [isPasswordModalOpen, setIsPasswordModalOpen] =
+    useState<boolean>(false);
+  const [upworkAccounts, setUpworkAccounts] = useState<
+    IUpworkAccountsUsersInfo[]
+  >([]);
   const [accountUserName, setAccountUserName] = useState<string>("");
   const [accountUserId, setAccountUserId] = useState<number>(0);
 
   const context = useContext(Context);
 
-  async function submitForm(data: any) {
+  async function submitForm(data: IWorkerData) {
     let arrayData = sortDataInputsAndWorkerCheckbox(data);
     await userService
       .createParser(
@@ -35,29 +47,29 @@ const Dashboard = () => {
         },
         context.token
       )
-      .then((response: any) => {
+      .then(() => {
         getWorkers();
         setIsModalOpen(false);
       })
-      .catch(function (error: any) {
-          if (error.response.data.description === "Cannot verify token") {
-              context.setIsUserLogin(false);
-              context.setIsUserAuth(false);
-          }
+      .catch(function (error: IError) {
+        if (error.response.data.description === "Cannot verify token") {
+          context.setIsUserLogin(false);
+          context.setIsUserAuth(false);
+        }
       });
   }
 
   async function getWorkers() {
     await userService
       .getAllParsers(context.token)
-      .then((response: any) => {
+      .then((response: IGetWorkersResponse) => {
         setWorkerData(response.data);
       })
-      .catch(function (error: any) {
-          if (error.response.data.description === "Cannot verify token") {
-              context.setIsUserLogin(false);
-              context.setIsUserAuth(false);
-          }
+      .catch(function (error: IError) {
+        if (error.response.data.description === "Cannot verify token") {
+          context.setIsUserLogin(false);
+          context.setIsUserAuth(false);
+        }
       });
   }
 
@@ -74,17 +86,16 @@ const Dashboard = () => {
   async function getAccounts() {
     await userService
       .getAccountsData(context.token)
-      .then((response: any) => {
+      .then((response: IGetAccountsDashboardResponse) => {
         setUpworkAccounts(response.data);
       })
-      .catch(function (error: any) {
-          if (error.response.data.description === "Cannot verify token") {
-              context.setIsUserLogin(false);
-              context.setIsUserAuth(false);
-          }
+      .catch(function (error: IError) {
+        if (error.response.data.description === "Cannot verify token") {
+          context.setIsUserLogin(false);
+          context.setIsUserAuth(false);
+        }
       });
   }
-
   return (
     <div>
       <SidebarMenu />
@@ -114,7 +125,7 @@ const Dashboard = () => {
 
       <AddCircleOutlinedIcon
         sx={{ fontSize: "90px" }}
-        className={styles.plus_button}
+        className={styles.openWorkerForm_button}
         onClick={() => setIsModalOpen(!isModalOpen)}
       />
       <WorkerModal

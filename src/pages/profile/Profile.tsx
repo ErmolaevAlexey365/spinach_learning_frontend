@@ -3,9 +3,26 @@ import { userService } from "../../components/service/userInstance";
 import FormUserData from "../../components/forms/FormUserData";
 import SidebarMenu from "../../components/sidebar/SidebarMenu";
 import { Context } from "../../context/context";
+import { IError } from "../../interfaces/commonInterfaces";
+
+interface IGetUsersDataResponse {
+  data: {
+    id: number;
+    email: string;
+    firstname: string;
+    lastname: string;
+  };
+}
+
+interface IGetUsersData {
+  id?: number;
+  email?: string;
+  firstname?: string;
+  lastname?: string;
+}
 
 const Profile = () => {
-  const [userData, setUserData] = useState<any>([{}]);
+  const [userData, setUserData] = useState<IGetUsersData>({});
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
@@ -14,7 +31,7 @@ const Profile = () => {
   async function getUsersData() {
     await userService
       .getUserData(context.token)
-      .then((response: any) => {
+      .then((response: IGetUsersDataResponse) => {
         setUserData({
           ...userData,
           id: response.data.id,
@@ -24,7 +41,7 @@ const Profile = () => {
         });
         setIsLoading(false);
       })
-      .catch(function (error: any) {
+      .catch(function (error: IError) {
         if (error.response.data.description === "Cannot verify token") {
           context.setIsUserLogin(false);
           context.setIsUserAuth(false);
@@ -37,7 +54,7 @@ const Profile = () => {
   }, []);
 
   async function changeData() {
-    if (!userData.firstname || !userData.lastname) {
+    if (!userData?.firstname || !userData?.lastname) {
       setIsDisabled(true);
       return;
     }
@@ -50,10 +67,10 @@ const Profile = () => {
         },
         context.token
       )
-      .then((response: any) => {
+      .then(() => {
         setIsDisabled(!isDisabled);
       })
-      .catch(function (error: any) {
+      .catch(function (error: IError) {
         if (error.response.data.description === "Cannot verify token") {
           context.setIsUserLogin(false);
           context.setIsUserAuth(false);

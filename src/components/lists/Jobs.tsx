@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "../../styles/dashboard/dashboard.module.css";
-import { IJobs } from "../../interfaces/interfaces";
+import { IJobs } from "../../interfaces/dashboardInterfaces";
 import Chip from "@mui/material/Chip";
+
 
 const Jobs = ({
   title,
@@ -23,7 +24,7 @@ const Jobs = ({
       {textLength > 200 ? (
         !readMore ? (
           <>
-            <div className={!readMore ? styles.jobsDescription_open : ""}>
+            <div className={!readMore ? styles.jobsDescription : ""}>
               {description.split("<br>")}
             </div>
             <p
@@ -45,7 +46,7 @@ const Jobs = ({
           </>
         )
       ) : (
-        <div className={styles.jobsDescription_open}>
+        <div className={styles.jobsDescription}>
           {description.split("<br>")}
         </div>
       )}
@@ -55,14 +56,14 @@ const Jobs = ({
           <>
             <div className={styles.skills_close}>
               {" "}
-              {skills.split(",").map((el: string) => {
+              {skills.split(",").map((el: string,index:number) => {
                 if (el != "")
-                  return <Chip label={el} size="small" color="primary" />;
+                  return <Chip key={index} label={el} size="small" color="primary" />;
               })}
             </div>
             <Chip
               label="close"
-              className={styles.chipButton}
+              className={styles.chip_button}
               size="small"
               onClick={() => setViewMore(!viewMore)}
             />
@@ -71,14 +72,14 @@ const Jobs = ({
           <>
             <div className={styles.skills}>
               {" "}
-              {skills.split(",").map((el: string) => {
+              {skills.split(",").map((el: string,index:number) => {
                 if (el != "")
-                  return <Chip label={el} size="small" color="primary" />;
+                  return <Chip key={index} label={el} size="small" color="primary" />;
               })}
             </div>
             <Chip
               label="show more"
-              className={styles.chipButton}
+              className={styles.chip_button}
               size="small"
               onClick={() => setViewMore(!viewMore)}
             />
@@ -87,9 +88,9 @@ const Jobs = ({
       ) : (
         <div className={styles.skills}>
           {" "}
-          {skills.split(",").map((el: string) => {
+          {skills.split(",").map((el: string,index:number) => {
             if (el != "")
-              return <Chip label={el} size="small" color="primary" />;
+              return <Chip key={index} label={el} size="small" color="primary" />;
           })}
         </div>
       )}
@@ -99,7 +100,7 @@ const Jobs = ({
         <p>Scoring:{scoring}</p>
       </div>
 
-      <hr style={{ background: "black", width: "100%" }} />
+      <hr/>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-.accountsForm, .userAccount {
+.accounts_form, .user_account {
   width: 50%;
   height: 120px;
   display: flex;
@@ -12,18 +12,18 @@
   border-color: #6495ed;
 }
 
-.userAccount {
+.user_account {
   background: white;
   border: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-.userAccount p {
+.user_account p {
   font-size: 20px;
 }
-.userAccount div {
+.user_account div {
   margin: 0;
 }
-.userAccount button {
+.user_account button {
   color: white;
   align-self: flex-end;
 }

@@ -1,4 +1,4 @@
-.accountsForm {
+.accounts_form {
   width: 50%;
   height: 120px;
   display: flex;
@@ -11,12 +11,11 @@
   margin: 20px;
   border-color: #6495ed;
 }
-.userAccount {
-  @extend .accountsForm;
+.user_account {
+  @extend .accounts_form;
   background: white;
   border: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
   p {
     font-size: 20px;
   }

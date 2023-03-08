@@ -1,24 +1,30 @@
 import axios from "axios";
-
-
+import { ISubmitEmailAndPassword } from "../../interfaces/commonInterfaces";
+import {
+  IAccountUserLoginBody,
+  ICreateParserBody,
+  IProfileEditDataBody,
+  IStartAndStopWorkerBody,
+  ISubmitAccountsFormBody,
+} from "../../interfaces/serviceInterfaces";
 
 const userInstance = axios.create({
   baseURL: "http://localhost:5000/api",
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "",
-
   },
 });
 
 export const userService = {
-  async login(body: any) {
+  async login(body: ISubmitEmailAndPassword) {
     try {
       return userInstance.post("/user/login", body);
     } catch (error: any) {
       return error.response;
     }
   },
+
   async auth(code: string, token: string) {
     try {
       return userInstance.get(`/user/login/${code}`, {
@@ -29,7 +35,7 @@ export const userService = {
     }
   },
 
-  async edit(body: any, token: string) {
+  async edit(body: IProfileEditDataBody, token: string) {
     try {
       return userInstance.patch("/user/edit", body, {
         headers: { Authorization: "Bearer " + token },
@@ -38,6 +44,7 @@ export const userService = {
       return error.response;
     }
   },
+
   async getUserData(token: string) {
     try {
       return userInstance.get("/user", {
@@ -47,7 +54,8 @@ export const userService = {
       return error.response;
     }
   },
-  async postAccountsForm(body: any, token: string) {
+
+  async postAccountsForm(body: ISubmitAccountsFormBody, token: string) {
     try {
       return userInstance.post("/service-user-account/add-user", body, {
         headers: { Authorization: "Bearer " + token },
@@ -56,6 +64,7 @@ export const userService = {
       return error.response;
     }
   },
+
   async getAccountsData(token: string) {
     try {
       return userInstance.get("/service-user-account/company-accounts/1", {
@@ -65,6 +74,7 @@ export const userService = {
       return error.response;
     }
   },
+
   async deleteAccountsData(
     companyUserId: number,
     serviceUserAccountId: number,
@@ -83,7 +93,7 @@ export const userService = {
     }
   },
 
-  async createParser(body: any, token: string) {
+  async createParser(body: ICreateParserBody, token: string) {
     try {
       return userInstance.post("/parser/create", body, {
         headers: { Authorization: "Bearer " + token },
@@ -92,7 +102,8 @@ export const userService = {
       return error.response;
     }
   },
-  async startParser(body: any, token: string) {
+
+  async startParser(body: IStartAndStopWorkerBody, token: string) {
     try {
       return userInstance.post("/parser/start", body, {
         headers: { Authorization: "Bearer " + token },
@@ -101,7 +112,8 @@ export const userService = {
       return error.response;
     }
   },
-  async getAllParsers( token: string) {
+
+  async getAllParsers(token: string) {
     try {
       return userInstance.get("/parser/all", {
         headers: { Authorization: "Bearer " + token },
@@ -112,10 +124,10 @@ export const userService = {
   },
 
   async deleteParser(
-  parserId: number,
-  serviceUserAccountId: number ,
-  companyUserId: number,
-      token: string
+    parserId: number,
+    serviceUserAccountId: number,
+    companyUserId: number,
+    token: string
   ) {
     try {
       return userInstance.delete("/parser/delete", {
@@ -130,7 +142,8 @@ export const userService = {
       return error.response;
     }
   },
-  async accountUserLogin(body: any, token: string) {
+
+  async accountUserLogin(body: IAccountUserLoginBody, token: string) {
     try {
       return userInstance.post("/service-user-account/login", body, {
         headers: { Authorization: "Bearer " + token },
@@ -139,7 +152,8 @@ export const userService = {
       return error.response;
     }
   },
-  async stopParser(body: any, token: string) {
+
+  async stopParser(body: IStartAndStopWorkerBody, token: string) {
     try {
       return userInstance.post("/parser/stop", body, {
         headers: { Authorization: "Bearer " + token },
@@ -147,15 +161,17 @@ export const userService = {
     } catch (error: any) {
       return error.response;
     }
-},
-  async getParsersById(companyUserId:number,parserId:number, token: string) {
+  },
+  async getParsersById(companyUserId: number, parserId: number, token: string) {
     try {
-      return userInstance.get(`/parser?companyUserId=${companyUserId}&parserId=${parserId}`, {
-        headers: { Authorization: "Bearer " + token },
-      });
+      return userInstance.get(
+        `/parser?companyUserId=${companyUserId}&parserId=${parserId}`,
+        {
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
     } catch (error: any) {
       return error.response;
     }
   },
-}
-
+};

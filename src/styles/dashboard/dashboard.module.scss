@@ -13,15 +13,19 @@ input::-webkit-inner-spin-button {
 input::-webkit-inner-spin-button {
   display: none;
 }
+hr {
+  background: black;
+  width: 100%;
+}
 
-.plus_button {
+.openWorkerForm_button {
   color: #6495ed;
   position: fixed;
   bottom: 50px;
   left: 50px;
   cursor: pointer;
 }
-.modal_open {
+.modals_open {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -32,11 +36,11 @@ input::-webkit-inner-spin-button {
   z-index: 2;
 }
 
-.form_div {
-  width: 50%;
+.workerFormModal_div {
+  width: 30%;
   height: 500px;
   background: #e5f4ff;
-  margin: 95px 22%;
+  margin: 95px 30%;
   box-shadow: 0 14px 28px 5px rgba(0, 0, 0, 0.25),
     0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
@@ -65,7 +69,7 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
-.scratcherForm_options {
+.workerForm_options {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -80,7 +84,7 @@ input::-webkit-inner-spin-button {
   }
 }
 
-.scratcherForm_input {
+.workerForm_inputs_selects {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 0.9fr;
@@ -92,17 +96,17 @@ input::-webkit-inner-spin-button {
   }
 }
 
-.fixed_modal_footer {
+.workerForm_footer {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   background: #e5f4ff;
 
-  .selectInput {
+  .sorting_select {
     background: white;
   }
 
-  .footer_buttons {
+  .workerForm_footer_buttons {
     margin-top: 10px;
     align-self: flex-end;
 
@@ -115,14 +119,14 @@ input::-webkit-inner-spin-button {
 .hourly {
   display: flex;
   justify-content: flex-start;
-  .hourlyInput {
+  .hourly_input {
     width: 19%;
     margin-right: 7px;
     -moz-appearance: textfield;
   }
 }
 
-.workerHead {
+.worker_head {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
@@ -145,7 +149,7 @@ input::-webkit-inner-spin-button {
     border: none;
   }
 
-  .stopStartButton {
+  .stopStart_button {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -189,11 +193,11 @@ input::-webkit-inner-spin-button {
   flex-direction: column;
   width: 270px;
   margin: 0 10px;
-
   p,
   h3 {
     margin: 0 0 10px 0;
   }
+
   .jobsUrlAndScoring {
     display: flex;
     flex-direction: row;
@@ -212,7 +216,7 @@ input::-webkit-inner-spin-button {
     }
   }
 }
-.jobsDescription_open {
+.jobsDescription {
   max-height: 93px;
   height: auto;
   overflow: hidden;
@@ -231,7 +235,7 @@ input::-webkit-inner-spin-button {
   column-gap: 7px;
   row-gap: 7px;
 }
-.chipButton {
+.chip_button {
   background: darken(#6495ed, 25%);
   color: white;
   width: 30%;
@@ -243,7 +247,7 @@ input::-webkit-inner-spin-button {
 }
 
 .password_form {
-  @extend .form_div;
+  @extend .workerFormModal_div;
   overflow: hidden;
   width: 30%;
   height: auto;
